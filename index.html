@@ -52,6 +52,35 @@
       transform: translateZ(0);
       transition: transform 0.5s ease;
     }
+    /* ==========================================================================
+       EFECTO ZOOM CINEMÁTICO INTERACTIVO (SMOOTH HOVER FOCUS) - SKILL-019
+       ========================================================================== */
+    .img-zoom-container {
+      overflow: hidden !important;
+      position: relative;
+    }
+    .img-zoom-target {
+      transform: scale(1);
+      transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s ease;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-origin: center center;
+    }
+    .img-zoom-container:hover .img-zoom-target,
+    .group:hover .img-zoom-target,
+    .img-zoom-target:hover {
+      transform: scale(1.08) !important;
+      filter: brightness(1.03) contrast(1.02);
+    }
+    .img-card-glow {
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .img-card-glow:hover,
+    .group:hover .img-card-glow {
+      border-color: rgba(197, 157, 95, 0.6) !important;
+      box-shadow: 0 12px 35px -8px rgba(197, 157, 95, 0.22) !important;
+    }
   </style>
 </head>
 <body class="bg-brand-charcoal text-neutral-200 font-sans antialiased selection:bg-brand-gold selection:text-black">
@@ -173,13 +202,13 @@
           <!-- Columna Derecha: Retrato Oficial del Chef en Filipina Blanca (Visual Exclusivo Limpio) -->
           <div class="lg:col-span-5 relative flex items-center justify-center">
             <!-- Tarjeta Principal del Retrato (Calibrada a Proporción 3:4 Editorial Limpia) -->
-            <div class="relative mx-auto max-w-[380px] sm:max-w-[400px] lg:max-w-[420px] w-full rounded-2xl overflow-hidden border border-brand-gold/40 shadow-2xl bg-neutral-950 group">
+            <div class="relative mx-auto max-w-[380px] sm:max-w-[400px] lg:max-w-[420px] w-full rounded-2xl overflow-hidden border border-brand-gold/40 shadow-2xl bg-neutral-950 group img-card-glow">
               <!-- Marco de la Fotografía Nítida a Resolución Calibrada (764x1024) -->
-              <div class="relative aspect-[3/4] w-full overflow-hidden">
+              <div class="relative aspect-[3/4] w-full overflow-hidden img-zoom-container">
                 <img id="hero-portrait-img" 
                      src="assets/images/chef_filipina_blanca.jpg?v=20261026_pizza" 
                      alt="Lic. Yorman Trabasilo - Chef Profesional & Maestro Culinario" 
-                     class="w-full h-full object-cover object-top cinematic-portrait transition-transform duration-700 group-hover:scale-102">
+                     class="w-full h-full object-cover object-top cinematic-portrait img-zoom-target">
               </div>
             </div>
           </div>
@@ -196,13 +225,13 @@
           <!-- Retrato Oficial de Trayectoria con Filipina Blanca y Presentación de Plato -->
           <div class="lg:col-span-5 flex items-center justify-center">
             <!-- Tarjeta de Retrato Limpia sin botones ni textos superpuestos -->
-            <div class="relative rounded-2xl overflow-hidden border border-brand-gold/40 shadow-2xl bg-neutral-950 max-w-[380px] sm:max-w-[400px] lg:max-w-[420px] w-full group">
+            <div class="relative rounded-2xl overflow-hidden border border-brand-gold/40 shadow-2xl bg-neutral-950 max-w-[380px] sm:max-w-[400px] lg:max-w-[420px] w-full group img-card-glow">
               <!-- Marco de la Fotografía Nítida a Resolución Calibrada (764x1024) -->
-              <div class="relative aspect-[3/4] w-full overflow-hidden">
+              <div class="relative aspect-[3/4] w-full overflow-hidden img-zoom-container">
                 <img id="bio-portrait-img" 
                      src="assets/images/chef_filipina_plato.jpg?v=20261026" 
                      alt="Lic. Yorman Trabasilo - Chef Internacional & Formador Integral" 
-                     class="w-full h-full object-cover object-top cinematic-portrait transition-transform duration-700 group-hover:scale-102">
+                     class="w-full h-full object-cover object-top cinematic-portrait img-zoom-target">
               </div>
             </div>
           </div>
@@ -462,8 +491,8 @@
           <!-- 1. Tequeños -->
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
             <div>
-              <div class="relative h-52 overflow-hidden bg-neutral-900">
-                <img src="assets/images/recetas/tequenos.jpg" alt="Tequeños Venezolanos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/recetas/tequenos.jpg" alt="Tequeños Venezolanos" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Pasapalo Tradicional
                 </div>
@@ -486,8 +515,8 @@
           <!-- 2. Guacamole Marino -->
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
             <div>
-              <div class="relative h-52 overflow-hidden bg-neutral-900">
-                <img src="assets/images/recetas/guacamole_marino.jpg" alt="Guacamole Marino" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/recetas/guacamole_marino.jpg" alt="Guacamole Marino" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Plato de Entrada
                 </div>
@@ -510,8 +539,8 @@
           <!-- 3. Albóndigas en Salsa Nápole -->
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
             <div>
-              <div class="relative h-52 overflow-hidden bg-neutral-900">
-                <img src="assets/images/recetas/albondigas.jpg" alt="Albóndigas en Salsa Nápole" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/recetas/albondigas.jpg" alt="Albóndigas en Salsa Nápole" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Plato Fuerte Internacional
                 </div>
@@ -534,8 +563,8 @@
           <!-- 4. Ensaladas Clásicas -->
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
             <div>
-              <div class="relative h-52 overflow-hidden bg-neutral-900">
-                <img src="assets/images/recetas/ensaladas.jpg" alt="Ensaladas Clásicas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/recetas/ensaladas.jpg" alt="Ensaladas Clásicas" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Cocina Fría & Nutrición
                 </div>
@@ -558,8 +587,8 @@
           <!-- 5. Strogonoff -->
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
             <div>
-              <div class="relative h-52 overflow-hidden bg-neutral-900">
-                <img src="assets/images/recetas/strogonoff.jpg" alt="Strogonoff" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/recetas/strogonoff.jpg" alt="Strogonoff" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Alta Cocina Tradicional
                 </div>
@@ -600,9 +629,9 @@
         <div class="space-y-12">
           
           <!-- Artículo 1: Origen de los restaurantes -->
-          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px]">
-              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" alt="Origen de los Restaurantes" class="w-full h-full object-cover">
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center group img-card-glow">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] overflow-hidden img-zoom-container">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" alt="Origen de los Restaurantes" class="img-zoom-target w-full h-full object-cover">
             </div>
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4">
               <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">París, 1765</span>
@@ -617,7 +646,7 @@
           </article>
 
           <!-- Artículo 2: Uniformes para Chef -->
-          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center group img-card-glow">
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4 order-2 lg:order-1">
               <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Identidad & Disciplina</span>
               <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">¿Cómo se llegó a los uniformes para Chef?</h2>
@@ -625,15 +654,15 @@
                 En tiempos de los grandes palacios y reyes, los cocineros tenían el honor de organizar banquetes reales. En el siglo XVIII, cuando el librepensamiento fue perseguido, muchos artesanos culinarios se refugiaron en monasterios vistiendo altos gorros y túnicas grises a diferencia del negro de los monjes, evolucionando luego hacia la filipina blanca y la <em>toque blanche</em> como emblema de pulcritud y rango.
               </p>
             </div>
-            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2">
-              <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80&w=800" alt="Uniforme de Chef" class="w-full h-full object-cover">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2 overflow-hidden img-zoom-container">
+              <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80&w=800" alt="Uniforme de Chef" class="img-zoom-target w-full h-full object-cover">
             </div>
           </article>
 
           <!-- Artículo 3: Copa de Champán -->
-          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px]">
-              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=800" alt="Copa de Champán" class="w-full h-full object-cover">
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center group img-card-glow">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] overflow-hidden img-zoom-container">
+              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=800" alt="Copa de Champán" class="img-zoom-target w-full h-full object-cover">
             </div>
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4">
               <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Historia del Servicio & Sala</span>
@@ -645,7 +674,7 @@
           </article>
 
           <!-- Artículo 4: Jerry Thomas -->
-          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center group img-card-glow">
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4 order-2 lg:order-1">
               <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Cultura de Barra</span>
               <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">¿Quién fue Jerry Thomas?</h2>
@@ -653,8 +682,8 @@
                 "El Profesor" Jerry Thomas es reconocido como el padre de la coctelería moderna. Recorrió el mundo llevando el oficio de barman a un nivel de arte respetado desde el Hotel Savoy en Londres, pasando por Francia hasta los mejores bares de Nueva York.
               </p>
             </div>
-            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2">
-              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" alt="Jerry Thomas Coctelería" class="w-full h-full object-cover">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2 overflow-hidden img-zoom-container">
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" alt="Jerry Thomas Coctelería" class="img-zoom-target w-full h-full object-cover">
             </div>
           </article>
 
@@ -823,8 +852,8 @@
           </div>
           <!-- Fotografía del Plato -->
           <div class="md:col-span-5">
-            <div class="relative rounded-xl overflow-hidden border border-brand-gold/30 shadow-xl bg-neutral-950 aspect-[4/3]">
-              <img id="modal-image" src="" alt="Receta" class="w-full h-full object-cover">
+            <div class="relative rounded-xl overflow-hidden border border-brand-gold/30 shadow-xl bg-neutral-950 aspect-[4/3] img-zoom-container group">
+              <img id="modal-image" src="" alt="Receta" class="img-zoom-target w-full h-full object-cover">
             </div>
           </div>
         </div>
