@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🍳</text></svg>">
+  <title>Lic. Yorman Trabasilo | Chef Profesional & Internacional · ¡Qué Brutal!</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#c59d5f',
+              goldLight: '#e4c590',
+              goldDark: '#9e7a40',
+              fire: '#e85d04',
+              charcoal: '#0f0f0f',
+              card: '#181818',
+              cardLight: '#222222',
+              cream: '#f9f6f0'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.35s ease-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Emulación Óptica Sony A1 85mm f/1.6 + Microdetalle */
+    .cinematic-portrait {
+      image-rendering: high-quality;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      transition: transform 0.5s ease;
+    }
+  </style>
+</head>
+<body class="bg-brand-charcoal text-neutral-200 font-sans antialiased selection:bg-brand-gold selection:text-black">
+
+
+
+  <!-- CABECERA INSTITUCIONAL Y NAVEGACIÓN PRINCIPAL -->
+  <header class="sticky top-0 z-40 bg-brand-charcoal/95 backdrop-blur-md border-b border-neutral-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Identidad de Marca Actualizada: CHEF PROFESIONAL -->
+        <div class="flex items-center space-x-3.5 cursor-pointer" onclick="switchTab('inicio')">
+          <div class="w-11 h-11 rounded-full border border-brand-gold/70 flex items-center justify-center bg-brand-card shadow-inner">
+            <i data-lucide="utensils" class="w-5 h-5 text-brand-gold"></i>
+          </div>
+          <div>
+            <span class="block font-serif text-xl sm:text-2xl tracking-wider text-white uppercase font-bold leading-none">Yorman Trabasilo</span>
+            <span class="text-[11px] text-brand-gold tracking-[0.22em] uppercase font-semibold mt-0.5 block">Chef Profesional</span>
+          </div>
+        </div>
+
+        <!-- 4 Pestañas Navegables Canónicas -->
+        <nav class="hidden md:flex items-center space-x-1">
+          <button onclick="switchTab('inicio')" id="btn-inicio" class="tab-btn px-4 py-2 text-sm font-semibold rounded-md transition-colors text-black bg-brand-gold">Inicio</button>
+          <button onclick="switchTab('recetas')" id="btn-recetas" class="tab-btn px-4 py-2 text-sm font-semibold rounded-md transition-colors text-neutral-400 hover:text-white">Recetas</button>
+          <button onclick="switchTab('reseñas')" id="btn-reseñas" class="tab-btn px-4 py-2 text-sm font-semibold rounded-md transition-colors text-neutral-400 hover:text-white">Reseñas</button>
+          <button onclick="switchTab('talleres-servicios')" id="btn-talleres-servicios" class="tab-btn px-4 py-2 text-sm font-semibold rounded-md transition-colors text-neutral-400 hover:text-white">Talleres y Servicios</button>
+        </nav>
+
+        <!-- Teléfonos Oficiales Venezuela (Personal y Profesional) -->
+        <div class="hidden xl:flex items-center space-x-4">
+          <a href="https://wa.me/584243409622" target="_blank" title="Contacto Personal Directo" class="flex items-center space-x-1.5 text-xs tracking-wider text-neutral-300 hover:text-brand-gold transition-colors">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span>0424-3409622</span>
+          </a>
+          <span class="text-neutral-700">|</span>
+          <a href="https://wa.me/584223409622" target="_blank" title="Contacto Profesional y Comercial" class="flex items-center space-x-1.5 text-xs tracking-wider text-neutral-300 hover:text-brand-gold transition-colors">
+            <i data-lucide="briefcase" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span>0422-3409622</span>
+          </a>
+          <a href="https://instagram.com/quebrutalmaracay" target="_blank" class="p-2 text-neutral-400 hover:text-brand-gold transition-colors" title="@quebrutalmaracay">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Botón Menú Móvil -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="p-2 text-neutral-400 hover:text-white focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Móvil -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-neutral-800 bg-brand-card px-4 pt-2 pb-4 space-y-2">
+      <button onclick="switchTab('inicio'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Inicio</button>
+      <button onclick="switchTab('recetas'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Recetas</button>
+      <button onclick="switchTab('reseñas'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Reseñas</button>
+      <button onclick="switchTab('talleres-servicios'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Talleres y Servicios</button>
+      <div class="pt-2 border-t border-neutral-800 flex flex-col space-y-1 text-xs text-brand-gold px-3">
+        <a href="https://wa.me/584243409622">Personal: 0424-3409622</a>
+        <a href="https://wa.me/584223409622">Profesional: 0422-3409622</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN 1: PESTAÑA INICIO                  -->
+  <!-- ========================================== -->
+  <main id="tab-inicio" class="tab-content active">
+    
+    <!-- HERO PRINCIPAL CON RETRATO ÓPTICO DEL CHEF -->
+    <section class="relative py-16 lg:py-24 bg-gradient-to-b from-brand-charcoal via-brand-card to-brand-charcoal border-b border-neutral-800 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Columna Izquierda: Identidad Académica y Profesional -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-brand-gold/40 bg-brand-gold/10 text-brand-gold text-xs font-semibold tracking-wider uppercase">
+              <i data-lucide="award" class="w-3.5 h-3.5"></i>
+              <span>Licenciado en Servicio Gastronómico · Chef Internacional</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight font-bold">
+              Lic. Yorman Trabasilo <br>
+              <span class="italic font-light text-brand-gold">Chef Profesional</span>
+            </h1>
+            
+            <p class="text-neutral-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+              Licenciado en Desarrollo Endógeno (Subárea: Servicio Gastronómico) y Maestro en el Arte Culinario egresado de la Universidad Central de Venezuela (UCV). Con más de <strong>10 años de trayectoria internacional</strong> en Venezuela y Ecuador, integrando <strong>cocina, sala y barra</strong> como un solo sistema operativo de excelencia técnica, docencia y dirección culinaria.
+            </p>
+
+            <!-- Indicadores de Autoridad -->
+            <div class="grid grid-cols-2 gap-6 pt-2 max-w-sm border-t border-neutral-800/80">
+              <div>
+                <span class="block text-2xl font-serif font-bold text-brand-gold">+10 Años</span>
+                <span class="text-[11px] text-neutral-400">Experiencia Binacional</span>
+              </div>
+              <div>
+                <span class="block text-2xl font-serif font-bold text-brand-gold">3 Áreas</span>
+                <span class="text-[11px] text-neutral-400">Cocina · Sala · Barra</span>
+              </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="switchTab('talleres-servicios')" class="px-6 py-3.5 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-sm rounded transition-colors shadow-lg flex items-center space-x-2">
+                <span>Formación y Servicios</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+              <a href="#ecosistema-quebrutal" class="px-6 py-3.5 bg-brand-fire/90 hover:bg-brand-fire text-white font-semibold text-sm rounded transition-colors shadow-lg flex items-center space-x-2">
+                <i data-lucide="flame" class="w-4 h-4"></i>
+                <span>Ecosistema ¡Qué Brutal!</span>
+              </a>
+              <button onclick="switchTab('recetas')" class="px-5 py-3.5 border border-neutral-700 hover:border-brand-gold text-white font-medium text-sm rounded transition-colors">
+                Ver Recetario
+              </button>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Retrato Oficial del Chef en Filipina Blanca (Visual Exclusivo Limpio) -->
+          <div class="lg:col-span-5 relative flex items-center justify-center">
+            <!-- Tarjeta Principal del Retrato (Calibrada a Proporción 3:4 Editorial Limpia) -->
+            <div class="relative mx-auto max-w-[380px] sm:max-w-[400px] lg:max-w-[420px] w-full rounded-2xl overflow-hidden border border-brand-gold/40 shadow-2xl bg-neutral-950 group">
+              <!-- Marco de la Fotografía Nítida a Resolución Calibrada (764x1024) -->
+              <div class="relative aspect-[3/4] w-full overflow-hidden">
+                <img id="hero-portrait-img" 
+                     src="assets/images/chef_filipina_blanca.jpg" 
+                     alt="Lic. Yorman Trabasilo - Chef Profesional & Maestro Culinario" 
+                     class="w-full h-full object-cover object-top cinematic-portrait transition-transform duration-700 group-hover:scale-102">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEÑA CURRICULAR Y PERFIL INTERNACIONAL ACTUALIZADO -->
+    <section class="py-20 bg-brand-charcoal border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Retrato Oficial de Trayectoria con Filipina Blanca y Presentación de Plato -->
+          <div class="lg:col-span-5 flex items-center justify-center">
+            <!-- Tarjeta de Retrato Limpia sin botones ni textos superpuestos -->
+            <div class="relative rounded-2xl overflow-hidden border border-brand-gold/40 shadow-2xl bg-neutral-950 max-w-[380px] sm:max-w-[400px] lg:max-w-[420px] w-full group">
+              <!-- Marco de la Fotografía Nítida a Resolución Calibrada (764x1024) -->
+              <div class="relative aspect-[3/4] w-full overflow-hidden">
+                <img id="bio-portrait-img" 
+                     src="assets/images/chef_filipina_plato.jpg?v=20261026" 
+                     alt="Lic. Yorman Trabasilo - Chef Internacional & Formador Integral" 
+                     class="w-full h-full object-cover object-top cinematic-portrait transition-transform duration-700 group-hover:scale-102">
+              </div>
+            </div>
+          </div>
+
+          <!-- Cuerpo Biográfico Actualizado -->
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-xs text-brand-gold uppercase tracking-[0.2em] font-semibold">Perfil Académico & Trayectoria</span>
+            <h2 class="text-3xl sm:text-4xl font-serif text-white font-bold">
+              Chef Profesional, Chef Internacional y Formador Integral
+            </h2>
+            
+            <div class="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed font-light">
+              <p>
+                <strong class="text-white font-semibold">Lic. Yorman Antonio Trabasilo González</strong> — Licenciado en Desarrollo Endógeno, subárea Servicio Gastronómico; Licenciado en Gastronomía por la Universidad Nacional Experimental Simón Rodríguez (UNESR), Maestro en el Arte Culinario y Sous Chef egresado de la Universidad Central de Venezuela (UCV).
+              </p>
+              <p>
+                Como <strong class="text-brand-gold font-medium">Chef Internacional</strong>, cuenta con más de una década de experiencia profesional en <strong>Venezuela y Ecuador</strong>, con trayectoria en cocina hospitalaria e institucional en Venezuela, así como en operaciones gastronómicas de gran escala en Ecuador, incluyendo eventos de hasta 600 comensales, gestión de restaurantes, cocina, parrilla y brasas, catering y coctelería corporativa.
+              </p>
+              <p>
+                Su trayectoria integra el dominio de técnicas culinarias clásicas y contemporáneas, la organización de procesos productivos, la estandarización de preparaciones, el control operativo y el desarrollo de propuestas gastronómicas orientadas a la calidad, la eficiencia y la excelencia en el servicio.
+              </p>
+              <p>
+                En su rol docente, ha formado a cientos de profesionales en instituciones como <strong>ACAEG Venezuela</strong> (homenajeado por la Sexta Promoción 2024), <strong>Ingenium Gastronomía</strong>, <strong>Academia Da Filippo</strong> y la <strong>Academia Juan Mejía</strong>, donde creó el Diplomado en Coctelería.
+              </p>
+            </div>
+
+            <!-- Cita de Filosofía Profesional -->
+            <blockquote class="border-l-2 border-brand-gold pl-4 py-1 text-xs sm:text-sm italic text-brand-goldLight bg-brand-card/60 p-3 rounded-r-lg">
+              «La gastronomía profesional no se limita a cocinar: integra técnica, servicio de sala, barra, disciplina operativa y formación con propósito».
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE INSIGNIA: ECOSISTEMA ¡QUÉ BRUTAL! -->
+    <section id="ecosistema-quebrutal" class="py-20 bg-gradient-to-b from-brand-card via-neutral-950 to-brand-charcoal border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-fire/15 border border-brand-fire/40 text-brand-fire text-xs font-bold uppercase tracking-widest">
+            <i data-lucide="flame" class="w-4 h-4"></i>
+            <span>Plataforma Gastronómica Moderna</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-serif text-white font-bold">
+            ¡QUÉ BRUTAL! <span class="text-brand-gold italic font-normal">— El sabor que te deja sin palabras</span>
+          </h2>
+          <p class="text-sm text-neutral-400 leading-relaxed">
+            Fundado por el Chef Yorman Trabasilo y Dayana en Maracay, <strong>¡Qué Brutal!</strong> trasciende el concepto tradicional de restaurante para operar como un ecosistema integral de producción artesanal, experiencias privadas, formación aplicada y consultoría gastronómica.
+          </p>
+        </div>
+
+        <!-- Las 5 Ramas de la Matriz ¡Qué Brutal! -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Rama 1: Food -->
+          <div class="bg-brand-card p-6 rounded-xl border border-neutral-800 hover:border-brand-fire/60 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-fire">Rama 01 · Producción</span>
+                <i data-lucide="pizza" class="w-5 h-5 text-brand-fire"></i>
+              </div>
+              <h3 class="text-xl font-serif text-white font-bold">¡Qué Brutal! Food</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                Pizzas napolitanas artesanales con fermentación lenta en biga (24–48 h), lasañas/pastichos criollos, paellas de mariscos por encargo, menú ejecutivo, parrilla y smoothies naturales con delivery de confianza.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs">
+              <span class="text-neutral-400">@quebrutalmaracay</span>
+              <a href="https://wa.me/584223409622?text=Hola%20%C2%A1Qu%C3%A9%20Brutal!,%20deseo%20realizar%20un%20pedido" target="_blank" class="text-brand-gold hover:underline font-semibold">Pedir por Delivery →</a>
+            </div>
+          </div>
+
+          <!-- Rama 2: Chef en Casa -->
+          <div class="bg-brand-card p-6 rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-gold">Rama 02 · Experiencias</span>
+                <i data-lucide="sparkles" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <h3 class="text-xl font-serif text-white font-bold">¡Qué Brutal! Chef en Casa</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                Experiencias gastronómicas privadas premium: cenas por tiempos, veladas temáticas, maridajes y coctelería de autor integrada con dirección culinaria y servicio de etiqueta en tu hogar.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs">
+              <span class="text-neutral-400">Servicio Privado VIP</span>
+              <a href="https://wa.me/584243409622?text=Hola%20Chef%20Yorman,%20deseo%20cotizar%20el%20servicio%20Chef%20en%20Casa" target="_blank" class="text-brand-gold hover:underline font-semibold">Reservar Fecha →</a>
+            </div>
+          </div>
+
+          <!-- Rama 3: Formación Gastronómica Aplicada -->
+          <div class="bg-brand-card p-6 rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-gold">Rama 03 · Academia</span>
+                <i data-lucide="graduation-cap" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <h3 class="text-xl font-serif text-white font-bold">Formación Gastronómica Aplicada</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                No enseñamos recetas aisladas; transmitimos técnica, criterio operativo y metodología real en cocina aplicada, coctelería profesional y servicio de restaurante (modalidad online y a domicilio).
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs">
+              <span class="text-neutral-400">Online & Presencial</span>
+              <button onclick="switchTab('talleres-servicios')" class="text-brand-gold hover:underline font-semibold">Ver Programas →</button>
+            </div>
+          </div>
+
+          <!-- Rama 4: Consultoría y Costeo Fiduciario -->
+          <div class="bg-brand-card p-6 rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-gold">Rama 04 · Estrategia</span>
+                <i data-lucide="calculator" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <h3 class="text-xl font-serif text-white font-bold">¡Qué Brutal! Consultoría</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                Ingeniería de menú, fichas técnicas estandarizadas, costeo fiduciario de precisión, organización de brigadas y diseño de planes nutricionales clínicos especializados.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs">
+              <span class="text-neutral-400">Rentabilidad & Control</span>
+              <a href="https://wa.me/584223409622?text=Hola%20Lic.%20Yorman,%20solicito%20informaci%C3%B3n%20sobre%20Consultor%C3%ADa%20Gastron%C3%B3mica" target="_blank" class="text-brand-gold hover:underline font-semibold">Solicitar Diagnóstico →</a>
+            </div>
+          </div>
+
+          <!-- Rama 5: Historia & Propósito (Yorman y Dayana) -->
+          <div class="bg-brand-card p-6 rounded-xl border border-neutral-800 md:col-span-2 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-gold">Rama 05 · Identidad, Narrativa & Propósito</span>
+                <span class="text-xs text-neutral-500">Maracay, Edo. Aragua</span>
+              </div>
+              <h3 class="text-xl font-serif text-white font-bold">Cocinar con Pasión, Hecho con Propósito</h3>
+              <p class="text-xs sm:text-sm text-neutral-300 mt-2 leading-relaxed font-light">
+                Nacido de la expresión espontánea del Chef cuando una fórmula alcanza la perfección —<em>"¡Qué brutal!"</em>— y consolidado junto a <strong>Dayana</strong> como cofundadora y pilar operativo, el proyecto evolucionó desde las primeras pruebas de fermentación en casa hasta consolidar una marca con identidad venezolana, rigor técnico y proyección educativa.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-4 text-xs">
+              <div class="flex items-center space-x-4">
+                <span class="text-brand-gold font-semibold">📲 0422-3409622 / 0424-3409622</span>
+                <span class="text-neutral-400">🛵 Delivery de confianza</span>
+              </div>
+              <span class="font-serif italic text-brand-goldLight text-sm">"El sabor que te deja sin palabras."</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO DE TRABAJO Y ALIANZAS (SOLO LOS 4 BLOQUES SOLICITADOS) -->
+    <section class="py-16 bg-brand-card border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">Equipo de Trabajo y Alianzas</h2>
+          <p class="text-xs sm:text-sm text-neutral-400 mt-2">Alianzas estratégicas en producción gastronómica, brasas, panadería y eventos profesionales.</p>
+        </div>
+        
+        <!-- 4 Bloques Oficiales: La Casa del Trigo, ¡Qué Brutal!, Cacha Nivel y Eventos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          
+          <div class="p-6 bg-brand-charcoal border border-neutral-800 hover:border-brand-gold/50 transition rounded-xl flex flex-col items-center justify-center text-center">
+            <i data-lucide="wheat" class="w-9 h-9 text-brand-gold mb-3"></i>
+            <span class="text-sm font-semibold text-white">La Casa del Trigo</span>
+            <span class="text-xs text-neutral-500 mt-1">Panadería & Pastelería</span>
+          </div>
+
+          <div class="p-6 bg-brand-charcoal border border-neutral-800 hover:border-brand-fire/60 transition rounded-xl flex flex-col items-center justify-center text-center">
+            <i data-lucide="flame" class="w-9 h-9 text-brand-fire mb-3"></i>
+            <span class="text-sm font-semibold text-white">¡Qué Brutal!</span>
+            <span class="text-xs text-neutral-500 mt-1">Plataforma Gastronómica · Maracay</span>
+          </div>
+
+          <div class="p-6 bg-brand-charcoal border border-neutral-800 hover:border-brand-gold/50 transition rounded-xl flex flex-col items-center justify-center text-center">
+            <i data-lucide="beef" class="w-9 h-9 text-brand-gold mb-3"></i>
+            <span class="text-sm font-semibold text-white">Cacha Nivel</span>
+            <span class="text-xs text-neutral-500 mt-1">Parrilla, Brasas & Cocina Criolla</span>
+          </div>
+
+          <div class="p-6 bg-brand-charcoal border border-neutral-800 hover:border-brand-gold/50 transition rounded-xl flex flex-col items-center justify-center text-center">
+            <i data-lucide="users" class="w-9 h-9 text-brand-gold mb-3"></i>
+            <span class="text-sm font-semibold text-white">Eventos</span>
+            <span class="text-xs text-neutral-500 mt-1">Catering & Recepciones de Alto Nivel</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO "DANOS TU OPINIÓN" (INTACTO SEGÚN INSTRUCCIÓN) -->
+    <section class="py-16 bg-brand-charcoal">
+      <div class="max-w-xl mx-auto px-4 sm:px-6">
+        <div class="bg-brand-card p-8 rounded-2xl border border-neutral-800 shadow-xl">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-serif text-white font-bold">Danos tu Opinión</h3>
+            <p class="text-xs text-neutral-400 mt-1">Tu valoración nos ayuda a optimizar cada servicio y proceso formativo.</p>
+          </div>
+          <form id="opinion-form" class="space-y-4" onsubmit="event.preventDefault(); alert('¡Gracias por tu valoración!');">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-neutral-400 mb-1">Nombre</label>
+                <input type="text" required class="w-full bg-brand-charcoal border border-neutral-700 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-gold">
+              </div>
+              <div>
+                <label class="block text-xs text-neutral-400 mb-1">Apellido</label>
+                <input type="text" required class="w-full bg-brand-charcoal border border-neutral-700 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-gold">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs text-neutral-400 mb-1">¡Clasifícanos!</label>
+              <div class="flex items-center space-x-2 py-1">
+                <button type="button" onclick="setRating(1)" class="star-btn text-neutral-600 hover:text-brand-gold"><i data-lucide="star" class="w-6 h-6"></i></button>
+                <button type="button" onclick="setRating(2)" class="star-btn text-neutral-600 hover:text-brand-gold"><i data-lucide="star" class="w-6 h-6"></i></button>
+                <button type="button" onclick="setRating(3)" class="star-btn text-neutral-600 hover:text-brand-gold"><i data-lucide="star" class="w-6 h-6"></i></button>
+                <button type="button" onclick="setRating(4)" class="star-btn text-neutral-600 hover:text-brand-gold"><i data-lucide="star" class="w-6 h-6"></i></button>
+                <button type="button" onclick="setRating(5)" class="star-btn text-neutral-600 hover:text-brand-gold"><i data-lucide="star" class="w-6 h-6"></i></button>
+                <span id="rating-label" class="text-xs text-brand-gold ml-2 font-medium">Selecciona tu nota</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs text-neutral-400 mb-1">Escribe tus comentarios aquí</label>
+              <textarea rows="3" required class="w-full bg-brand-charcoal border border-neutral-700 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-gold"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-sm rounded transition-colors">
+              Enviar comentarios
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN 2: PESTAÑA RECETAS                 -->
+  <!-- ========================================== -->
+  <main id="tab-recetas" class="tab-content">
+    <section class="py-12 bg-brand-charcoal border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-8 border-b border-neutral-800 gap-4">
+          <div>
+            <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Fichas Técnicas & Estandarización</span>
+            <h1 class="text-3xl sm:text-4xl font-serif text-white font-bold">Recetario y Especialidades</h1>
+          </div>
+          <div class="inline-flex p-1 bg-brand-card rounded-lg border border-neutral-800">
+            <button onclick="filterRecipes('all')" id="sub-all" class="subtab-btn px-4 py-1.5 text-xs font-semibold rounded bg-brand-gold text-black">Todas</button>
+            <button onclick="filterRecipes('recetario')" id="sub-recetario" class="subtab-btn px-4 py-1.5 text-xs font-semibold rounded text-neutral-400 hover:text-white">Recetario</button>
+            <button onclick="filterRecipes('galeria')" id="sub-galeria" class="subtab-btn px-4 py-1.5 text-xs font-semibold rounded text-neutral-400 hover:text-white">Galería</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8" id="recipes-grid">
+          
+          <!-- 1. Tequeños -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
+            <div>
+              <div class="relative h-52 overflow-hidden bg-neutral-900">
+                <img src="assets/images/recetas/tequenos.jpg" alt="Tequeños Venezolanos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
+                  Pasapalo Tradicional
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Tequeños</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-4">
+                  El popular tequeño venezolano, es un minúsculo pasapalo con el cual nos identificamos todos los venezolanos, pues forma parte de la gastronomía tradicional venezolana, y se ha convertido incluso en el favorito, por lo que no puede dejar de estar presente en la mesa a la hora de fiestas, celebraciones, compartir, entre otros.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openRecipeModal('tequenos')" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <span>Ir a la Receta</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Guacamole Marino -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div>
+              <div class="relative h-52 overflow-hidden bg-neutral-900">
+                <img src="assets/images/recetas/guacamole_marino.jpg" alt="Guacamole Marino" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
+                  Plato de Entrada
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Guacamole Marino</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-4">
+                  Plato de entrada Cumple como un elemento muy importante en la comida, lo podremos aprovechar para completar el menú y compensar calórica y nutritivamente el plato principal.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openRecipeModal('guacamole')" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <span>Ir a la Receta</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Albóndigas en Salsa Nápole -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
+            <div>
+              <div class="relative h-52 overflow-hidden bg-neutral-900">
+                <img src="assets/images/recetas/albondigas.jpg" alt="Albóndigas en Salsa Nápole" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
+                  Plato Fuerte Internacional
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Albóndigas en Salsa Nápole</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-4">
+                  Es de origen italo-norteamericano a principios del siglo XX. Es un plato muy simple, espaguetis, salsa napolitana y albóndigas de res.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openRecipeModal('albondigas')" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <span>Ir a la Receta</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Ensaladas Clásicas -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div>
+              <div class="relative h-52 overflow-hidden bg-neutral-900">
+                <img src="assets/images/recetas/ensaladas.jpg" alt="Ensaladas Clásicas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
+                  Cocina Fría & Nutrición
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Ensaladas Clásicas</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-4">
+                  Por su aporte en vitaminas, minerales, fibra y antioxidantes, los nutricionistas recomiendan el consumo de ensaladas con distintas preparaciones, lo que convierte a este plato en mucho más que una entrada.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openRecipeModal('ensaladas')" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <span>Ir a la Receta</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. Strogonoff -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
+            <div>
+              <div class="relative h-52 overflow-hidden bg-neutral-900">
+                <img src="assets/images/recetas/strogonoff.jpg" alt="Strogonoff" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
+                  Alta Cocina Tradicional
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Strogonoff</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-4">
+                  Plato de origen ruso, perteneciente a su cocina tradicional, que desde el siglo XVIII forma parte de la alta cocina internacional.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openRecipeModal('strogonoff')" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <span>Ir a la Receta</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN 3: PESTAÑA RESEÑAS                 -->
+  <!-- ========================================== -->
+  <main id="tab-reseñas" class="tab-content">
+    <section class="py-12 bg-brand-charcoal border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-12">
+          <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Cultura, Historia & Pedagogía Culinaria</span>
+          <h1 class="text-3xl sm:text-4xl font-serif text-white font-bold mt-1">Reseñas Gastronómicas</h1>
+          <p class="text-sm text-neutral-400 mt-2">Artículos de divulgación histórica para estudiantes y apasionados de la cocina, el servicio y la coctelería.</p>
+        </div>
+
+        <div class="space-y-12">
+          
+          <!-- Artículo 1: Origen de los restaurantes -->
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px]">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" alt="Origen de los Restaurantes" class="w-full h-full object-cover">
+            </div>
+            <div class="lg:col-span-7 p-8 sm:p-10 space-y-4">
+              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">París, 1765</span>
+              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">Origen de los Restaurantes por el Padre de la Gastronomía</h2>
+              <blockquote class="border-l-2 border-brand-gold pl-4 text-xs italic text-brand-goldLight">
+                "Venite ad me omnes qui stomacho laboratis et ego restaurabo vos — Venid a mí, hombre de estómago cansado, y yo os restauraré."
+              </blockquote>
+              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                En 1765 en París, el cocinero Dossier Boulanger abrió el primer restaurante del mundo anunciando sus caldos restauradores. Aquel hito transformó para siempre el servicio gastronómico, dando origen a las cartas modernas y a la atención individualizada en sala.
+              </p>
+            </div>
+          </article>
+
+          <!-- Artículo 2: Uniformes para Chef -->
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div class="lg:col-span-7 p-8 sm:p-10 space-y-4 order-2 lg:order-1">
+              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Identidad & Disciplina</span>
+              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">¿Cómo se llegó a los uniformes para Chef?</h2>
+              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                En tiempos de los grandes palacios y reyes, los cocineros tenían el honor de organizar banquetes reales. En el siglo XVIII, cuando el librepensamiento fue perseguido, muchos artesanos culinarios se refugiaron en monasterios vistiendo altos gorros y túnicas grises a diferencia del negro de los monjes, evolucionando luego hacia la filipina blanca y la <em>toque blanche</em> como emblema de pulcritud y rango.
+              </p>
+            </div>
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2">
+              <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80&w=800" alt="Uniforme de Chef" class="w-full h-full object-cover">
+            </div>
+          </article>
+
+          <!-- Artículo 3: Copa de Champán -->
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px]">
+              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=800" alt="Copa de Champán" class="w-full h-full object-cover">
+            </div>
+            <div class="lg:col-span-7 p-8 sm:p-10 space-y-4">
+              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Historia del Servicio & Sala</span>
+              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">La Copa de Champán</h2>
+              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                La tradición cuenta que la primera copa de champán fue elaborada en porcelana a finales del siglo XVIII por encargo de María Antonieta, esposa del rey Luis XVI y última reina de Francia antes de la Convención, marcando la evolución de la cristalería de protocolo.
+              </p>
+            </div>
+          </article>
+
+          <!-- Artículo 4: Jerry Thomas -->
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div class="lg:col-span-7 p-8 sm:p-10 space-y-4 order-2 lg:order-1">
+              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Cultura de Barra</span>
+              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">¿Quién fue Jerry Thomas?</h2>
+              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                "El Profesor" Jerry Thomas es reconocido como el padre de la coctelería moderna. Recorrió el mundo llevando el oficio de barman a un nivel de arte respetado desde el Hotel Savoy en Londres, pasando por Francia hasta los mejores bares de Nueva York.
+              </p>
+            </div>
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2">
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" alt="Jerry Thomas Coctelería" class="w-full h-full object-cover">
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN 4: PESTAÑA TALLERES Y SERVICIOS   -->
+  <!-- ========================================== -->
+  <main id="tab-talleres-servicios" class="tab-content">
+    <section class="py-12 bg-brand-charcoal border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-12">
+          <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Formación Aplicada, Eventos & Consultoría</span>
+          <h1 class="text-3xl sm:text-4xl font-serif text-white font-bold mt-1">Talleres y Servicios Profesionales</h1>
+          <p class="text-sm text-neutral-400 mt-2">Soluciones integrales dirigidas por el Lic. Yorman Trabasilo bajo el sello de excelencia de ¡Qué Brutal!</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Servicio de Eventos y Cáterin -->
+          <div class="bg-brand-card p-8 rounded-2xl border border-neutral-800 space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold">
+                <i data-lucide="utensils" class="w-6 h-6"></i>
+              </div>
+              <h2 class="text-2xl font-serif text-white font-bold">Servicio de Eventos, Cáterin y Chef en Casa</h2>
+              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                Organización integral de gastronomía según tu preferencia: desayunos corporativos, almuerzos, meriendas o cenas de gala para 15 años, bodas, bautizos y fiestas de fin de año, integrando cocina, servicio de sala de etiqueta y barra.
+              </p>
+              <ul class="text-xs text-neutral-400 space-y-2 pt-2">
+                <li class="flex items-center space-x-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i>
+                  <span>Menús por tiempos, estaciones temáticas y pasapalos de impacto.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i>
+                  <span>Decoración de ambiente, protocolo de sala y DJ.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i>
+                  <span>Capacidad comprobada desde cenas íntimas hasta 600 comensales.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6">
+              <a href="https://wa.me/584243409622?text=Hola%20Chef%20Yorman,%20deseo%20informaci%C3%B3n%20sobre%20Eventos%20y%20Catering" target="_blank" class="py-3 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-center text-xs uppercase tracking-wider rounded transition-colors">
+                WhatsApp 0424-3409622
+              </a>
+              <a href="https://wa.me/584223409622?text=Hola%20Chef%20Yorman,%20deseo%20informaci%C3%B3n%20sobre%20Eventos%20y%20Catering" target="_blank" class="py-3 border border-brand-gold/50 hover:bg-brand-gold hover:text-black text-brand-gold font-semibold text-center text-xs uppercase tracking-wider rounded transition-colors">
+                WhatsApp 0422-3409622
+              </a>
+            </div>
+          </div>
+
+          <!-- Servicio de Coctelería Profesional -->
+          <div class="bg-brand-card p-8 rounded-2xl border border-neutral-800 space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold">
+                <i data-lucide="wine" class="w-6 h-6"></i>
+              </div>
+              <h2 class="text-2xl font-serif text-white font-bold">Servicio de Coctelería & Barras Móviles</h2>
+              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                "Tú pones la fiesta... nosotros los cócteles". Si quieres que tus invitados disfruten de coctelería de autor, mojitos, micheladas y mixología contemporánea en 15 años, bodas y eventos corporativos.
+              </p>
+              <ul class="text-xs text-neutral-400 space-y-2 pt-2">
+                <li class="flex items-center space-x-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i>
+                  <span>Dirección por el diseñador del Diplomado en Coctelería.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i>
+                  <span>Macerados botánicos, siropes artesanales y coctelería sin alcohol.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-brand-gold"></i>
+                  <span>Talleres de mixología y capacitación para personal de barra.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6">
+              <a href="https://wa.me/584223409622?text=Hola%20Chef%20Yorman,%20deseo%20cotizar%20el%20Servicio%20de%20Cocteler%C3%ADa" target="_blank" class="py-3 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-center text-xs uppercase tracking-wider rounded transition-colors">
+                Contratar Barra (0422)
+              </a>
+              <a href="https://wa.me/584243409622?text=Hola%20Chef%20Yorman,%20deseo%20cotizar%20el%20Servicio%20de%20Cocteler%C3%ADa" target="_blank" class="py-3 border border-brand-gold/50 hover:bg-brand-gold hover:text-black text-brand-gold font-semibold text-center text-xs uppercase tracking-wider rounded transition-colors">
+                Contacto Directo (0424)
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Formación Gastronómica Aplicada y Asesorías -->
+        <div class="bg-brand-card p-8 sm:p-10 rounded-2xl border border-neutral-800">
+          <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="text-xs text-brand-fire uppercase tracking-widest font-bold">🔥 ¡Qué Brutal! — Formación Gastronómica Aplicada</span>
+            <h3 class="text-2xl sm:text-3xl font-serif text-white font-bold mt-1">Áreas de Formación y Consultoría Culinaria</h3>
+            <p class="text-xs text-neutral-400 mt-2">Modalidad online y a domicilio · Capacitación técnica para emprendedores, brigadas y restaurantes.</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+            <div class="p-4 bg-brand-charcoal rounded-lg border border-neutral-800">
+              <span class="block text-brand-gold font-serif text-base font-bold">Venezolana</span>
+              <span class="text-[10px] text-neutral-400">Identidad y técnica</span>
+            </div>
+            <div class="p-4 bg-brand-charcoal rounded-lg border border-neutral-800">
+              <span class="block text-brand-gold font-serif text-base font-bold">Italiana</span>
+              <span class="text-[10px] text-neutral-400">Pizzas biga, pastas y lasañas</span>
+            </div>
+            <div class="p-4 bg-brand-charcoal rounded-lg border border-neutral-800">
+              <span class="block text-brand-gold font-serif text-base font-bold">Latinoamericana</span>
+              <span class="text-[10px] text-neutral-400">Brasas, fuegos y sazón</span>
+            </div>
+            <div class="p-4 bg-brand-charcoal rounded-lg border border-neutral-800">
+              <span class="block text-brand-gold font-serif text-base font-bold">Europea</span>
+              <span class="text-[10px] text-neutral-400">Fondos, salsas y técnicas</span>
+            </div>
+            <div class="p-4 bg-brand-charcoal rounded-lg border border-neutral-800">
+              <span class="block text-brand-gold font-serif text-base font-bold">Mediterránea</span>
+              <span class="text-[10px] text-neutral-400">Paellas, arroces y mariscos</span>
+            </div>
+            <div class="p-4 bg-brand-charcoal rounded-lg border border-neutral-800">
+              <span class="block text-brand-gold font-serif text-base font-bold">Coctelería</span>
+              <span class="text-[10px] text-neutral-400">Mixología y servicio de sala</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE RECETA COMPLETA (ESTILO EDITORIAL WIX CON DESCARGA PDF) -->
+  <div id="recipe-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-brand-card border border-neutral-700 w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl relative my-auto max-h-[92vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Botón Cerrar Flotante -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/70 hover:bg-brand-gold hover:text-black text-neutral-300 transition-colors shadow-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Encabezado / Banner Superior Estilo Wix -->
+      <div class="bg-neutral-900 border-b border-brand-gold/40 py-6 px-6 sm:px-10 text-center relative">
+        <span id="modal-category" class="text-[11px] text-brand-gold uppercase tracking-[0.25em] font-bold block mb-1">Pasapalo Tradicional</span>
+        <div class="inline-block bg-black px-8 py-2.5 rounded-lg border border-neutral-800 shadow-inner">
+          <h2 id="modal-title" class="text-2xl sm:text-4xl font-sans font-bold text-white tracking-widest uppercase">TEQUEÑOS</h2>
+        </div>
+      </div>
+
+      <!-- Contenido de la Receta Desplazable -->
+      <div class="p-6 sm:p-10 space-y-8 overflow-y-auto flex-1">
+        
+        <!-- Bloque Superior: Reseña Histórica y Fotografía del Plato -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <!-- Texto de Historia / Origen -->
+          <div class="md:col-span-7 space-y-4">
+            <h3 class="text-xs font-semibold text-brand-gold uppercase tracking-wider flex items-center space-x-2">
+              <i data-lucide="book-open" class="w-4 h-4"></i>
+              <span>Origen e Historia Gastronómica</span>
+            </h3>
+            <div id="modal-history" class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light space-y-3 bg-neutral-900/60 p-5 rounded-xl border border-neutral-800">
+              <!-- Se inyecta dinámicamente -->
+            </div>
+          </div>
+          <!-- Fotografía del Plato -->
+          <div class="md:col-span-5">
+            <div class="relative rounded-xl overflow-hidden border border-brand-gold/30 shadow-xl bg-neutral-950 aspect-[4/3]">
+              <img id="modal-image" src="" alt="Receta" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque Central: Ingredientes & Preparación -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Columna Ingredientes -->
+          <div class="lg:col-span-5 space-y-3">
+            <h3 class="text-sm font-semibold text-white uppercase tracking-wider flex items-center space-x-2 pb-2 border-b border-neutral-800">
+              <i data-lucide="utensils" class="w-4 h-4 text-brand-gold"></i>
+              <span>Ingredientes</span>
+            </h3>
+            <ul id="modal-ingredients" class="space-y-2 text-xs sm:text-sm text-neutral-300 bg-neutral-900/40 p-5 rounded-xl border border-neutral-800/80">
+              <!-- Se inyectan dinámicamente -->
+            </ul>
+          </div>
+
+          <!-- Columna Preparación -->
+          <div class="lg:col-span-7 space-y-3">
+            <h3 class="text-sm font-semibold text-white uppercase tracking-wider flex items-center space-x-2 pb-2 border-b border-neutral-800">
+              <i data-lucide="flame" class="w-4 h-4 text-brand-fire"></i>
+              <span>Preparación Paso a Paso</span>
+            </h3>
+            <ol id="modal-procedure" class="space-y-3 text-xs sm:text-sm text-neutral-300 bg-neutral-900/40 p-5 rounded-xl border border-neutral-800/80">
+              <!-- Se inyectan dinámicamente -->
+            </ol>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Barra Inferior de Acción y Descarga de PDF -->
+      <div class="bg-neutral-950 border-t border-neutral-800 px-6 sm:px-10 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2 text-xs text-neutral-400">
+          <i data-lucide="file-check" class="w-4 h-4 text-brand-gold"></i>
+          <span>Ficha Técnica Oficial estandarizada por Lic. Yorman Trabasilo</span>
+        </div>
+        
+        <div class="flex items-center space-x-3 w-full sm:w-auto">
+          <!-- Botón de Descarga PDF Solicitado -->
+          <button id="modal-download-btn" onclick="downloadCurrentRecipePdf()" class="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-brand-gold/20">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Descargar Receta en PDF</span>
+          </button>
+          
+          <!-- Botón Imprimir -->
+          <button onclick="window.print()" class="p-2.5 rounded-lg border border-neutral-700 hover:border-brand-gold text-neutral-300 hover:text-white transition-colors" title="Imprimir ficha">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Botón Cerrar -->
+          <button onclick="closeModal()" class="px-4 py-2.5 border border-neutral-800 hover:bg-neutral-800 text-neutral-400 text-xs rounded-lg transition-colors">
+            Cerrar
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast de Notificación de Descarga -->
+  <div id="recipe-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-neutral-900 border border-brand-gold/60 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center space-x-3 max-w-md">
+    <i data-lucide="file-text" class="w-5 h-5 text-brand-gold shrink-0"></i>
+    <span id="toast-message" class="text-xs text-neutral-200 leading-snug"></span>
+  </div>
+
+  <!-- PIE DE PÁGINA OFICIAL ACTUALIZADO -->
+  <footer class="bg-black border-t border-neutral-900 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div>
+          <span class="block font-serif text-xl text-white font-bold uppercase tracking-wider">Lic. Yorman Trabasilo</span>
+          <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Chef Profesional · Chef Internacional</span>
+          <p class="text-xs text-neutral-500 mt-1">🔥 ¡QUÉ BRUTAL! — El sabor que te deja sin palabras.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row md:justify-center gap-4 text-xs text-neutral-300">
+          <a href="https://wa.me/584243409622" target="_blank" class="hover:text-brand-gold transition flex items-center space-x-2">
+            <i data-lucide="phone" class="w-4 h-4 text-brand-gold"></i>
+            <span>Personal: 0424-3409622</span>
+          </a>
+          <a href="https://wa.me/584223409622" target="_blank" class="hover:text-brand-gold transition flex items-center space-x-2">
+            <i data-lucide="briefcase" class="w-4 h-4 text-brand-gold"></i>
+            <span>Profesional: 0422-3409622</span>
+          </a>
+        </div>
+        <div class="flex md:justify-end items-center space-x-5 text-xs text-neutral-400">
+          <a href="https://instagram.com/quebrutalmaracay" target="_blank" class="hover:text-brand-gold transition flex items-center space-x-1.5">
+            <i data-lucide="instagram" class="w-4 h-4 text-brand-gold"></i>
+            <span>@quebrutalmaracay</span>
+          </a>
+          <a href="mailto:yormanantonio9@hotmail.com" class="hover:text-brand-gold transition flex items-center space-x-1.5">
+            <i data-lucide="mail" class="w-4 h-4 text-brand-gold"></i>
+            <span>yormanantonio9@hotmail.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS DE NAVEGACIÓN Y GESTIÓN ÓPTICA DE RETRATOS -->
+  <script>
+    lucide.createIcons();
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-gold', 'text-black');
+        btn.classList.add('text-neutral-400');
+      });
+
+      const activeContent = document.getElementById('tab-' + tabId);
+      const activeBtn = document.getElementById('btn-' + tabId);
+
+      if (activeContent) activeContent.classList.add('active');
+      if (activeBtn) {
+        activeBtn.classList.remove('text-neutral-400');
+        activeBtn.classList.add('bg-brand-gold', 'text-black');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
+
+    // Menú Móvil
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    function toggleMobileMenu() { mobileMenu.classList.add('hidden'); }
+
+    // Filtro de Recetas
+    function filterRecipes(filter) {
+      document.querySelectorAll('.subtab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-gold', 'text-black');
+        btn.classList.add('text-neutral-400');
+      });
+      const activeBtn = document.getElementById('sub-' + filter);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-neutral-400');
+        activeBtn.classList.add('bg-brand-gold', 'text-black');
+      }
+      document.querySelectorAll('.recipe-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.getAttribute('data-type') === filter) ? 'flex' : 'none';
+      });
+    }
+
+    // BASE DE DATOS DE RECETAS CANÓNICAS OFICIALES (WIX INTEGRATION)
+    const RECIPES_DATA = {
+      tequenos: {
+        id: 'tequenos',
+        title: 'TEQUEÑOS',
+        category: 'Pasapalo Tradicional',
+        image: 'assets/images/recetas/tequenos.jpg',
+        pdfFileName: 'tequenos_receta_oficial.pdf',
+        history: `
+          <p>Su nombre proviene de Los Teques, donde se supone que fue creado en las primeras décadas del siglo XX. La calidad de la preparación recae casi por completo en la correcta selección del queso: blanco, no muy salado y que derrita fácilmente sin llegar a quedar completamente líquido.</p>
+          <p>Desde fiestas infantiles hasta matrimonios, los tequeños son el pasapalo por excelencia de las celebraciones venezolanas.</p>
+        `,
+        ingredients: [
+          '2 tazas de harina de trigo todo uso',
+          '1 taza de leche entera líquida',
+          '1 taza de agua filtrada',
+          '5 cucharadas de mantequilla sin sal',
+          '½ cucharadita de sal fina',
+          '2 cucharadas de azúcar blanca',
+          '½ kg de queso blanco semiduro (llanero suave), cortado en bastones de 5 x 1 x 1 cm',
+          'Abundante aceite de maíz para freír',
+          'Papel absorbente para escurrir'
+        ],
+        steps: [
+          'Se dispone la harina en forma de corona sobre una mesa, tabla o base limpia y seca. Se coloca en el centro la mantequilla.',
+          'Se mezclan la sal y el azúcar con el agua.',
+          'Se amasa, agregando progresivamente el agua, hasta que se forme una mezcla suave, uniforme, que no se pegue a los dedos ni a la mesa. Se une toda en una bola.',
+          'Se aplana la masa con un rodillo, hasta que quede como una tela de ½ cm de grosor.',
+          'Se cortan tiras uniformes de aproximadamente 2 cm de ancho con cuchillo afilado o cortador de pizza.',
+          'Se toma cada bastón de queso y se envuelve con una tira de masa de forma diagonal, solapando los bordes y sellando perfectamente las puntas para que el queso quede herméticamente protegido.',
+          'En una sartén u olla profunda, calentar abundante aceite a 180 °C (fuego medio-alto).',
+          'Freír los tequeños por tandas durante 3 a 4 minutos hasta dorar parejo y crujiente.',
+          'Retirar con espumadera y escurrir sobre papel absorbente. Servir de inmediato bien calientes.'
+        ]
+      },
+
+      guacamole: {
+        id: 'guacamole',
+        title: 'GUACAMOLE MARINO',
+        category: 'Plato de Entrada',
+        image: 'assets/images/recetas/guacamole_marino.jpg',
+        pdfFileName: 'guacamole_marino_receta_oficial.pdf',
+        history: `
+          <p>Plato de entrada que cumple como un elemento muy importante en la comida, lo podremos aprovechar para completar el menú y compensar calórica y nutritivamente el plato principal.</p>
+          <p>Esta creación combina la untuosidad y grasas saludables del aguacate fresco con la nobleza proteica y textura tersa de los mariscos seleccionados, aromatizado con toques cítricos de limón y cilantro fresco.</p>
+        `,
+        ingredients: [
+          '2 aguacates maduros firmes (tipo Hass o criollo de buena grasa)',
+          '250 g de camarones limpios y desvenados',
+          '150 g de calamares en anillas tiernas',
+          '1 cebolla morada cortada en brunoise fino',
+          '1 tomate maduro firme, sin semillas, cortado en concassé',
+          '2 cucharadas de cilantro fresco finamente picado',
+          'Zumo recién exprimido de 2 limones frescos',
+          '2 cucharadas de aceite de oliva virgen extra',
+          'Sal marina y pimienta negra recién molida al gusto',
+          'Hojas frescas de cilantro y lima para decorar'
+        ],
+        steps: [
+          'En una cacerola con agua hirviendo, sal y una hoja de laurel, blanquear los camarones y anillas de calamar durante 2 a 3 minutos hasta que adquieran firmeza y color rosado.',
+          'Retirar inmediatamente a un baño de agua con hielo (choque térmico) para detener la cocción y mantener su textura suave y elástica. Escurrir y reservar.',
+          'Cortar los aguacates por la mitad, retirar el hueso y extraer la pulpa. En un tazón amplio, machacar con tenedor conservando tropezones para una textura rústica agradable.',
+          'Incorporar la cebolla morada en brunoise, el tomate concassé y el cilantro fresco picado.',
+          'Aliñar con el zumo de limón fresco, aceite de oliva virgen extra, sal marina y pimienta al gusto, mezclando de manera envolvente.',
+          'Para el emplatado profesional, colocar un aro de cocina en el centro del plato, rellenar con la base de guacamole y coronar en la cima con los camarones y calamares.',
+          'Decorar con un hilo de aceite de oliva y hojas de cilantro fresco. Servir frío acompañado de chips de plátano o tostones.'
+        ]
+      },
+
+      albondigas: {
+        id: 'albondigas',
+        title: 'ALBÓNDIGAS EN SALSA NÁPOLE',
+        category: 'Plato Fuerte Internacional',
+        image: 'assets/images/recetas/albondigas.jpg',
+        pdfFileName: 'albondigas_napole_receta_oficial.pdf',
+        history: `
+          <p>Es de origen italo-norteamericano a principios del siglo XX. Es un plato muy simple, espaguetis, salsa napolitana y albóndigas de res.</p>
+          <p>Nacido de la adaptación de los cocineros inmigrantes que fusionaron las recetas napolitanas con la abundancia de carne de res, este clásico perdura gracias al contraste entre la acidez aromática del tomate cocinado a fuego lento y la jugosidad sazonada de la carne.</p>
+        `,
+        ingredients: [
+          '500 g de carne de res molida magra de primera calidad',
+          '400 g de espaguetis de sémola de trigo duro',
+          '800 g de tomates perita maduros, pelados y triturados',
+          '1 cebolla mediana picada en brunoise fina',
+          '3 dientes de ajo machacados',
+          '1 huevo fresco',
+          '½ taza de pan rallado artesanal',
+          '½ taza de queso parmesano recién rallado',
+          'Hojas de albahaca fresca',
+          '2 cucharadas de aceite de oliva virgen extra',
+          '1 cucharadita de orégano seco',
+          'Sal marina y pimienta recién molida'
+        ],
+        steps: [
+          'En un bol mezclar la carne molida con ajo machacado, el huevo batido, pan rallado, la mitad del parmesano, orégano, sal y pimienta. Amasar suavemente sin compactar en exceso.',
+          'Porcionar y bolear albóndigas uniformes de 35 a 40 gramos.',
+          'En una sartén grande con aceite de oliva caliente, dorar las albóndigas a fuego medio-alto por todos sus costados para sellar los jugos. Retirar y reservar.',
+          'En la misma sartén, sofreír la cebolla picada y ajo restante hasta traslúcidos. Añadir los tomates triturados y hojas de albahaca fresca.',
+          'Cocinar la salsa a fuego lento durante 20 minutos hasta que tome cuerpo aromático.',
+          'Introducir las albóndigas doradas en la salsa napolitana, tapar y dejar estofar a fuego bajo durante 15 minutos para que la carne se cocine por completo.',
+          'Cocinar los espaguetis en abundante agua hirviendo con sal hasta el punto al dente.',
+          'Emplatar un nido de espaguetis al dente, bañar con la salsa Nápole bien caliente, coronar con las albóndigas, abundante parmesano y hojas vivas de albahaca.'
+        ]
+      },
+
+      ensaladas: {
+        id: 'ensaladas',
+        title: 'ENSALADAS CLÁSICAS',
+        category: 'Cocina Fría & Nutrición',
+        image: 'assets/images/recetas/ensaladas.jpg',
+        pdfFileName: 'ensaladas_clasicas_receta_oficial.pdf',
+        history: `
+          <p>Por su aporte en vitaminas, minerales, fibra y antioxidantes, los nutricionistas recomiendan el consumo de ensaladas con distintas preparaciones, lo que convierte a este plato en mucho más que una entrada.</p>
+          <p>En la alta gastronomía, una ensalada clásica requiere estricto control de higiene, centrifugado para asegurar que la vinagreta emulsione sin aguarse y un juego maestro de texturas crocantes y aromáticas.</p>
+        `,
+        ingredients: [
+          '300 g de mix de lechugas frescas (romana, morada, rúcula y espinaca baby)',
+          '1 taza de tomates cherry cortados por la mitad',
+          '1 pepino tierno en rodajas finas',
+          '1 zanahoria cortada en cintas delgadas con pelador',
+          '½ taza de crutones de pan campesino dorados al horno con hierbas',
+          '2 cucharadas de semillas tostadas de ajonjolí y girasol',
+          '50 g de queso blanco duro o parmesano en lascas finas',
+          'Para la Vinagreta Clásica: 4 cdas de aceite de oliva virgen extra, 1½ cda de vinagre balsámico o de manzana, 1 cdta de mostaza Dijon, 1 cdta de miel pura, sal y pimienta negra'
+        ],
+        steps: [
+          'Desinfección e Higienización: Lavar las hojas en agua fría desinfectada. Escurrir y centrifugar por completo; la hoja debe estar totalmente seca para que la emulsión se adhiera.',
+          'Acondicionamiento de vegetales: Trocear las lechugas con la mano para no oxidar los bordes. Cortar los cherrys, pepino y zanahoria manteniéndolos en frío.',
+          'Preparación de la Vinagreta: En un cuenco emulsionar con batidor de alambre la mostaza, miel, vinagre, sal y pimienta, vertiendo el aceite de oliva en hilo fino hasta formar una salsa suave y brillante.',
+          'En un tazón grande mezclar las hojas con los vegetales.',
+          'Aliñar con la vinagreta únicamente 2 minutos antes de servir, mezclando con pinzas de cocina suavemente para no marchitar las hojas.',
+          'Servir en platos hondos coronando con los crutones dorados, las semillas tostadas y las lajas de queso para un toque crujiente inolvidable.'
+        ]
+      },
+
+      strogonoff: {
+        id: 'strogonoff',
+        title: 'STROGONOFF',
+        category: 'Alta Cocina Tradicional',
+        image: 'assets/images/recetas/strogonoff.jpg',
+        pdfFileName: 'strogonoff_receta_oficial.pdf',
+        history: `
+          <p>Plato de origen ruso, perteneciente a su cocina tradicional, que desde el siglo XVIII forma parte de la alta cocina internacional.</p>
+          <p>Bautizado en honor al conde Grigori Stróganov, fusiona la técnica del salteado express francés con la rica adición de crema agria (sour cream) y hongos silvestres, logrando una textura aterciopelada y sabor profundo inconfundible.</p>
+        `,
+        ingredients: [
+          '600 g de lomo de res tierno cortado en tiras de 1 x 5 cm (émincé)',
+          '250 g de champiñones frescos en láminas limpias',
+          '1 cebolla blanca mediana en juliana fina',
+          '2 dientes de ajo picados finamente',
+          '3 cucharadas de mantequilla sin sal',
+          '1 cucharada de mostaza Dijon clásica',
+          '1 taza de crema de leche fresca espesa (o crema agria)',
+          '½ taza de fondo oscuro concentrado de res',
+          '2 cucharadas de vino blanco seco o brandy para desglasar',
+          'Sal marina y pimienta negra recién molida al gusto',
+          'Perejil crespo picado para decorar',
+          'Guarnición tradicional: Arroz blanco al vapor o papas paja'
+        ],
+        steps: [
+          'Secar las tiras de lomo de res con papel absorbente y salpimentar al momento.',
+          'En una sartén grande a fuego muy vivo con un hilo de aceite y una cucharada de mantequilla, saltear la carne en 2 tandas durante 1 a 2 minutos máximo para dorar sin desjugar. Retirar y reservar.',
+          'Bajar el fuego a medio, fundir el resto de la mantequilla y sofreír la cebolla y el ajo hasta traslúcidos.',
+          'Agregar los champiñones laminados y saltear durante 3 minutos hasta que doren.',
+          'Verter el vino blanco o brandy para desglasar la sartén, rascando el fondo con cuchara de madera para incorporar los sabores caramelizados de la carne.',
+          'Añadir el fondo de res concentrado y la mostaza Dijon, reduciendo a fuego medio por 3 minutos.',
+          'Bajar el fuego al mínimo e incorporar la crema de leche batiendo suavemente. Dejar calentar sin permitir que hierva vigorosamente para mantener la emulsión.',
+          'Regresar las tiras de lomo con todos sus jugos a la sartén por 1 minuto para unificar temperaturas. Rectificar sal y pimienta.',
+          'Servir de inmediato espolvoreado con perejil fresco y acompañado de arroz blanco moldeado.'
+        ]
+      }
+    };
+
+    let currentRecipeId = 'tequenos';
+
+    function openRecipeModal(recipeId) {
+      const recipe = RECIPES_DATA[recipeId];
+      if (!recipe) return;
+
+      currentRecipeId = recipeId;
+      document.getElementById('modal-title').textContent = recipe.title;
+      document.getElementById('modal-category').textContent = recipe.category;
+      document.getElementById('modal-image').src = recipe.image;
+      document.getElementById('modal-image').alt = recipe.title;
+      document.getElementById('modal-history').innerHTML = recipe.history;
+
+      // Render Ingredientes con viñetas doradas
+      const ingredientsList = document.getElementById('modal-ingredients');
+      ingredientsList.innerHTML = recipe.ingredients.map(ing => `
+        <li class="flex items-start space-x-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 shrink-0"></span>
+          <span>${ing}</span>
+        </li>
+      `).join('');
+
+      // Render Procedimiento con números dorados
+      const procedureList = document.getElementById('modal-procedure');
+      procedureList.innerHTML = recipe.steps.map((step, idx) => `
+        <li class="flex items-start space-x-3">
+          <span class="w-6 h-6 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-gold text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
+          <span class="leading-relaxed">${step}</span>
+        </li>
+      `).join('');
+
+      const modal = document.getElementById('recipe-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('recipe-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    // CONFIGURACIÓN DE ALMACENAMIENTO DE DOCUMENTOS (SUPABASE STORAGE FREE TIER + FALLBACK LOCAL)
+    const SUPABASE_CONFIG = {
+      projectId: 'TU_PROYECTO', // ID del proyecto Supabase (ej. 'abcdefghijklmnopqrst')
+      bucket: 'recetas', // Bucket público configurado en Supabase Storage
+      get publicUrl() {
+        if (!this.projectId || this.projectId === 'TU_PROYECTO') return null;
+        return `https://${this.projectId}.supabase.co/storage/v1/object/public/${this.bucket}/`;
+      }
+    };
+
+    // GESTOR DE DESCARGA PDF (SUPABASE STORAGE FREE TIER + FALLBACK LOCAL)
+    function downloadCurrentRecipePdf() {
+      const recipe = RECIPES_DATA[currentRecipeId];
+      if (!recipe) return;
+
+      const fileName = recipe.pdfFileName;
+      const localPath = 'assets/recipes/' + fileName;
+      const supabaseUrl = SUPABASE_CONFIG.publicUrl ? SUPABASE_CONFIG.publicUrl + fileName : null;
+
+      // 1. Si Supabase está configurado, intentamos descarga directa desde el bucket público en la nube
+      if (supabaseUrl) {
+        fetch(supabaseUrl, { method: 'HEAD' })
+          .then(resp => {
+            if (resp.ok) {
+              triggerDownload(supabaseUrl, fileName);
+              showRecipeToast('Descargando ficha técnica oficial desde Supabase Storage...');
+            } else {
+              fallbackToLocalDownload(localPath, fileName);
+            }
+          })
+          .catch(() => fallbackToLocalDownload(localPath, fileName));
+      } else {
+        // 2. Fallback a servidor local o ruta de despliegue estático en Vercel
+        fallbackToLocalDownload(localPath, fileName);
+      }
+    }
+
+    function fallbackToLocalDownload(localPath, fileName) {
+      fetch(localPath, { method: 'HEAD' })
+        .then(resp => {
+          if (resp.ok) {
+            triggerDownload(localPath, fileName);
+            showRecipeToast('Descargando ficha técnica oficial en PDF...');
+          } else {
+            showRecipeToast('Ficha Técnica en PDF: La descarga se habilitará tan pronto como el archivo oficial sea cargado en Supabase o en el servidor.');
+          }
+        })
+        .catch(() => {
+          showRecipeToast('Ficha Técnica en PDF: La descarga se habilitará tan pronto como el archivo oficial sea cargado en Supabase o en el servidor.');
+        });
+    }
+
+    function triggerDownload(url, fileName) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      a.target = '_blank';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function showRecipeToast(msg) {
+      const toast = document.getElementById('recipe-toast');
+      const text = document.getElementById('toast-message');
+      text.textContent = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 4500);
+    }
+
+
+        // Calificación de Estrellas
+    function setRating(score) {
+      const stars = document.querySelectorAll('.star-btn svg');
+      stars.forEach((star, index) => {
+        if (index < score) {
+          star.classList.add('text-brand-gold', 'fill-brand-gold');
+          star.classList.remove('text-neutral-600');
+        } else {
+          star.classList.remove('text-brand-gold', 'fill-brand-gold');
+          star.classList.add('text-neutral-600');
+        }
+      });
+      document.getElementById('rating-label').textContent = score + ' / 5 estrellas';
+    }
+  </script>
+</body>
+</html>

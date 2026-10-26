@@ -1,0 +1,49 @@
+import os
+from PIL import Image, ImageEnhance, ImageFilter
+
+def process_portrait_fire(input_path, output_path):
+    if not os.path.exists(input_path):
+        print(f"[-] No se encontró: {input_path}")
+        return
+    
+    img = Image.open(input_path).convert("RGB")
+    width, height = img.size
+    
+    # 1. Recorte automático de franjas negras superior e inferior de captura móvil
+    # Franja superior aprox 22% y franja inferior aprox 22%
+    crop_top = int(height * 0.22)
+    crop_bottom = int(height * 0.78)
+    cropped = img.crop((0, crop_top, width, crop_bottom))
+    
+    # 2. Restauración de microdetalle dérmico y capilar (Unsharp Mask)
+    enhanced = cropped.filter(ImageFilter.UnsharpMask(radius=1.6, percent=140, threshold=3))
+    
+    # 3. Ajuste de contraste óptico cinemático (Sony A1 emulation)
+    enhancer_contrast = ImageEnhance.Contrast(enhanced)
+    contrasted = enhancer_contrast.enhance(1.06)
+    
+    enhancer_color = ImageEnhance.Color(contrasted)
+    final_img = enhancer_color.enhance(1.04)
+    
+    final_img.save(output_path, quality=95, optimize=True)
+    print(f"[+] Retrato Fuego optimizado: {output_path} ({final_img.size})")
+
+def process_portrait_studio(input_path, output_path):
+    if not os.path.exists(input_path):
+        print(f"[-] No se encontró: {input_path}")
+        return
+    
+    img = Image.open(input_path).convert("RGB")
+    
+    # Recuperación de textura y microdetalle
+    enhanced = img.filter(ImageFilter.UnsharpMask(radius=1.5, percent=130, threshold=3))
+    enhancer_contrast = ImageEnhance.Contrast(enhanced)
+    final_img = enhancer_contrast.enhance(1.05)
+    
+    final_img.save(output_path, quality=95, optimize=True)
+    print(f"[+] Retrato Estudio optimizado: {output_path} ({final_img.size})")
+
+if __name__ == "__main__":
+    os.makedirs("assets/images", exist_ok=True)
+    process_portrait_fire("Screenshot_20261025_151030_Gallery.jpg", "assets/images/hero_portrait_optimized.jpg")
+    process_portrait_studio("Screenshot_20261025_151102_Gallery.jpg", "assets/images/bio_portrait_optimized.jpg")
