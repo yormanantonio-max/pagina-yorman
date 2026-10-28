@@ -161,9 +161,12 @@
          ========================================================================== -->
     <section class="relative w-full bg-[#141315] overflow-hidden border-b border-neutral-800/80">
       <div class="relative w-full overflow-hidden img-zoom-container group">
-        <img src="assets/images/portada_hero_banner_1920.jpg?v=20261026_portada" 
-             alt="Lic. Yorman Trabasilo - Chef Profesional · Sabores que cuentan historias" 
-             class="w-full h-auto max-h-[85vh] object-cover object-center img-zoom-target transition-transform duration-700">
+        <picture class="w-full h-auto block">
+          <source media="(max-width: 768px)" srcset="assets/images/portada_hero_banner_1024.jpg?v=20261028_portada1">
+          <img src="assets/images/portada_hero_banner_1920.jpg?v=20261028_portada1" 
+               alt="Lic. Yorman Trabasilo - Chef Profesional · Sabores que cuentan historias" 
+               class="w-full h-auto max-h-[85vh] object-cover object-center img-zoom-target transition-transform duration-700">
+        </picture>
         <!-- Overlay sutil perimetral -->
         <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#141315] via-transparent to-transparent opacity-50"></div>
       </div>
