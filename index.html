@@ -923,10 +923,10 @@
         
         <div class="flex items-center space-x-3 w-full sm:w-auto">
           <!-- Botón de Descarga PDF Solicitado -->
-          <button id="modal-download-btn" onclick="downloadCurrentRecipePdf()" class="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-brand-gold/20">
+          <a id="modal-download-btn" href="./pdf/tequenos-receta-oficial.pdf" download="Receta-Tequenos-Lic-Yorman-Trabasilo.pdf" target="_blank" class="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-brand-gold/20">
             <i data-lucide="download" class="w-4 h-4"></i>
             <span>Descargar Receta en PDF</span>
-          </button>
+          </a>
           
           <!-- Botón Imprimir -->
           <button onclick="window.print()" class="p-2.5 rounded-lg border border-neutral-700 hover:border-brand-gold text-neutral-300 hover:text-white transition-colors" title="Imprimir ficha">
@@ -1031,7 +1031,9 @@
         title: 'TEQUEÑOS',
         category: 'Pasapalo Tradicional',
         image: 'assets/images/recetas/tequenos.jpg',
-        pdfFileName: 'tequenos_receta_oficial.pdf',
+        pdfFileName: 'tequenos-receta-oficial.pdf',
+        pdfUrl: './pdf/tequenos-receta-oficial.pdf',
+        pdfDownloadName: 'Receta-Tequenos-Lic-Yorman-Trabasilo.pdf',
         history: `
           <p>Su nombre proviene de Los Teques, donde se supone que fue creado en las primeras décadas del siglo XX. La calidad de la preparación recae casi por completo en la correcta selección del queso: blanco, no muy salado y que derrita fácilmente sin llegar a quedar completamente líquido.</p>
           <p>Desde fiestas infantiles hasta matrimonios, los tequeños son el pasapalo por excelencia de las celebraciones venezolanas.</p>
@@ -1210,6 +1212,23 @@
       document.getElementById('modal-image').alt = recipe.title;
       document.getElementById('modal-history').innerHTML = recipe.history;
 
+      // Configuración dinámica del botón de descarga directa de PDF
+      const downloadBtn = document.getElementById('modal-download-btn');
+      if (downloadBtn) {
+        if (recipe.pdfUrl) {
+          downloadBtn.href = recipe.pdfUrl;
+          downloadBtn.download = recipe.pdfDownloadName || 'Receta-Oficial-Lic-Yorman-Trabasilo.pdf';
+          downloadBtn.onclick = null;
+        } else {
+          downloadBtn.href = '#';
+          downloadBtn.removeAttribute('download');
+          downloadBtn.onclick = (e) => {
+            e.preventDefault();
+            downloadCurrentRecipePdf();
+          };
+        }
+      }
+
       // Render Ingredientes con viñetas doradas
       const ingredientsList = document.getElementById('modal-ingredients');
       ingredientsList.innerHTML = recipe.ingredients.map(ing => `
@@ -1256,6 +1275,12 @@
     function downloadCurrentRecipePdf() {
       const recipe = RECIPES_DATA[currentRecipeId];
       if (!recipe) return;
+
+      if (recipe.pdfUrl) {
+        triggerDownload(recipe.pdfUrl, recipe.pdfDownloadName || recipe.pdfFileName);
+        showRecipeToast('Descargando Ficha Técnica Oficial en PDF...');
+        return;
+      }
 
       const fileName = recipe.pdfFileName;
       const localPath = 'assets/recipes/' + fileName;
