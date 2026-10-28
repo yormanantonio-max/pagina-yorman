@@ -92,11 +92,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         
-        <!-- Emblema Oficial en Móvil (Visible solo en pantallas pequeñas) -->
+        <!-- Emblema Oficial en Móvil con estilo Marca de Agua Cinemática (Exclusivo Móvil) -->
         <div class="flex md:hidden items-center cursor-pointer py-1 group" onclick="switchTab('inicio')" title="Lic. Yorman Trabasilo - Inicio">
-          <img src="assets/images/logo_emblema_oficial.png?v=20261026" 
+          <img src="assets/images/logo_emblema_oficial.png?v=20261028_wm_top" 
                alt="Chef Yorman Trabasilo" 
-               class="h-10 sm:h-12 w-auto object-contain">
+               class="h-10 sm:h-12 w-auto object-contain opacity-25 filter drop-shadow-[0_0_12px_rgba(212,175,55,0.35)] transition-opacity duration-300 group-hover:opacity-80">
         </div>
 
         <!-- 4 Pestañas Navegables Canónicas (Alineadas a la izquierda en Desktop tal como el Mockup Oficial) -->
@@ -177,57 +177,46 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <!-- Columna Izquierda: Identidad Académica y Profesional -->
-          <div class="lg:col-span-7 space-y-6 relative">
+          <div class="lg:col-span-7 space-y-6 text-left">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-brand-gold/40 bg-brand-gold/10 text-brand-gold text-xs font-semibold tracking-wider uppercase">
+              <i data-lucide="award" class="w-3.5 h-3.5"></i>
+              <span>Licenciado en Servicio Gastronómico · Chef Internacional</span>
+            </div>
             
-            <!-- Marca de Agua Oficial Exclusiva para Móvil (Estilo Cinemático Ecosistema) -->
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none lg:hidden z-0 overflow-hidden select-none">
-              <img src="assets/images/logo_watermark_mobile.png?v=20261028_wm" 
-                   alt="Marca de Agua Oficial Lic. Yorman Trabasilo" 
-                   class="w-[88%] max-w-[340px] sm:max-w-[420px] h-auto object-contain opacity-[0.14] filter drop-shadow-[0_0_25px_rgba(212,175,55,0.25)] pointer-events-none">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight font-bold">
+              Lic. Yorman Trabasilo <br>
+              <span class="italic font-light text-brand-gold">Chef Profesional</span>
+            </h1>
+            
+            <p class="text-neutral-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+              Licenciado en Desarrollo Endógeno (Subárea: Servicio Gastronómico) y Maestro en el Arte Culinario egresado de la Universidad Central de Venezuela (UCV). Con más de <strong>10 años de trayectoria internacional</strong> en Venezuela y Ecuador, integrando <strong>cocina, sala y barra</strong> como un solo sistema operativo de excelencia técnica, docencia y dirección culinaria.
+            </p>
+
+            <!-- Indicadores de Autoridad -->
+            <div class="grid grid-cols-2 gap-6 pt-2 max-w-sm border-t border-neutral-800/80">
+              <div>
+                <span class="block text-2xl font-serif font-bold text-brand-gold">+10 Años</span>
+                <span class="text-[11px] text-neutral-400">Experiencia Binacional</span>
+              </div>
+              <div>
+                <span class="block text-2xl font-serif font-bold text-brand-gold">3 Áreas</span>
+                <span class="text-[11px] text-neutral-400">Cocina · Sala · Barra</span>
+              </div>
             </div>
 
-            <!-- Contenido Textual con z-10 para máxima legibilidad y alineación -->
-            <div class="relative z-10 space-y-6 text-left">
-              <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-brand-gold/40 bg-brand-gold/10 text-brand-gold text-xs font-semibold tracking-wider uppercase">
-                <i data-lucide="award" class="w-3.5 h-3.5"></i>
-                <span>Licenciado en Servicio Gastronómico · Chef Internacional</span>
-              </div>
-              
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight font-bold">
-                Lic. Yorman Trabasilo <br>
-                <span class="italic font-light text-brand-gold">Chef Profesional</span>
-              </h1>
-              
-              <p class="text-neutral-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-                Licenciado en Desarrollo Endógeno (Subárea: Servicio Gastronómico) y Maestro en el Arte Culinario egresado de la Universidad Central de Venezuela (UCV). Con más de <strong>10 años de trayectoria internacional</strong> en Venezuela y Ecuador, integrando <strong>cocina, sala y barra</strong> como un solo sistema operativo de excelencia técnica, docencia y dirección culinaria.
-              </p>
-
-              <!-- Indicadores de Autoridad -->
-              <div class="grid grid-cols-2 gap-6 pt-2 max-w-sm border-t border-neutral-800/80">
-                <div>
-                  <span class="block text-2xl font-serif font-bold text-brand-gold">+10 Años</span>
-                  <span class="text-[11px] text-neutral-400">Experiencia Binacional</span>
-                </div>
-                <div>
-                  <span class="block text-2xl font-serif font-bold text-brand-gold">3 Áreas</span>
-                  <span class="text-[11px] text-neutral-400">Cocina · Sala · Barra</span>
-                </div>
-              </div>
-
-              <!-- Botones de Acción -->
-              <div class="flex flex-wrap gap-4 pt-2">
-                <button onclick="switchTab('talleres-servicios')" class="px-6 py-3.5 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-sm rounded transition-colors shadow-lg flex items-center space-x-2">
-                  <span>Formación y Servicios</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-                <a href="#ecosistema-quebrutal" class="px-6 py-3.5 bg-brand-fire/90 hover:bg-brand-fire text-white font-semibold text-sm rounded transition-colors shadow-lg flex items-center space-x-2">
-                  <i data-lucide="flame" class="w-4 h-4"></i>
-                  <span>Ecosistema ¡Qué Brutal!</span>
-                </a>
-                <button onclick="switchTab('recetas')" class="px-5 py-3.5 border border-neutral-700 hover:border-brand-gold text-white font-medium text-sm rounded transition-colors">
-                  Ver Recetario
-                </button>
-              </div>
+            <!-- Botones de Acción -->
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="switchTab('talleres-servicios')" class="px-6 py-3.5 bg-brand-gold hover:bg-brand-goldLight text-black font-semibold text-sm rounded transition-colors shadow-lg flex items-center space-x-2">
+                <span>Formación y Servicios</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+              <a href="#ecosistema-quebrutal" class="px-6 py-3.5 bg-brand-fire/90 hover:bg-brand-fire text-white font-semibold text-sm rounded transition-colors shadow-lg flex items-center space-x-2">
+                <i data-lucide="flame" class="w-4 h-4"></i>
+                <span>Ecosistema ¡Qué Brutal!</span>
+              </a>
+              <button onclick="switchTab('recetas')" class="px-5 py-3.5 border border-neutral-700 hover:border-brand-gold text-white font-medium text-sm rounded transition-colors">
+                Ver Recetario
+              </button>
             </div>
           </div>
 
