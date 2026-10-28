@@ -162,13 +162,13 @@
     <section class="relative w-full bg-[#141315] overflow-hidden">
       <div class="relative w-full overflow-hidden img-zoom-container group">
         <picture class="w-full h-auto block">
-          <source media="(max-width: 768px)" srcset="assets/images/portada_hero_banner_1024.jpg?v=20261028_clean">
-          <img src="assets/images/portada_hero_banner_1920.jpg?v=20261028_clean" 
+          <source media="(max-width: 768px)" srcset="assets/images/portada_hero_banner_1024.jpg?v=20261028_alejar">
+          <img src="assets/images/portada_hero_banner_1920.jpg?v=20261028_alejar" 
                alt="Lic. Yorman Trabasilo - Chef Profesional · Sabores que cuentan historias" 
-               class="w-full h-auto object-cover object-center img-zoom-target transition-transform duration-700">
+               class="w-full h-auto max-h-[85vh] object-cover object-center img-zoom-target transition-transform duration-700">
         </picture>
-        <!-- Difuminado perimetral e inferior integrado con la sección de perfil académico -->
-        <div class="absolute inset-x-0 bottom-0 h-28 sm:h-36 lg:h-48 bg-gradient-to-t from-[#141315] via-[#141315]/60 to-transparent pointer-events-none"></div>
+        <!-- Difuminado perimetral suave inferior que no oscurece los textos oficiales -->
+        <div class="absolute inset-x-0 bottom-0 h-10 sm:h-14 bg-gradient-to-t from-[#141315] to-transparent pointer-events-none opacity-80"></div>
       </div>
     </section>
 
