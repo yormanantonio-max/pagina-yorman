@@ -735,30 +735,96 @@
           </article>
 
           <!-- Artículo 3: Copa de Champán -->
-          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center group img-card-glow">
-            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] overflow-hidden img-zoom-container">
-              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=800" alt="Copa de Champán" class="img-zoom-target w-full h-full object-cover">
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-start group img-card-glow">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[300px] overflow-hidden img-zoom-container self-stretch">
+              <img src="assets/images/resenas/copa_champan_pompadour.jpg?v=20261030_pompadour" alt="La Copa de Champán - Madame de Pompadour" class="img-zoom-target w-full h-full object-cover">
             </div>
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4">
-              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Historia del Servicio & Sala</span>
-              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">La Copa de Champán</h2>
+              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Historia del Servicio & Sala · Coctelería Clásica</span>
+              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">Copa de champán</h2>
+              
+              <!-- Texto Inicial (Resumen visible) -->
               <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
-                La tradición cuenta que la primera copa de champán fue elaborada en porcelana a finales del siglo XVIII por encargo de María Antonieta, esposa del rey Luis XVI y última reina de Francia antes de la Convención, marcando la evolución de la cristalería de protocolo.
+                La leyenda cuenta que la primera copa de champán fue elaborada en porcelana a finales del siglo XVIII y que fue encargada por Maria Antonieta, la esposa del rey Luis XVI y última reina de Francia que fue guillotinada junto con su esposo durante la Convención.
               </p>
+
+              <!-- Párrafos de Continuación (Desplegables) -->
+              <div id="copa-extended" class="hidden space-y-4 pt-3 border-t border-neutral-800/80 animate-in fade-in duration-300">
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  Según se cuenta para realizar el molde de esta copa se tomó como modelo el pecho de la reina, muy admirado por su marido. No es la única mujer de la historia a la que se le atribuye el pecho del que tomó su forma la famosa copa de champán. Hay quién piensa que fue Madame de Pompadour, amante de Luis XV, Madame du Barry o Diane de Poitiers, amante de Enrique II. Por dar teorías hay hasta quien defiende que fue el seno de Helena de Troya el modelo que sirvió de inspiración.
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  La duquesa-marquesa de Pompadour y marquesa de Menars, más conocida como Madame de Pompadour, nació en París el 29 de diciembre de 1721 y falleció en Versalles el 15 de abril de 1764, que además de amante célebre de Luis XV, fue una de las más fervientes promotoras de la cultura durante su reinado.
+                </p>
+                <div class="pt-2 border-t border-neutral-800/60">
+                  <h3 class="text-sm font-serif text-brand-gold font-bold uppercase tracking-wider mb-2">La Copa Pompadour</h3>
+                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light mb-3">
+                    Las primeras copas Pompadour aparecen en 1663 por encargo del Duque de Buckingham a un artesano veneciano y eran de porcelana; su primer nombre fue “la Tazza”. No se hicieron populares hasta finales del siglo XIX. Se caracterizan por ser muy abiertas, pero recogidas en los bordes, lo que permite beber mejor sin que se caiga. ¡Ideal para el ajetreo de la fiesta!
+                  </p>
+                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light mb-3">
+                    Su mayor auge se dio entre los años 30 a mediados de los 70, aunque en la actualidad sigue siendo muy popular entre británicos y rusos.
+                  </p>
+                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                    Una leyenda con mucho morbo pero, lo que son las cosas, los enólogos no la recomiendan porque calienta el líquido, deja escapar el gas y no permite disfrutar del aroma.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Botón «Más» / «Menos» -->
+              <div class="pt-2">
+                <button onclick="toggleCopaArticle()" id="btn-copa" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-brand-gold/15 hover:bg-brand-gold text-brand-gold hover:text-black font-semibold text-xs uppercase tracking-wider rounded-lg border border-brand-gold/40 transition-all duration-300 shadow-sm group">
+                  <span id="btn-text-copa">Más</span>
+                  <i data-lucide="chevron-down" id="btn-icon-copa" class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5"></i>
+                </button>
+              </div>
+
             </div>
           </article>
 
           <!-- Artículo 4: Jerry Thomas -->
-          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center group img-card-glow">
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-start group img-card-glow">
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4 order-2 lg:order-1">
-              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Cultura de Barra</span>
+              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Cultura de Barra · Padre de la Mixología</span>
               <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">¿Quién fue Jerry Thomas?</h2>
+              
+              <!-- Texto Inicial (Resumen visible) -->
               <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
-                "El Profesor" Jerry Thomas es reconocido como el padre de la coctelería moderna. Recorrió el mundo llevando el oficio de barman a un nivel de arte respetado desde el Hotel Savoy en Londres, pasando por Francia hasta los mejores bares de Nueva York.
+                "El Profesor", Jerry Thomas es conocido actualmente como el padre de la coctelería por sus múltiples aportes a la profesión. Recorrió el mundo llevando el arte de la profesión de barman a otro nivel, haciendo de ella un arte respetado por todos. Desde el Hotel Savoy en Londres, pasando por Francia y llegando a los mejores bares de Nueva York.
               </p>
+
+              <!-- Párrafos de Continuación (Desplegables) -->
+              <div id="jerry-extended" class="hidden space-y-4 pt-3 border-t border-neutral-800/80 animate-in fade-in duration-300">
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  En 1825 en Newhaven Connecticut nació el profesor Jerry Thomas y a la edad de 20 años comenzó a trabajar detrás de una barra. Dos años más tarde se fue a Nueva York donde encontró trabajo como grumete en un barco rumbo a Sudamérica pero tras algunos de sus viajes, vio claramente que ese trabajo no estaba hecho para él, así que decidió dejar la vida de marinero para irse a San Francisco a trabajar en un saloon.
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  En aquellos tiempos los aguardientes como el cognac, la ginebra, el ron y el whisky de centeno se podían encontrar fácilmente en cualquier parte de los Estados Unidos, no sucedía lo mismo con el hielo y los licores, que sólo era posible adquirirlos en grandes ciudades… Ésta fue la razón por la que Jerry Thomas estaba obligado a trabajar en determinados lugares como Nueva York o San Francisco y así poder preparar grandes bebidas.
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  En 1863 fue nombrado encargado del bar Occidental Hotel de San Francisco, luego estuvo de paso por Virginia City y regresó a Nueva York en 1866, año en que su hermano George M. abrió un local en el número 937 de Broadway y finalmente sus conocimientos se ponen por escrito en un libro que será la Biblia de los barmans. El libro fue un verdadero éxito y será reimpreso seis veces. Por esa razón fue nombrado ”el profesor”.
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  Thomas era bien conocido por sus flamantes técnicas de mezclado, hacía malabares con botellas, vasos y cocteleras; su cóctel estrella era el <em>Blue Blazer</em>. A menudo usaba mucha joyería y utensilios de bar embellecidos con piedras y metales preciosos; se dice que viajó por Europa llevando consigo un set de herramientas de bartending de plata sólida. Su fama se hizo grande y llegó a ganar 100 dólares a la semana, más que el salario del vicepresidente en aquella época. Debido a su trabajo pionero en la popularización de este movimiento en los Estados Unidos, se lo considera "el padre de la mixología".
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  Como ciudadano de N.Y. era un hombre muy notable y activo: vestía de forma llamativa, gustaba de participar en peleas a puño limpio por premios, disfrutaba viajar y coleccionar arte. Jerry Thomas es una de las figuras más importantes en la historia del bartending, y su libro <em>The Bartender’s Guide</em> es el viejo testamento del culto a la elaboración de bebidas alcohólicas.
+                </p>
+                <div class="pt-2 border-t border-neutral-800/60 text-neutral-400 text-xs leading-relaxed font-light italic">
+                  <strong>Entre Líneas — El Saloon:</strong> Un saloon era un bar típico del oeste de los Estados Unidos en el siglo XIX. El primer saloon que se conoce fue establecido en 1822 en Brown’s Hole, Wyoming. Hacia 1880, los saloons estaban en su apogeo, convirtiéndose en el epicentro social de la frontera americana.
+                </div>
+              </div>
+
+              <!-- Botón «Más» / «Menos» -->
+              <div class="pt-2">
+                <button onclick="toggleJerryArticle()" id="btn-jerry" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-brand-gold/15 hover:bg-brand-gold text-brand-gold hover:text-black font-semibold text-xs uppercase tracking-wider rounded-lg border border-brand-gold/40 transition-all duration-300 shadow-sm group">
+                  <span id="btn-text-jerry">Más</span>
+                  <i data-lucide="chevron-down" id="btn-icon-jerry" class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5"></i>
+                </button>
+              </div>
+
             </div>
-            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2 overflow-hidden img-zoom-container">
-              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800" alt="Jerry Thomas Coctelería" class="img-zoom-target w-full h-full object-cover">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[300px] order-1 lg:order-2 overflow-hidden img-zoom-container self-stretch bg-neutral-900 flex items-center justify-center">
+              <img src="assets/images/resenas/jerry_thomas_bar.jpg?v=20261030_jerry" alt="El Profesor Jerry Thomas - Padre de la Coctelería" class="img-zoom-target w-full h-full object-cover object-center">
             </div>
           </article>
 
@@ -1423,6 +1489,54 @@
       const ext = document.getElementById('uniforme-extended');
       const btnText = document.getElementById('btn-text-uniforme');
       const btnIcon = document.getElementById('btn-icon-uniforme');
+      
+      if (!ext || !btnText) return;
+
+      if (ext.classList.contains('hidden')) {
+        ext.classList.remove('hidden');
+        btnText.textContent = 'Menos';
+        if (btnIcon) {
+          btnIcon.setAttribute('data-lucide', 'chevron-up');
+        }
+      } else {
+        ext.classList.add('hidden');
+        btnText.textContent = 'Más';
+        if (btnIcon) {
+          btnIcon.setAttribute('data-lucide', 'chevron-down');
+        }
+      }
+      lucide.createIcons();
+    }
+
+    // Despliegue de Reseña Histórica: Copa de Champán
+    function toggleCopaArticle() {
+      const ext = document.getElementById('copa-extended');
+      const btnText = document.getElementById('btn-text-copa');
+      const btnIcon = document.getElementById('btn-icon-copa');
+      
+      if (!ext || !btnText) return;
+
+      if (ext.classList.contains('hidden')) {
+        ext.classList.remove('hidden');
+        btnText.textContent = 'Menos';
+        if (btnIcon) {
+          btnIcon.setAttribute('data-lucide', 'chevron-up');
+        }
+      } else {
+        ext.classList.add('hidden');
+        btnText.textContent = 'Más';
+        if (btnIcon) {
+          btnIcon.setAttribute('data-lucide', 'chevron-down');
+        }
+      }
+      lucide.createIcons();
+    }
+
+    // Despliegue de Reseña Histórica: Jerry Thomas
+    function toggleJerryArticle() {
+      const ext = document.getElementById('jerry-extended');
+      const btnText = document.getElementById('btn-text-jerry');
+      const btnIcon = document.getElementById('btn-icon-jerry');
       
       if (!ext || !btnText) return;
 
