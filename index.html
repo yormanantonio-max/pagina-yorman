@@ -1198,18 +1198,13 @@
     </div>
   </div>
 
-  <!-- REPRODUCTOR FLOTANTE DE MÚSICA DE FONDO (MULTI-PISTA · VOLUMEN 60%) -->
-  <aside class="fixed bottom-6 left-6 z-40" aria-label="Control de música de fondo ambiental">
+  <!-- CONTROL DISCRETO DE MÚSICA DE FONDO (SÓLO PARLANTE · VOLUMEN 40%) -->
+  <aside class="fixed bottom-4 left-4 z-40" aria-label="Control de música de fondo ambiental">
     <button onclick="toggleMusicPlayback()" id="music-toggle-btn" 
-            title="Activar / Silenciar Música de Fondo (60%)"
-            class="flex items-center space-x-2.5 px-4 py-2.5 rounded-full bg-neutral-900/95 hover:bg-neutral-800/95 backdrop-blur-md border border-brand-gold/50 hover:border-brand-gold text-brand-gold shadow-2xl transition-all duration-300 group cursor-pointer">
-      <div class="relative flex items-center justify-center">
-        <i data-lucide="volume-2" id="music-toggle-icon" class="w-4 h-4 text-brand-gold"></i>
-      </div>
-      <span id="music-toggle-text" class="text-xs font-medium text-neutral-200 hidden sm:inline tracking-wider">
-        Música 2: Inicio & Salón (60%)
-      </span>
-      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping hidden sm:inline-block" id="music-pulse-indicator"></span>
+            title="Música de fondo (Activar / Silenciar)"
+            aria-label="Música de fondo (Activar / Silenciar)"
+            class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-neutral-900/85 hover:bg-neutral-800 backdrop-blur-md border border-brand-gold/40 hover:border-brand-gold text-brand-gold shadow-lg flex items-center justify-center transition-all duration-300 group cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-gold/50">
+      <i data-lucide="volume-2" id="music-toggle-icon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-gold transition-transform group-hover:scale-110"></i>
     </button>
   </aside>
 
@@ -1749,13 +1744,13 @@
     }
 
     // ==========================================================================
-    // SISTEMA DE FONDO MUSICAL MULTI-PESTAÑA (VOLUMEN 60% CERTIFICADO)
+    // SISTEMA DE FONDO MUSICAL MULTI-PESTAÑA (VOLUMEN 40% DISCRETO)
     // ==========================================================================
     const audioState = {
       isMuted: false,
       userHasInteracted: false,
       currentTrack: null, // 1 o 2
-      volume: 0.6 // Volumen exacto al 60%
+      volume: 0.4 // Volumen calibrado al 40%
     };
 
     const audioTrack1 = new Audio('assets/audio/musica_1.mp3?v=20261030');
@@ -1786,16 +1781,27 @@
       const activeAudio = trackNumber === 1 ? audioTrack1 : audioTrack2;
       const inactiveAudio = trackNumber === 1 ? audioTrack2 : audioTrack1;
 
-      // Si ya está sonando este mismo track, no reiniciar
-      if (audioState.currentTrack === trackNumber && !activeAudio.paused) {
+      // 1. Si pertenece al mismo tema musical de la pestaña previa: CONTINÚA CONTINUA sin reiniciar
+      if (audioState.currentTrack === trackNumber) {
+        if (!audioState.isMuted && audioState.userHasInteracted && activeAudio.paused) {
+          activeAudio.play().catch(() => {});
+        }
+        updateMusicUI();
         return;
       }
 
+      // 2. Si cambia de tema musical a otra pestaña con música distinta: EMPIEZA DE CERO
       audioState.currentTrack = trackNumber;
 
-      // Pausar el track inactivo
+      // Pausar y reiniciar track inactivo a cero
       try {
         inactiveAudio.pause();
+        inactiveAudio.currentTime = 0;
+      } catch (e) {}
+
+      // Reiniciar nuevo tema desde el principio (segundo 0)
+      try {
+        activeAudio.currentTime = 0;
       } catch (e) {}
 
       if (!audioState.isMuted) {
@@ -1825,8 +1831,7 @@
 
     function updateMusicUI() {
       const musicIcon = document.getElementById('music-toggle-icon');
-      const musicText = document.getElementById('music-toggle-text');
-      const pulseIndicator = document.getElementById('music-pulse-indicator');
+      const musicBtn = document.getElementById('music-toggle-btn');
       
       if (!musicIcon) return;
 
@@ -1837,24 +1842,19 @@
         musicIcon.setAttribute('data-lucide', 'volume-2');
         musicIcon.classList.add('text-brand-gold');
         musicIcon.classList.remove('text-neutral-500');
-        if (pulseIndicator) {
-          pulseIndicator.classList.remove('hidden');
-          pulseIndicator.classList.add('inline-block');
-        }
-        if (musicText) {
-          const trackLabel = audioState.currentTrack === 1 ? 'Música 1: Recetario & Reseñas' : 'Música 2: Inicio & Salón';
-          musicText.textContent = `${trackLabel} (60%)`;
+        if (musicBtn) {
+          musicBtn.setAttribute('title', 'Música de fondo activa (40%) · Clic para silenciar');
+          musicBtn.classList.remove('border-neutral-700', 'opacity-60');
+          musicBtn.classList.add('border-brand-gold/60', 'opacity-100');
         }
       } else {
         musicIcon.setAttribute('data-lucide', 'volume-x');
         musicIcon.classList.remove('text-brand-gold');
         musicIcon.classList.add('text-neutral-500');
-        if (pulseIndicator) {
-          pulseIndicator.classList.remove('inline-block');
-          pulseIndicator.classList.add('hidden');
-        }
-        if (musicText) {
-          musicText.textContent = audioState.isMuted ? 'Música silenciada' : 'Toca para activar música (60%)';
+        if (musicBtn) {
+          musicBtn.setAttribute('title', 'Música de fondo silenciada · Clic para activar');
+          musicBtn.classList.remove('border-brand-gold/60', 'opacity-100');
+          musicBtn.classList.add('border-neutral-700', 'opacity-60');
         }
       }
       if (window.lucide) lucide.createIcons();
