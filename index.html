@@ -661,7 +661,7 @@
           <!-- Artículo 1: Origen de los restaurantes -->
           <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-start group img-card-glow">
             <div class="lg:col-span-5 h-72 lg:h-full min-h-[300px] overflow-hidden img-zoom-container self-stretch">
-              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" alt="Origen de los Restaurantes" class="img-zoom-target w-full h-full object-cover">
+              <img src="assets/images/resenas/boulanger_restaurante.jpg?v=20261030_stone" alt="Origen de los Restaurantes - Boulanger 1765" class="img-zoom-target w-full h-full object-cover">
             </div>
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4">
               <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">París, 1765</span>
@@ -697,16 +697,40 @@
           </article>
 
           <!-- Artículo 2: Uniformes para Chef -->
-          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center group img-card-glow">
+          <article class="bg-brand-card rounded-2xl border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-start group img-card-glow">
             <div class="lg:col-span-7 p-8 sm:p-10 space-y-4 order-2 lg:order-1">
-              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Identidad & Disciplina</span>
-              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">¿Cómo se llegó a los uniformes para Chef?</h2>
+              <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Historia de la Cocina · Identidad Culinaria</span>
+              <h2 class="text-2xl sm:text-3xl font-serif text-white font-bold">¿Cómo se llegó a los uniformes para chef?</h2>
+              
+              <!-- Texto Inicial (Resumen visible) -->
               <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
-                En tiempos de los grandes palacios y reyes, los cocineros tenían el honor de organizar banquetes reales. En el siglo XVIII, cuando el librepensamiento fue perseguido, muchos artesanos culinarios se refugiaron en monasterios vistiendo altos gorros y túnicas grises a diferencia del negro de los monjes, evolucionando luego hacia la filipina blanca y la <em>toque blanche</em> como emblema de pulcritud y rango.
+                Recordemos que esta profesión ha sido muy reconocida ancestralmente, en tiempos de los grandes palacios y reyes tenían su respeto y el honor de organizar banquetes para grandes personajes, reyes, duques, etc... y haciendo un poco de historia se menciona que en tiempos en los que el “librepensamiento” era perseguido, en el siglo XVIII, los chef tenían que cuidar su vida por considerarlos artesanos en su trabajo, para ello se refugiaban en los monasterios, para verse como ellos y distinguirse se vestían con altos gorros y túnicas pero de color gris a diferencia del negro de los monjes.
               </p>
+
+              <!-- Párrafos de Continuación (Desplegables) -->
+              <div id="uniforme-extended" class="hidden space-y-4 pt-3 border-t border-neutral-800/80 animate-in fade-in duration-300">
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  Por años esta forma de distinguirse al vestir fue utilizado por los chefs, pero no fue una forma adecuada para trabajar en la cocina o al menos así lo consideró el reconocido Chef Marie-Antoine Carême, al cual se le atribuyen principalmente el cambio en el color del atuendo de gris a blanco por considerar que daba una apariencia de mayor pulcritud y obligación a cambiarse constantemente, y él fue el que distinguió los rangos de los cocineros a su cargo definiendo que el líder o chef utilizaría el gorro alto y los ayudantes uno más bajo parecido a un gorro.
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  Respecto de la chaqueta de Chef, está cruzada por lo que fácilmente se puede invertir para ocultar las manchas; la capa doble de tejido también se diseña para aislar el cuerpo del calor de la cocina o de una salpicadura de líquido caliente. En relación al pantalón de chef, son usualmente utilizados los cuadros blancos y negros (pata de gallo) o blancos y azules; estos patrones ayudan a esconder mejor las manchas y por lo tanto a mejorar la imagen de pulcritud (hoy son solo complementos al uniforme, ciertamente en desuso).
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+                  El mandil o delantal tiene como función principal mantener al chef limpio y protegido; si se llegara a ensuciar por algún motivo debe cambiárselo de inmediato ya que debe estar siempre presentable e impecable para recibir clientes o atender compromisos que puedan surgir. Hoy en día, dentro de lo ortodoxo del blanco en chaquetilla, otras variantes también están permitidas, pero a grandes rasgos las prendas distintivas son las mismas: se ha mejorado mucho en tejidos técnicos, comodidad de las prendas, colores y estampados, pero en general predomina la prudencia en las combinaciones.
+                </p>
+              </div>
+
+              <!-- Botón «Más» / «Menos» -->
+              <div class="pt-2">
+                <button onclick="toggleUniformeArticle()" id="btn-uniforme" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-brand-gold/15 hover:bg-brand-gold text-brand-gold hover:text-black font-semibold text-xs uppercase tracking-wider rounded-lg border border-brand-gold/40 transition-all duration-300 shadow-sm group">
+                  <span id="btn-text-uniforme">Más</span>
+                  <i data-lucide="chevron-down" id="btn-icon-uniforme" class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5"></i>
+                </button>
+              </div>
+
             </div>
-            <div class="lg:col-span-5 h-72 lg:h-full min-h-[280px] order-1 lg:order-2 overflow-hidden img-zoom-container">
-              <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80&w=800" alt="Uniforme de Chef" class="img-zoom-target w-full h-full object-cover">
+            <div class="lg:col-span-5 h-72 lg:h-full min-h-[300px] order-1 lg:order-2 overflow-hidden img-zoom-container self-stretch bg-neutral-900 flex items-center justify-center">
+              <img src="assets/images/resenas/uniforme_chef.jpg?v=20261030_careme" alt="¿Cómo se llegó a los uniformes para chef? - Historia del Uniforme de Chef" class="img-zoom-target w-full h-full object-cover object-top">
             </div>
           </article>
 
@@ -1375,6 +1399,30 @@
       const ext = document.getElementById('boulanger-extended');
       const btnText = document.getElementById('btn-text-boulanger');
       const btnIcon = document.getElementById('btn-icon-boulanger');
+      
+      if (!ext || !btnText) return;
+
+      if (ext.classList.contains('hidden')) {
+        ext.classList.remove('hidden');
+        btnText.textContent = 'Menos';
+        if (btnIcon) {
+          btnIcon.setAttribute('data-lucide', 'chevron-up');
+        }
+      } else {
+        ext.classList.add('hidden');
+        btnText.textContent = 'Más';
+        if (btnIcon) {
+          btnIcon.setAttribute('data-lucide', 'chevron-down');
+        }
+      }
+      lucide.createIcons();
+    }
+
+    // Despliegue de Reseña Histórica: Uniformes para Chef
+    function toggleUniformeArticle() {
+      const ext = document.getElementById('uniforme-extended');
+      const btnText = document.getElementById('btn-text-uniforme');
+      const btnIcon = document.getElementById('btn-icon-uniforme');
       
       if (!ext || !btnText) return;
 
