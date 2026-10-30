@@ -576,7 +576,7 @@
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
             <div>
               <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
-                <img src="assets/images/recetas/albondigas.jpg" alt="Albóndigas en Salsa Nápole" class="w-full h-full object-cover img-zoom-target">
+                <img src="assets/images/recetas/albondigas.jpg?v=20261030" alt="Albóndigas en Salsa Nápole" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Plato Fuerte Internacional
                 </div>
@@ -596,17 +596,17 @@
             </div>
           </div>
 
-          <!-- 4. Ensaladas Clásicas -->
+          <!-- 4. Ensalada César -->
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
             <div>
               <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
-                <img src="assets/images/recetas/ensaladas.jpg" alt="Ensaladas Clásicas" class="w-full h-full object-cover img-zoom-target">
+                <img src="assets/images/recetas/ensaladas.jpg?v=20261030" alt="Ensalada César" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Cocina Fría & Nutrición
                 </div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Ensaladas Clásicas</h3>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Ensalada César</h3>
                 <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-4">
                   Por su aporte en vitaminas, minerales, fibra y antioxidantes, los nutricionistas recomiendan el consumo de ensaladas con distintas preparaciones, lo que convierte a este plato en mucho más que una entrada.
                 </p>
@@ -620,17 +620,17 @@
             </div>
           </div>
 
-          <!-- 5. Strogonoff -->
+          <!-- 5. Strogonoff de Lomito -->
           <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
             <div>
               <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
-                <img src="assets/images/recetas/strogonoff.jpg" alt="Strogonoff" class="w-full h-full object-cover img-zoom-target">
+                <img src="assets/images/recetas/strogonoff.jpg?v=20261030" alt="Strogonoff de Lomito" class="w-full h-full object-cover img-zoom-target">
                 <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700 text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
                   Alta Cocina Tradicional
                 </div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Strogonoff</h3>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Strogonoff de Lomito</h3>
                 <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-4">
                   Plato de origen ruso, perteneciente a su cocina tradicional, que desde el siglo XVIII forma parte de la alta cocina internacional.
                 </p>
@@ -1127,8 +1127,10 @@
         id: 'albondigas',
         title: 'ALBÓNDIGAS EN SALSA NÁPOLE',
         category: 'Plato Fuerte Internacional',
-        image: 'assets/images/recetas/albondigas.jpg',
-        pdfFileName: 'albondigas_napole_receta_oficial.pdf',
+        image: 'assets/images/recetas/albondigas.jpg?v=20261030',
+        pdfFileName: 'albondigas-salsa-napole-receta-oficial.pdf',
+        pdfUrl: './pdf/albondigas-salsa-napole-receta-oficial.pdf',
+        pdfDownloadName: 'Receta-Albondigas-Salsa-Napole-Lic-Yorman-Trabasilo.pdf',
         history: `
           <p>Es de origen italo-norteamericano a principios del siglo XX. Es un plato muy simple, espaguetis, salsa napolitana y albóndigas de res.</p>
           <p>Nacido de la adaptación de los cocineros inmigrantes que fusionaron las recetas napolitanas con la abundancia de carne de res, este clásico perdura gracias al contraste entre la acidez aromática del tomate cocinado a fuego lento y la jugosidad sazonada de la carne.</p>
@@ -1161,10 +1163,12 @@
 
       ensaladas: {
         id: 'ensaladas',
-        title: 'ENSALADAS CLÁSICAS',
+        title: 'ENSALADA CÉSAR',
         category: 'Cocina Fría & Nutrición',
-        image: 'assets/images/recetas/ensaladas.jpg',
-        pdfFileName: 'ensaladas_clasicas_receta_oficial.pdf',
+        image: 'assets/images/recetas/ensaladas.jpg?v=20261030',
+        pdfFileName: 'ensalada-cesar-receta-oficial.pdf',
+        pdfUrl: './pdf/ensalada-cesar-receta-oficial.pdf',
+        pdfDownloadName: 'Receta-Ensalada-Cesar-Lic-Yorman-Trabasilo.pdf',
         history: `
           <p>Por su aporte en vitaminas, minerales, fibra y antioxidantes, los nutricionistas recomiendan el consumo de ensaladas con distintas preparaciones, lo que convierte a este plato en mucho más que una entrada.</p>
           <p>En la alta gastronomía, una ensalada clásica requiere estricto control de higiene, centrifugado para asegurar que la vinagreta emulsione sin aguarse y un juego maestro de texturas crocantes y aromáticas.</p>
@@ -1191,10 +1195,12 @@
 
       strogonoff: {
         id: 'strogonoff',
-        title: 'STROGONOFF',
+        title: 'STROGONOFF DE LOMITO',
         category: 'Alta Cocina Tradicional',
-        image: 'assets/images/recetas/strogonoff.jpg',
-        pdfFileName: 'strogonoff_receta_oficial.pdf',
+        image: 'assets/images/recetas/strogonoff.jpg?v=20261030',
+        pdfFileName: 'strogonoff-lomito-receta-oficial.pdf',
+        pdfUrl: './pdf/strogonoff-lomito-receta-oficial.pdf',
+        pdfDownloadName: 'Receta-Strogonoff-Lomito-Lic-Yorman-Trabasilo.pdf',
         history: `
           <p>Plato de origen ruso, perteneciente a su cocina tradicional, que desde el siglo XVIII forma parte de la alta cocina internacional.</p>
           <p>Bautizado en honor al conde Grigori Stróganov, fusiona la técnica del salteado express francés con la rica adición de crema agria (sour cream) y hongos silvestres, logrando una textura aterciopelada y sabor profundo inconfundible.</p>
