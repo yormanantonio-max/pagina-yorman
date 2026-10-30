@@ -1198,6 +1198,21 @@
     </div>
   </div>
 
+  <!-- REPRODUCTOR FLOTANTE DE MÚSICA DE FONDO (MULTI-PISTA · VOLUMEN 60%) -->
+  <aside class="fixed bottom-6 left-6 z-40" aria-label="Control de música de fondo ambiental">
+    <button onclick="toggleMusicPlayback()" id="music-toggle-btn" 
+            title="Activar / Silenciar Música de Fondo (60%)"
+            class="flex items-center space-x-2.5 px-4 py-2.5 rounded-full bg-neutral-900/95 hover:bg-neutral-800/95 backdrop-blur-md border border-brand-gold/50 hover:border-brand-gold text-brand-gold shadow-2xl transition-all duration-300 group cursor-pointer">
+      <div class="relative flex items-center justify-center">
+        <i data-lucide="volume-2" id="music-toggle-icon" class="w-4 h-4 text-brand-gold"></i>
+      </div>
+      <span id="music-toggle-text" class="text-xs font-medium text-neutral-200 hidden sm:inline tracking-wider">
+        Música 2: Inicio & Salón (60%)
+      </span>
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping hidden sm:inline-block" id="music-pulse-indicator"></span>
+    </button>
+  </aside>
+
   <!-- Toast de Notificación de Descarga -->
   <div id="recipe-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-neutral-900 border border-brand-gold/60 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center space-x-3 max-w-md">
     <i data-lucide="file-text" class="w-5 h-5 text-brand-gold shrink-0"></i>
@@ -1252,6 +1267,12 @@
         activeBtn.classList.remove('border-transparent', 'text-neutral-300');
         activeBtn.classList.add('border-brand-gold/60', 'bg-neutral-900/80', 'text-brand-gold', 'shadow-sm');
       }
+
+      // Sincronización de Fondo Musical por Pestaña (Volumen 60%)
+      if (typeof setMusicForTab === 'function') {
+        setMusicForTab(tabId);
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1514,6 +1535,12 @@
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
+
+      // Sincronizar Música 1 para Recetario y Ficha Técnica
+      if (typeof playTrack === 'function') {
+        playTrack(1);
+      }
+
       lucide.createIcons();
     }
 
@@ -1522,6 +1549,11 @@
       modal.classList.add('hidden');
       modal.classList.remove('flex');
       document.body.style.overflow = 'auto';
+
+      // Restaurar fondo musical de la pestaña activa
+      if (typeof getActiveTabId === 'function' && typeof setMusicForTab === 'function') {
+        setMusicForTab(getActiveTabId());
+      }
     }
 
     // CONFIGURACIÓN DE ALMACENAMIENTO DE DOCUMENTOS (SUPABASE STORAGE FREE TIER + FALLBACK LOCAL)
@@ -1715,6 +1747,131 @@
       });
       document.getElementById('rating-label').textContent = score + ' / 5 estrellas';
     }
+
+    // ==========================================================================
+    // SISTEMA DE FONDO MUSICAL MULTI-PESTAÑA (VOLUMEN 60% CERTIFICADO)
+    // ==========================================================================
+    const audioState = {
+      isMuted: false,
+      userHasInteracted: false,
+      currentTrack: null, // 1 o 2
+      volume: 0.6 // Volumen exacto al 60%
+    };
+
+    const audioTrack1 = new Audio('assets/audio/musica_1.mp3?v=20261030');
+    audioTrack1.loop = true;
+    audioTrack1.volume = audioState.volume;
+    audioTrack1.preload = 'auto';
+
+    const audioTrack2 = new Audio('assets/audio/musica_2.mp3?v=20261030');
+    audioTrack2.loop = true;
+    audioTrack2.volume = audioState.volume;
+    audioTrack2.preload = 'auto';
+
+    function getActiveTabId() {
+      const activeContent = document.querySelector('.tab-content.active');
+      if (!activeContent) return 'inicio';
+      return activeContent.id.replace('tab-', '');
+    }
+
+    function setMusicForTab(tabId) {
+      // Regla de asignación oficial:
+      // Hoja de Inicio y Hoja de Talleres y Servicios -> Música 2
+      // Hoja de Recetas, Reseñas, Recetario y Galería -> Música 1
+      const targetTrack = (tabId === 'recetas' || tabId === 'reseñas') ? 1 : 2;
+      playTrack(targetTrack);
+    }
+
+    function playTrack(trackNumber) {
+      const activeAudio = trackNumber === 1 ? audioTrack1 : audioTrack2;
+      const inactiveAudio = trackNumber === 1 ? audioTrack2 : audioTrack1;
+
+      // Si ya está sonando este mismo track, no reiniciar
+      if (audioState.currentTrack === trackNumber && !activeAudio.paused) {
+        return;
+      }
+
+      audioState.currentTrack = trackNumber;
+
+      // Pausar el track inactivo
+      try {
+        inactiveAudio.pause();
+      } catch (e) {}
+
+      if (!audioState.isMuted) {
+        activeAudio.volume = audioState.volume;
+        if (audioState.userHasInteracted) {
+          activeAudio.play().catch(() => {});
+        }
+      }
+      updateMusicUI();
+    }
+
+    function toggleMusicPlayback() {
+      audioState.userHasInteracted = true;
+      audioState.isMuted = !audioState.isMuted;
+      
+      const currentAudio = audioState.currentTrack === 1 ? audioTrack1 : audioTrack2;
+      
+      if (audioState.isMuted) {
+        audioTrack1.pause();
+        audioTrack2.pause();
+      } else {
+        currentAudio.volume = audioState.volume;
+        currentAudio.play().catch(() => {});
+      }
+      updateMusicUI();
+    }
+
+    function updateMusicUI() {
+      const musicIcon = document.getElementById('music-toggle-icon');
+      const musicText = document.getElementById('music-toggle-text');
+      const pulseIndicator = document.getElementById('music-pulse-indicator');
+      
+      if (!musicIcon) return;
+
+      const currentAudio = audioState.currentTrack === 1 ? audioTrack1 : audioTrack2;
+      const isPlaying = !audioState.isMuted && audioState.userHasInteracted && !currentAudio.paused;
+
+      if (isPlaying) {
+        musicIcon.setAttribute('data-lucide', 'volume-2');
+        musicIcon.classList.add('text-brand-gold');
+        musicIcon.classList.remove('text-neutral-500');
+        if (pulseIndicator) {
+          pulseIndicator.classList.remove('hidden');
+          pulseIndicator.classList.add('inline-block');
+        }
+        if (musicText) {
+          const trackLabel = audioState.currentTrack === 1 ? 'Música 1: Recetario & Reseñas' : 'Música 2: Inicio & Salón';
+          musicText.textContent = `${trackLabel} (60%)`;
+        }
+      } else {
+        musicIcon.setAttribute('data-lucide', 'volume-x');
+        musicIcon.classList.remove('text-brand-gold');
+        musicIcon.classList.add('text-neutral-500');
+        if (pulseIndicator) {
+          pulseIndicator.classList.remove('inline-block');
+          pulseIndicator.classList.add('hidden');
+        }
+        if (musicText) {
+          musicText.textContent = audioState.isMuted ? 'Música silenciada' : 'Toca para activar música (60%)';
+        }
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Inicialización al primer gesto de interacción del usuario (política de navegadores)
+    function initAudioOnFirstGesture() {
+      if (audioState.userHasInteracted) return;
+      audioState.userHasInteracted = true;
+      setMusicForTab(getActiveTabId());
+      updateMusicUI();
+      document.removeEventListener('click', initAudioOnFirstGesture);
+      document.removeEventListener('touchstart', initAudioOnFirstGesture);
+    }
+
+    document.addEventListener('click', initAudioOnFirstGesture, { once: true });
+    document.addEventListener('touchstart', initAudioOnFirstGesture, { once: true });
   </script>
 </body>
 </html>
