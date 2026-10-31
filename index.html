@@ -99,12 +99,47 @@
                class="h-10 sm:h-12 w-auto object-contain opacity-25 filter drop-shadow-[0_0_12px_rgba(212,175,55,0.35)] transition-opacity duration-300 group-hover:opacity-80">
         </div>
 
-        <!-- 4 Pestañas Navegables Canónicas (Alineadas a la izquierda en Desktop tal como el Mockup Oficial) -->
+        <!-- Pestañas Navegables con Submenús Desplegables al Hover -->
         <nav class="hidden md:flex items-center space-x-2 lg:space-x-3">
-          <button onclick="switchTab('inicio')" id="btn-inicio" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-brand-gold/60 bg-neutral-900/80 text-brand-gold shadow-sm">Inicio</button>
-          <button onclick="switchTab('recetas')" id="btn-recetas" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-transparent text-neutral-300 hover:text-white hover:bg-white/5">Recetas</button>
-          <button onclick="switchTab('reseñas')" id="btn-reseñas" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-transparent text-neutral-300 hover:text-white hover:bg-white/5">Reseñas</button>
-          <button onclick="switchTab('talleres-servicios')" id="btn-talleres-servicios" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-transparent text-neutral-300 hover:text-white hover:bg-white/5">Talleres y Servicios</button>
+          <!-- 1. Inicio -->
+          <button onclick="switchTab('inicio')" id="btn-inicio" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-brand-gold/60 bg-neutral-900/80 text-brand-gold shadow-sm cursor-pointer">Inicio</button>
+          
+          <!-- 2. Recetas con Desplegable: Recetario -->
+          <div class="relative group">
+            <button onclick="switchTab('recetas')" id="btn-recetas" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-transparent text-neutral-300 hover:text-white hover:bg-white/5 flex items-center space-x-1.5 cursor-pointer">
+              <span>Recetas</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-brand-gold group-hover:rotate-180 transition-transform duration-300"></i>
+            </button>
+            <!-- Menú Desplegable Recetario al pasar el cursor -->
+            <div class="absolute left-0 top-full pt-1.5 w-44 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50 transform -translate-y-1 group-hover:translate-y-0">
+              <div class="p-1 bg-[#18171a]/95 backdrop-blur-md border border-neutral-800 rounded-xl shadow-2xl">
+                <button onclick="switchTab('recetario')" id="btn-recetario" class="subtab-nav-btn w-full px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-300 border border-neutral-800/80 bg-neutral-900/90 text-neutral-300 hover:text-brand-gold hover:border-brand-gold/60 flex items-center space-x-2 cursor-pointer text-left">
+                  <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold shrink-0"></i>
+                  <span>Recetario</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Reseñas -->
+          <button onclick="switchTab('reseñas')" id="btn-reseñas" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-transparent text-neutral-300 hover:text-white hover:bg-white/5 cursor-pointer">Reseñas</button>
+
+          <!-- 4. Talleres y Servicios con Desplegable: Galería -->
+          <div class="relative group">
+            <button onclick="switchTab('talleres-servicios')" id="btn-talleres-servicios" class="tab-btn px-5 py-2 text-sm font-medium rounded-lg transition-all duration-300 border border-transparent text-neutral-300 hover:text-white hover:bg-white/5 flex items-center space-x-1.5 cursor-pointer">
+              <span>Talleres y Servicios</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-brand-gold group-hover:rotate-180 transition-transform duration-300"></i>
+            </button>
+            <!-- Menú Desplegable Galería al pasar el cursor -->
+            <div class="absolute left-0 top-full pt-1.5 w-44 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50 transform -translate-y-1 group-hover:translate-y-0">
+              <div class="p-1 bg-[#18171a]/95 backdrop-blur-md border border-neutral-800 rounded-xl shadow-2xl">
+                <button onclick="switchTab('galeria')" id="btn-galeria" class="subtab-nav-btn w-full px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-300 border border-neutral-800/80 bg-neutral-900/90 text-neutral-300 hover:text-brand-gold hover:border-brand-gold/60 flex items-center space-x-2 cursor-pointer text-left">
+                  <i data-lucide="camera" class="w-3.5 h-3.5 text-brand-gold shrink-0"></i>
+                  <span>Galería</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </nav>
 
         <!-- Canales Oficiales: WhatsApp & Instagram (Alineados a la derecha tal como el Mockup Oficial) -->
@@ -135,9 +170,30 @@
     <!-- Menú Móvil -->
     <div id="mobile-menu" class="hidden md:hidden border-b border-neutral-800 bg-brand-card px-4 pt-2 pb-4 space-y-2">
       <button onclick="switchTab('inicio'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Inicio</button>
-      <button onclick="switchTab('recetas'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Recetas</button>
+      
+      <!-- Grupo Recetas -->
+      <div class="space-y-1 pl-1 border-l-2 border-neutral-800">
+        <button onclick="switchTab('recetas'); toggleMobileMenu()" class="w-full text-left px-3 py-1.5 text-sm font-medium text-white hover:bg-neutral-800 rounded-md flex items-center justify-between">
+          <span>Recetas</span>
+        </button>
+        <button onclick="switchTab('recetario'); toggleMobileMenu()" class="w-full text-left px-5 py-1.5 text-xs font-semibold text-brand-gold hover:bg-neutral-800 rounded-md flex items-center space-x-2">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
+          <span>Subcarpeta Recetario</span>
+        </button>
+      </div>
+
       <button onclick="switchTab('reseñas'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Reseñas</button>
-      <button onclick="switchTab('talleres-servicios'); toggleMobileMenu()" class="w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 rounded-md">Talleres y Servicios</button>
+      
+      <!-- Grupo Talleres y Servicios -->
+      <div class="space-y-1 pl-1 border-l-2 border-neutral-800">
+        <button onclick="switchTab('talleres-servicios'); toggleMobileMenu()" class="w-full text-left px-3 py-1.5 text-sm font-medium text-white hover:bg-neutral-800 rounded-md flex items-center justify-between">
+          <span>Talleres y Servicios</span>
+        </button>
+        <button onclick="switchTab('galeria'); toggleMobileMenu()" class="w-full text-left px-5 py-1.5 text-xs font-semibold text-brand-gold hover:bg-neutral-800 rounded-md flex items-center space-x-2">
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-brand-gold"></i>
+          <span>Galería</span>
+        </button>
+      </div>
       <div class="pt-2 border-t border-neutral-800 flex flex-col space-y-2 text-xs text-brand-gold px-3">
         <a href="https://wa.me/584223409622" target="_blank" class="flex items-center space-x-2 text-neutral-200 hover:text-brand-gold">
           <svg class="w-4 h-4 text-[#25D366] fill-current shrink-0" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 0 0 1.333 4.993L2 22l5.233-1.237a9.994 9.994 0 0 0 4.779 1.217h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.925-7.062A9.925 9.925 0 0 0 12.012 2zm.004 18.318h-.003a8.314 8.314 0 0 1-4.233-1.157l-.304-.18-3.146.744.757-3.067-.198-.315a8.272 8.272 0 0 1-1.268-4.364c.001-4.571 3.72-8.288 8.297-8.288 2.215 0 4.298.863 5.864 2.428a8.238 8.238 0 0 1 2.425 5.865c-.001 4.57-3.72 8.289-8.291 8.289zm4.542-6.196c-.249-.125-1.472-.726-1.7-.809-.228-.083-.394-.125-.56.125-.166.249-.643.809-.788.975-.145.166-.29.187-.539.062-.249-.125-1.052-.388-2.003-1.237-.741-.661-1.241-1.477-1.387-1.726-.145-.249-.015-.384.109-.508.112-.112.249-.29.373-.436.125-.145.166-.249.249-.415.083-.166.042-.311-.021-.436-.062-.125-.56-1.349-.768-1.847-.202-.486-.407-.42-.56-.428l-.477-.008c-.166 0-.436.062-.664.311-.228.249-.871.851-.871 2.075 0 1.224.892 2.407 1.016 2.573.125.166 1.756 2.681 4.254 3.759.594.257 1.058.41 1.42.525.597.19 1.141.163 1.57.099.479-.071 1.472-.602 1.68-1.183.208-.581.208-1.079.145-1.183-.062-.104-.228-.166-.477-.291z"/></svg>
@@ -504,16 +560,12 @@
     <section class="py-12 bg-brand-charcoal border-b border-neutral-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-8 border-b border-neutral-800 gap-4">
-          <div>
-            <span id="recipes-header-tag" class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Fichas Técnicas & Estandarización</span>
-            <h1 id="recipes-header-title" class="text-3xl sm:text-4xl font-serif text-white font-bold">Recetario y Especialidades</h1>
-          </div>
-          <div class="inline-flex p-1 bg-brand-card rounded-lg border border-neutral-800">
-            <button onclick="filterRecipes('all')" id="sub-all" class="subtab-btn px-4 py-1.5 text-xs font-semibold rounded bg-brand-gold text-black">Todas</button>
-            <button onclick="filterRecipes('recetario')" id="sub-recetario" class="subtab-btn px-4 py-1.5 text-xs font-semibold rounded text-neutral-400 hover:text-white">Recetario</button>
-            <button onclick="filterRecipes('galeria')" id="sub-galeria" class="subtab-btn px-4 py-1.5 text-xs font-semibold rounded text-neutral-400 hover:text-white">Galería</button>
-          </div>
+        <div class="pb-8 border-b border-neutral-800">
+          <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Fichas Técnicas & Estandarización</span>
+          <h1 class="text-3xl sm:text-4xl font-serif text-white font-bold mt-1">Recetas Culinarias Oficiales</h1>
+          <p class="text-xs sm:text-sm text-neutral-400 mt-2 font-light">
+            Fichas técnicas estandarizadas con formulación exacta, procedimiento paso a paso, reseña histórica y descarga en formato PDF.
+          </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8" id="recipes-grid">
@@ -638,7 +690,70 @@
             </div>
           </div>
 
-          <!-- ======================================================== -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN 2.1: PESTAÑA RECETARIO (SUB-HOJA)  -->
+  <!-- ========================================== -->
+  <main id="tab-recetario" class="tab-content">
+    <section class="py-16 sm:py-24 bg-brand-charcoal border-b border-neutral-800 min-h-[65vh] flex items-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+        
+        <div class="p-8 sm:p-14 bg-brand-card rounded-2xl border border-neutral-800/80 shadow-2xl relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-48 h-48 bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="inline-flex p-4 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold mb-6 shadow-inner">
+            <i data-lucide="book-open" class="w-10 h-10 text-brand-gold"></i>
+          </div>
+
+          <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold block mb-2">Fichas Técnicas & Metodología Gastronómica</span>
+          <h1 class="text-3xl sm:text-4xl font-serif text-white font-bold">Recetario Profesional</h1>
+          
+          <div class="w-16 h-0.5 bg-brand-gold/40 mx-auto my-6"></div>
+
+          <p class="text-sm sm:text-base text-neutral-300 max-w-xl mx-auto leading-relaxed font-light">
+            Esta sección se encuentra en preparación bajo la dirección y curaduría técnica del <strong class="text-white font-medium">Lic. Yorman Trabasilo</strong>. Próximamente se integrarán nuevas formulaciones, fichas de costeo y procedimientos estandarizados.
+          </p>
+
+          <div class="mt-8 inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-neutral-400">
+            <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+            <span>Módulo reservado para próximas actualizaciones</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN 4.1: PESTAÑA GALERÍA (12 FOTOS)     -->
+  <!-- ========================================== -->
+  <main id="tab-galeria" class="tab-content">
+    <section class="py-12 bg-brand-charcoal border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado de la Galería -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-8 border-b border-neutral-800 gap-4">
+          <div>
+            <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Registro Visual & Alta Gastronomía</span>
+            <h1 class="text-3xl sm:text-4xl font-serif text-white font-bold mt-1">Galería Fotográfica Profesional</h1>
+            <p class="text-xs sm:text-sm text-neutral-400 mt-2 font-light">
+              Registro gráfico de brigadas de cocina, servicio de sala, coctelería, banquetes y docencia culinaria · Lic. Yorman Trabasilo.
+            </p>
+          </div>
+          <div class="px-3.5 py-1.5 rounded-lg bg-brand-card border border-neutral-800 text-xs text-brand-gold font-mono flex items-center space-x-2 shrink-0">
+            <i data-lucide="camera" class="w-4 h-4 text-brand-gold"></i>
+            <span>12 Fotografías Oficiales</span>
+          </div>
+        </div>
+
+        <!-- Cuadrícula Interactiva con las 12 Fotos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-8" id="gallery-grid">
+<!-- ======================================================== -->
           <!-- COLECCIÓN OFICIAL: GALERÍA FOTOGRÁFICA INTERACTIVA (1-12) -->
           <!-- ======================================================== -->
 
@@ -1061,8 +1176,8 @@
               </button>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
   </main>
@@ -1730,17 +1845,37 @@
         btn.classList.remove('border-brand-gold/60', 'bg-neutral-900/80', 'text-brand-gold', 'shadow-sm');
         btn.classList.add('border-transparent', 'text-neutral-300');
       });
+      document.querySelectorAll('.subtab-nav-btn').forEach(btn => {
+        btn.classList.remove('border-brand-gold/60', 'bg-neutral-900', 'text-brand-gold');
+        btn.classList.add('border-neutral-800/80', 'text-neutral-300');
+      });
 
       const activeContent = document.getElementById('tab-' + tabId);
       const activeBtn = document.getElementById('btn-' + tabId);
 
       if (activeContent) activeContent.classList.add('active');
+      
       if (activeBtn) {
         activeBtn.classList.remove('border-transparent', 'text-neutral-300');
         activeBtn.classList.add('border-brand-gold/60', 'bg-neutral-900/80', 'text-brand-gold', 'shadow-sm');
       }
 
-      // Sincronización de Fondo Musical por Pestaña (Volumen 60%)
+      // Resaltar botón padre si se activa una subcarpeta
+      if (tabId === 'recetario') {
+        const parentBtn = document.getElementById('btn-recetas');
+        if (parentBtn) {
+          parentBtn.classList.remove('border-transparent', 'text-neutral-300');
+          parentBtn.classList.add('border-brand-gold/60', 'bg-neutral-900/80', 'text-brand-gold', 'shadow-sm');
+        }
+      } else if (tabId === 'galeria') {
+        const parentBtn = document.getElementById('btn-talleres-servicios');
+        if (parentBtn) {
+          parentBtn.classList.remove('border-transparent', 'text-neutral-300');
+          parentBtn.classList.add('border-brand-gold/60', 'bg-neutral-900/80', 'text-brand-gold', 'shadow-sm');
+        }
+      }
+
+      // Sincronización de Fondo Musical por Pestaña
       if (typeof setMusicForTab === 'function') {
         setMusicForTab(tabId);
       }
@@ -2415,7 +2550,7 @@
       // Regla de asignación oficial:
       // Hoja de Inicio y Hoja de Talleres y Servicios -> Música 2
       // Hoja de Recetas, Reseñas, Recetario y Galería -> Música 1
-      const targetTrack = (tabId === 'recetas' || tabId === 'reseñas') ? 1 : 2;
+      const targetTrack = (tabId === 'recetas' || tabId === 'recetario' || tabId === 'reseñas' || tabId === 'galeria') ? 1 : 2;
       playTrack(targetTrack);
     }
 
