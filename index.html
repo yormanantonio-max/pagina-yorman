@@ -506,8 +506,8 @@
         
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-8 border-b border-neutral-800 gap-4">
           <div>
-            <span class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Fichas Técnicas & Estandarización</span>
-            <h1 class="text-3xl sm:text-4xl font-serif text-white font-bold">Recetario y Especialidades</h1>
+            <span id="recipes-header-tag" class="text-xs text-brand-gold uppercase tracking-widest font-semibold">Fichas Técnicas & Estandarización</span>
+            <h1 id="recipes-header-title" class="text-3xl sm:text-4xl font-serif text-white font-bold">Recetario y Especialidades</h1>
           </div>
           <div class="inline-flex p-1 bg-brand-card rounded-lg border border-neutral-800">
             <button onclick="filterRecipes('all')" id="sub-all" class="subtab-btn px-4 py-1.5 text-xs font-semibold rounded bg-brand-gold text-black">Todas</button>
@@ -543,7 +543,7 @@
           </div>
 
           <!-- 2. Guacamole Marino -->
-          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
             <div>
               <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
                 <img src="assets/images/recetas/guacamole_marino.jpg?v=20261028" alt="Guacamole Marino" class="w-full h-full object-cover img-zoom-target">
@@ -591,7 +591,7 @@
           </div>
 
           <!-- 4. Ensalada César -->
-          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="recetario">
             <div>
               <div class="relative h-52 overflow-hidden bg-neutral-900 img-zoom-container">
                 <img src="assets/images/recetas/ensaladas.jpg?v=20261030" alt="Ensalada César" class="w-full h-full object-cover img-zoom-target">
@@ -634,6 +634,430 @@
               <button onclick="openRecipeModal('strogonoff')" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
                 <span>Ir a la Receta</span>
                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- ======================================================== -->
+          <!-- COLECCIÓN OFICIAL: GALERÍA FOTOGRÁFICA INTERACTIVA (1-12) -->
+          <!-- ======================================================== -->
+
+          <!-- 1. Galería Foto 1 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(1)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_1.jpg?v=20261030" alt="Galería Fotos Página Yoman 1" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #01</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">01 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 1</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y brigada culinaria · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(1)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Galería Foto 2 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(2)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_2.jpg?v=20261030" alt="Galería Fotos Página Yoman 2" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #02</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">02 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 2</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y servicio de coctelería · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(2)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Galería Foto 3 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(3)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_3.jpg?v=20261030" alt="Galería Fotos Página Yoman 3" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #03</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">03 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 3</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y brigada culinaria · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(3)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Galería Foto 4 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(4)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_4.jpg?v=20261030" alt="Galería Fotos Página Yoman 4" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #04</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">04 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 4</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y mesa de postres gourmet · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(4)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. Galería Foto 5 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(5)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_5.jpg?v=20261030" alt="Galería Fotos Página Yoman 5" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #05</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">05 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 5</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y montaje culinario de autor · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(5)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 6. Galería Foto 6 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(6)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_6.jpg?v=20261030" alt="Galería Fotos Página Yoman 6" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #06</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">06 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 6</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y liderazgo de cocina · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(6)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 7. Galería Foto 7 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(7)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_7.jpg?v=20261030" alt="Galería Fotos Página Yoman 7" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #07</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">07 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 7</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y estación de producción · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(7)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 8. Galería Foto 8 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(8)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_8.jpg?v=20261030" alt="Galería Fotos Página Yoman 8" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #08</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">08 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 8</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y servicio de banquete · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(8)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 9. Galería Foto 9 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(9)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_9.jpg?v=20261030" alt="Galería Fotos Página Yoman 9" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #09</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">09 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 9</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y equipo de servicio de gala · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(9)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 10. Galería Foto 10 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(10)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_10.jpg?v=20261030" alt="Galería Fotos Página Yoman 10" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #10</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">10 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 10</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional en San Isidro Club · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(10)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 11. Galería Foto 11 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(11)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_11.jpg?v=20261030" alt="Galería Fotos Página Yoman 11" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #11</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">11 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 11</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y brigada académica de formación culinaria · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(11)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 12. Galería Foto 12 -->
+          <div class="recipe-card bg-brand-card rounded-xl border border-neutral-800 hover:border-brand-gold/60 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl" data-type="galeria">
+            <div class="cursor-pointer" onclick="openGalleryModal(12)">
+              <div class="relative h-64 overflow-hidden bg-neutral-900 img-zoom-container">
+                <img src="assets/images/galeria/galeria_12.jpg?v=20261030" alt="Galería Fotos Página Yoman 12" class="w-full h-full object-cover img-zoom-target">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-brand-gold/40 text-[10px] text-brand-gold font-semibold uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                  <i data-lucide="camera" class="w-3 h-3 text-brand-gold"></i>
+                  <span>Foto #12</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-brand-gold text-black text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Agrandar Imagen</span>
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                  <span class="text-brand-gold font-medium">Registro Fotográfico</span>
+                  <span class="font-mono">12 / 12</span>
+                </div>
+                <h3 class="text-xl font-serif text-white font-bold group-hover:text-brand-gold transition-colors">Galería Fotos Página Yoman 12</h3>
+                <p class="text-xs text-neutral-400 mt-2.5 leading-relaxed line-clamp-3">
+                  Registro fotográfico profesional y acto de grado gastronómico con la bandera nacional · Lic. Yorman Trabasilo.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="openGalleryModal(12)" class="w-full py-2.5 bg-neutral-800 hover:bg-brand-gold hover:text-black text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Seleccionar y Agrandar</span>
               </button>
             </div>
           </div>
@@ -1214,6 +1638,59 @@
     <span id="toast-message" class="text-xs text-neutral-200 leading-snug"></span>
   </div>
 
+  <!-- MODAL DE GALERÍA FOTOGRÁFICA INTERACTIVA (LIGHTBOX MODERNO DE ALTA FIDELIDAD) -->
+  <div id="gallery-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex-col justify-between p-3 sm:p-6 overflow-hidden select-none animate-in fade-in duration-200">
+    
+    <!-- Encabezado Superior del Modal -->
+    <div class="w-full max-w-6xl mx-auto flex items-center justify-between py-2.5 px-4 bg-neutral-900/90 rounded-xl border border-neutral-800 backdrop-blur-md z-30 shadow-lg">
+      <div class="flex items-center space-x-3 min-w-0">
+        <span class="px-2.5 py-1 rounded bg-brand-gold/15 border border-brand-gold/40 text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider flex items-center space-x-1 shrink-0">
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-brand-gold"></i>
+          <span id="gallery-modal-tag">Foto #01</span>
+        </span>
+        <h2 id="gallery-modal-title" class="text-white font-serif text-sm sm:text-lg font-bold truncate">Galería Fotos Página Yoman 1</h2>
+      </div>
+      <div class="flex items-center space-x-3 shrink-0">
+        <span id="gallery-modal-counter" class="text-neutral-400 text-xs font-mono px-2.5 py-1 bg-black/70 rounded border border-neutral-800">1 / 12</span>
+        <button onclick="closeGalleryModal()" class="p-2 rounded-full bg-neutral-800 hover:bg-brand-gold hover:text-black text-neutral-300 transition-colors cursor-pointer" title="Cerrar (Esc)">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Escenario Central: Fotografía Agrandada y Controles de Navegación -->
+    <div class="relative flex-1 flex items-center justify-center my-auto py-2 w-full max-w-6xl mx-auto overflow-hidden">
+      <!-- Botón Anterior -->
+      <button onclick="prevGalleryImage()" class="absolute left-1 sm:left-4 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/80 hover:bg-brand-gold hover:text-black text-white border border-neutral-700/80 transition-all shadow-2xl backdrop-blur-sm group cursor-pointer" title="Anterior (Flecha izquierda)">
+        <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-0.5 transition-transform"></i>
+      </button>
+
+      <!-- Contenedor Imagen Central -->
+      <div class="relative max-h-[66vh] sm:max-h-[70vh] flex items-center justify-center p-1 sm:p-2">
+        <img id="gallery-modal-img" src="" alt="Galería Agrandada" class="max-h-[64vh] sm:max-h-[68vh] max-w-[94vw] sm:max-w-[82vw] object-contain rounded-xl border border-neutral-800 shadow-2xl transition-all duration-300">
+      </div>
+
+      <!-- Botón Siguiente -->
+      <button onclick="nextGalleryImage()" class="absolute right-1 sm:right-4 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/80 hover:bg-brand-gold hover:text-black text-white border border-neutral-700/80 transition-all shadow-2xl backdrop-blur-sm group cursor-pointer" title="Siguiente (Flecha derecha)">
+        <i data-lucide="chevron-right" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-0.5 transition-transform"></i>
+      </button>
+    </div>
+
+    <!-- Selector Moderno Inferior: Carrusel de Miniaturas con Indicador Activo -->
+    <div class="w-full max-w-5xl mx-auto py-2.5 px-3 bg-neutral-900/80 rounded-xl border border-neutral-800 backdrop-blur-md z-30 shadow-lg">
+      <div class="text-[11px] text-neutral-400 font-medium mb-1.5 flex items-center justify-between px-1">
+        <span class="text-brand-gold uppercase tracking-wider flex items-center gap-1">
+          <i data-lucide="layout-grid" class="w-3 h-3 text-brand-gold"></i> Selector Rápido de Imágenes
+        </span>
+        <span class="text-neutral-500 hidden sm:inline">Haz clic en cualquier miniatura o navega con las flechas</span>
+      </div>
+      <div class="flex items-center justify-start sm:justify-center space-x-2 sm:space-x-3 overflow-x-auto py-1 px-1 no-scrollbar" id="gallery-modal-ribbon">
+        <!-- Inyectado dinámicamente -->
+      </div>
+    </div>
+
+  </div>
+
   <!-- PIE DE PÁGINA OFICIAL ACTUALIZADO -->
   <footer class="bg-black border-t border-neutral-900 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1279,7 +1756,7 @@
     mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     function toggleMobileMenu() { mobileMenu.classList.add('hidden'); }
 
-    // Filtro de Recetas
+    // Filtro de Recetas & Galería
     function filterRecipes(filter) {
       document.querySelectorAll('.subtab-btn').forEach(btn => {
         btn.classList.remove('bg-brand-gold', 'text-black');
@@ -1290,9 +1767,174 @@
         activeBtn.classList.remove('text-neutral-400');
         activeBtn.classList.add('bg-brand-gold', 'text-black');
       }
+
+      // Actualizar Encabezado Dinámico según filtro activo
+      const headerTag = document.getElementById('recipes-header-tag');
+      const headerTitle = document.getElementById('recipes-header-title');
+      if (headerTag && headerTitle) {
+        if (filter === 'recetario') {
+          headerTag.textContent = 'FICHAS TÉCNICAS & ESTANDARIZACIÓN';
+          headerTitle.textContent = 'Recetario y Especialidades';
+        } else if (filter === 'galeria') {
+          headerTag.textContent = 'REGISTRO FOTOGRÁFICO & ALTA GASTRONOMÍA';
+          headerTitle.textContent = 'Galería de Brigada, Sala y Eventos';
+        } else {
+          headerTag.textContent = 'FICHAS TÉCNICAS & REGISTRO VISUAL';
+          headerTitle.textContent = 'Recetario y Galería Fotográfica';
+        }
+      }
+
       document.querySelectorAll('.recipe-card').forEach(card => {
         card.style.display = (filter === 'all' || card.getAttribute('data-type') === filter) ? 'flex' : 'none';
       });
+
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+    }
+
+    // ==========================================
+    // SISTEMA DE GALERÍA FOTOGRÁFICA INTERACTIVA
+    // ==========================================
+    const GALLERY_ITEMS = [
+      { id: 1, title: 'Galería Fotos Página Yoman 1', tag: 'Foto #01', desc: 'Registro fotográfico profesional y brigada culinaria · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_1.jpg?v=20261030' },
+      { id: 2, title: 'Galería Fotos Página Yoman 2', tag: 'Foto #02', desc: 'Registro fotográfico profesional y servicio de coctelería · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_2.jpg?v=20261030' },
+      { id: 3, title: 'Galería Fotos Página Yoman 3', tag: 'Foto #03', desc: 'Registro fotográfico profesional y brigada culinaria · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_3.jpg?v=20261030' },
+      { id: 4, title: 'Galería Fotos Página Yoman 4', tag: 'Foto #04', desc: 'Registro fotográfico profesional y mesa de postres gourmet · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_4.jpg?v=20261030' },
+      { id: 5, title: 'Galería Fotos Página Yoman 5', tag: 'Foto #05', desc: 'Registro fotográfico profesional y montaje culinario de autor · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_5.jpg?v=20261030' },
+      { id: 6, title: 'Galería Fotos Página Yoman 6', tag: 'Foto #06', desc: 'Registro fotográfico profesional y liderazgo de cocina · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_6.jpg?v=20261030' },
+      { id: 7, title: 'Galería Fotos Página Yoman 7', tag: 'Foto #07', desc: 'Registro fotográfico profesional y estación de producción · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_7.jpg?v=20261030' },
+      { id: 8, title: 'Galería Fotos Página Yoman 8', tag: 'Foto #08', desc: 'Registro fotográfico profesional y servicio de banquete · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_8.jpg?v=20261030' },
+      { id: 9, title: 'Galería Fotos Página Yoman 9', tag: 'Foto #09', desc: 'Registro fotográfico profesional y equipo de servicio de gala · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_9.jpg?v=20261030' },
+      { id: 10, title: 'Galería Fotos Página Yoman 10', tag: 'Foto #10', desc: 'Registro fotográfico profesional en San Isidro Club · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_10.jpg?v=20261030' },
+      { id: 11, title: 'Galería Fotos Página Yoman 11', tag: 'Foto #11', desc: 'Registro fotográfico profesional y brigada académica de formación culinaria · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_11.jpg?v=20261030' },
+      { id: 12, title: 'Galería Fotos Página Yoman 12', tag: 'Foto #12', desc: 'Registro fotográfico profesional y acto de grado gastronómico · Lic. Yorman Trabasilo', image: 'assets/images/galeria/galeria_12.jpg?v=20261030' }
+    ];
+
+    let currentGalleryIndex = 0;
+
+    function renderGalleryRibbon() {
+      const ribbon = document.getElementById('gallery-modal-ribbon');
+      if (!ribbon) return;
+      ribbon.innerHTML = GALLERY_ITEMS.map((item, idx) => `
+        <button onclick="selectGalleryImage(${idx})" class="gallery-thumb-btn shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 cursor-pointer ${idx === currentGalleryIndex ? 'border-brand-gold ring-2 ring-brand-gold/60 scale-105 opacity-100 shadow-md' : 'border-neutral-800 opacity-50 hover:opacity-90 hover:border-neutral-600'}" title="${item.title}">
+          <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+        </button>
+      `).join('');
+    }
+
+    function updateGalleryModalView() {
+      const item = GALLERY_ITEMS[currentGalleryIndex];
+      if (!item) return;
+      const modalImg = document.getElementById('gallery-modal-img');
+      const modalTitle = document.getElementById('gallery-modal-title');
+      const modalTag = document.getElementById('gallery-modal-tag');
+      const modalCounter = document.getElementById('gallery-modal-counter');
+
+      if (modalImg) {
+        modalImg.style.opacity = '0';
+        modalImg.style.transform = 'scale(0.97)';
+        setTimeout(() => {
+          modalImg.src = item.image;
+          modalImg.alt = item.title;
+          modalImg.style.opacity = '1';
+          modalImg.style.transform = 'scale(1)';
+        }, 120);
+      }
+
+      if (modalTitle) modalTitle.textContent = item.title;
+      if (modalTag) modalTag.textContent = item.tag;
+      if (modalCounter) modalCounter.textContent = `${currentGalleryIndex + 1} / ${GALLERY_ITEMS.length}`;
+
+      renderGalleryRibbon();
+
+      // Desplazamiento automático para centrar la miniatura activa en pantalla
+      const ribbon = document.getElementById('gallery-modal-ribbon');
+      if (ribbon && ribbon.children[currentGalleryIndex]) {
+        ribbon.children[currentGalleryIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+    }
+
+    function openGalleryModal(photoNumber) {
+      currentGalleryIndex = Math.max(0, Math.min(GALLERY_ITEMS.length - 1, photoNumber - 1));
+      const modal = document.getElementById('gallery-modal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      updateGalleryModalView();
+
+      // Sincronizar Música 1 para Galería
+      if (typeof playTrack === 'function') {
+        playTrack(1);
+      }
+
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+    }
+
+    function closeGalleryModal() {
+      const modal = document.getElementById('gallery-modal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+
+      // Restaurar fondo musical de la pestaña activa si aplica
+      if (typeof getActiveTabId === 'function' && typeof setMusicForTab === 'function') {
+        setMusicForTab(getActiveTabId());
+      }
+    }
+
+    function nextGalleryImage() {
+      currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_ITEMS.length;
+      updateGalleryModalView();
+    }
+
+    function prevGalleryImage() {
+      currentGalleryIndex = (currentGalleryIndex - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+      updateGalleryModalView();
+    }
+
+    function selectGalleryImage(idx) {
+      currentGalleryIndex = idx;
+      updateGalleryModalView();
+    }
+
+    // Navegación por teclado (Flechas y Escape)
+    window.addEventListener('keydown', (e) => {
+      const galleryModal = document.getElementById('gallery-modal');
+      if (galleryModal && !galleryModal.classList.contains('hidden')) {
+        if (e.key === 'ArrowRight') nextGalleryImage();
+        if (e.key === 'ArrowLeft') prevGalleryImage();
+        if (e.key === 'Escape') closeGalleryModal();
+      }
+    });
+
+    // Soporte táctil Swipe para móviles
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const galleryModalEl = document.getElementById('gallery-modal');
+    if (galleryModalEl) {
+      galleryModalEl.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      galleryModalEl.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
+    }
+    function handleSwipeGesture() {
+      const deltaX = touchEndX - touchStartX;
+      if (Math.abs(deltaX) > 45) {
+        if (deltaX < 0) nextGalleryImage();
+        else prevGalleryImage();
+      }
     }
 
     // BASE DE DATOS DE RECETAS CANÓNICAS OFICIALES (WIX INTEGRATION)
