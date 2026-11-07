@@ -1,6 +1,11 @@
 {
   "version": 2,
   "cleanUrls": false,
+  "rewrites": [
+    { "source": "/catalogo", "destination": "/catalogo_quebrutal/index.html" },
+    { "source": "/catalogo_quebrutal", "destination": "/catalogo_quebrutal/index.html" },
+    { "source": "/quebrutal", "destination": "/catalogo_quebrutal/index.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

@@ -1,0 +1,707 @@
+# PROMASTER — ¡QUÉ BRUTAL!
+# DOCUMENTO MAESTRO DE DISEÑO Y ARQUITECTURA
+## CATÁLOGO DIGITAL GASTRONÓMICO
+**Versión 1.0 — Especificación fundacional para desarrollo en Argon**
+
+---
+
+## 1. IDENTIFICACIÓN DEL PROYECTO
+
+**Marca comercial:** ¡Qué Brutal!
+
+**Eslogan:** El sabor que te deja sin palabras.
+
+**Concepto de marca:** Masa viva, fuego real, sabor brutal.
+
+**Producto gastronómico protagonista:** Pizza napolitana artesanal.
+
+**Tipo de proyecto:** Catálogo digital gastronómico, comercial, visual e interactivo.
+
+**Entorno de desarrollo inicial:** Argon.
+
+**Fase posterior de implementación:** Antigravity, integración con la página web, despliegue y publicación en infraestructura web.
+
+### 1.1. Propósito general
+
+Diseñar y desarrollar un catálogo digital profesional para ¡Qué Brutal!, orientado a presentar, organizar y comercializar visualmente su oferta gastronómica mediante una experiencia digital moderna, atractiva, intuitiva y adaptable a dispositivos móviles y computadoras.
+
+El catálogo debe permitir que los clientes descubran los productos, conozcan sus características, consulten sus presentaciones y precios y establezcan contacto directo mediante WhatsApp.
+
+El proyecto no debe concebirse como una simple reproducción de un menú convencional ni como una tienda electrónica. Su propósito es funcionar como una vitrina gastronómica digital de marca, con identidad visual propia y capacidad de evolución comercial.
+
+---
+
+## 2. CONCEPTO FUNDAMENTAL: DOS EXPERIENCIAS, UNA SOLA MARCA
+
+Durante la temporada navideña, la portada del catálogo presentará dos accesos principales, visualmente diferenciados y con igual importancia de navegación.
+
+### ACCESO 01 — ESPECIAL NAVIDEÑO
+
+Sección temporal destinada a los productos de temporada decembrina.
+
+Productos iniciales:
+
+1. Pan de Jamón.
+2. Ponche Crema.
+3. Asado Negro.
+4. Pollo Enrollado Navideño.
+
+Esta sección tendrá protagonismo visual durante la temporada navideña, con una identidad gráfica que evoque la gastronomía venezolana de Navidad, sin perder la identidad comercial de ¡Qué Brutal!
+
+### ACCESO 02 — CATÁLOGO ¡QUÉ BRUTAL!
+
+Sección permanente destinada a la oferta gastronómica disponible durante todo el año.
+
+Sus categorías principales serán:
+
+1. Pizzas Napolitanas Artesanales.
+2. Pastichos.
+3. Paellas y Especialidades de Celebración.
+
+La pizza napolitana debe ocupar el lugar de mayor protagonismo comercial dentro de esta sección, por ser el producto principal y representativo del emprendimiento.
+
+Las otras categorías deben mantener una presentación igualmente profesional, pero sin competir visualmente con el producto estrella.
+
+### 2.1. Principio de arquitectura
+
+Ambas secciones pertenecen a una misma identidad comercial.
+
+No deben parecer dos páginas de negocios diferentes, dos marcas independientes ni dos aplicaciones separadas.
+
+Deben compartir:
+
+- Logotipo oficial.
+- Sistema tipográfico.
+- Identidad gráfica.
+- Componentes de navegación.
+- Sistema de fichas de productos.
+- Canales de contacto.
+- Criterios de fotografía.
+- Sistema de administración de información.
+
+La diferenciación se realizará mediante la composición visual, las fotografías, los recursos gráficos y el contenido de cada temporada.
+
+---
+
+## 3. ARQUITECTURA DE NAVEGACIÓN
+
+### 3.1. Portada principal
+
+La portada será el punto de entrada al catálogo.
+
+Debe presentar:
+
+- Logotipo oficial de ¡Qué Brutal!
+- Eslogan comercial.
+- Fotografía gastronómica protagonista o composición editorial de productos.
+- Una breve frase de presentación.
+- Dos accesos principales claramente identificados.
+
+Los accesos deben presentarse como dos bloques visuales de gran impacto, preferiblemente con fotografías representativas, títulos y descripciones breves.
+
+**Bloque izquierdo o primer bloque:**
+
+ESPECIAL NAVIDEÑO
+
+Una selección de preparaciones para celebrar la Navidad con sabor venezolano.
+
+Acción: EXPLORAR ESPECIAL NAVIDEÑO.
+
+**Bloque derecho o segundo bloque:**
+
+CATÁLOGO ¡QUÉ BRUTAL!
+
+Pizza artesanal, pastichos y paellas para disfrutar durante todo el año.
+
+Acción: EXPLORAR CATÁLOGO.
+
+En dispositivos móviles, ambos accesos deberán organizarse verticalmente, conservando su jerarquía visual y facilitando la navegación táctil.
+
+### 3.2. Navegación secundaria
+
+Cada sección tendrá su propia navegación interna.
+
+La sección permanente tendrá accesos rápidos a:
+
+- Pizzas.
+- Pastichos.
+- Paellas.
+
+La sección navideña mostrará sus cuatro productos sin necesidad de introducir categorías adicionales.
+
+Se deberá incluir una acción visible para regresar a la portada y cambiar de sección.
+
+### 3.3. Navegación global
+
+El encabezado deberá contemplar:
+
+- Logotipo de ¡Qué Brutal!
+- Nombre o identificación del catálogo.
+- Acceso a la portada.
+- Acceso a las secciones principales.
+- Botón de WhatsApp.
+- Acceso a información institucional, si se aprueba la sección Quiénes Somos.
+
+En móviles, utilizar un menú compacto y accesible, sin ocupar innecesariamente el espacio destinado a las fotografías.
+
+---
+
+## 4. SISTEMA VISUAL Y DIRECCIÓN DE ARTE
+
+### 4.1. Concepto estético
+
+La dirección visual será:
+
+**Gastronomía editorial contemporánea con identidad artesanal y carácter comercial.**
+
+Se busca transmitir:
+
+- Calidad.
+- Autenticidad.
+- Técnica gastronómica.
+- Elaboración artesanal.
+- Personalidad.
+- Confianza comercial.
+- Deseabilidad visual.
+
+La referencia estética debe aproximarse a la presentación digital de restaurantes y marcas gastronómicas profesionales contemporáneas, con una ejecución visual cuidada y coherente.
+
+No se deben utilizar plantillas genéricas de restaurantes ni composiciones visuales que parezcan una aplicación de pedidos de bajo costo.
+
+### 4.2. Paleta cromática propuesta
+
+La identidad deberá partir del logotipo oficial y sus colores reales.
+
+Como dirección preliminar:
+
+- Negro carbón: fondo principal y elementos de identidad.
+- Blanco cálido: contraste y legibilidad.
+- Gris grafito: superficies secundarias.
+- Tonos cálidos: acentos de iluminación, fotografía y detalles.
+- Color de acento de marca: determinado por el logotipo oficial.
+
+Los recursos navideños podrán incorporar acentos cromáticos de temporada, sin transformar la identidad central de la marca.
+
+### 4.3. Tipografía
+
+Utilizar un sistema tipográfico profesional con dos niveles:
+
+**Tipografía de identidad:**
+Para títulos principales, encabezados y nombres de productos.
+
+**Tipografía funcional:**
+Para descripciones, ingredientes, precios, botones y textos informativos.
+
+La legibilidad debe prevalecer sobre los efectos decorativos.
+
+No utilizar tipografías excesivamente ornamentadas en textos extensos ni fuentes brush para todos los nombres de productos.
+
+### 4.4. Fotografía gastronómica
+
+La fotografía será uno de los principales elementos de venta.
+
+Criterios:
+
+- Fotografías reales de los productos siempre que estén disponibles.
+- Iluminación gastronómica profesional.
+- Texturas visibles.
+- Colores naturales y apetitosos.
+- Enfoque preciso.
+- Composiciones limpias.
+- Fondos que complementen el producto.
+- Encuadres cenitales, frontales o de 45 grados según la preparación.
+
+No modificar artificialmente la apariencia del producto hasta representar una preparación que no corresponda a la oferta real.
+
+No sustituir fotografías oficiales por imágenes genéricas de internet sin autorización.
+
+Las fotografías que ya fueron proporcionadas como referencia deben ser evaluadas y reutilizadas cuando su calidad lo permita.
+
+---
+
+## 5. ESTRUCTURA DE PRESENTACIÓN DE PRODUCTOS
+
+Cada producto tendrá una tarjeta visual y una ficha ampliada de información.
+
+### 5.1. Tarjeta de producto
+
+Cada tarjeta debe contener:
+
+1. Fotografía principal.
+2. Nombre comercial.
+3. Descripción breve.
+4. Presentación o formato, cuando corresponda.
+5. Precio, cuando esté confirmado.
+6. Distintivo comercial opcional.
+7. Acción para consultar o pedir por WhatsApp.
+
+La tarjeta debe mantener una composición limpia, con buena separación entre sus elementos.
+
+### 5.2. Ficha ampliada
+
+Al seleccionar un producto, se abrirá una ficha visual ampliada mediante un modal o panel adaptable.
+
+Contenido:
+
+**A. Fotografía protagonista**
+
+Imagen de buena resolución, con posibilidad de ampliar cuando el componente lo permita.
+
+**B. Identificación**
+
+Nombre comercial del producto y categoría correspondiente.
+
+**C. Descripción gastronómica**
+
+Texto breve, atractivo y preciso que explique las características reales de la preparación.
+
+**D. Presentación**
+
+Peso, diámetro, volumen, cantidad de unidades o rendimiento, dependiendo del producto y de los datos confirmados.
+
+**E. Ingredientes principales**
+
+Información selectiva de los componentes que realmente diferencian la preparación.
+
+**F. Características de elaboración**
+
+Cuando aporte valor comercial, se podrán explicar procesos como fermentación, elaboración artesanal, cocción lenta o preparación por encargo.
+
+**G. Precio**
+
+Presentado de manera clara y visible.
+
+**H. Disponibilidad**
+
+Indicación de disponibilidad, pedido anticipado o preparación por encargo, según corresponda.
+
+**I. Contacto**
+
+Botón directo de WhatsApp con mensaje previamente configurado para el producto seleccionado.
+
+No todas las fichas deben contener exactamente la misma cantidad de información. Su composición debe adaptarse a las características de cada preparación.
+
+---
+
+## 6. ARQUITECTURA GASTRONÓMICA DEL CATÁLOGO
+
+### 6.1. PIZZAS NAPOLITANAS ARTESANALES
+
+Esta será la categoría principal del catálogo permanente.
+
+Debe recibir una atención visual superior, con fotografías destacadas, presentación individual y una navegación que permita recorrer fácilmente las diferentes variedades.
+
+Información comercial por producto:
+
+- Nombre de la pizza.
+- Fotografía.
+- Descripción.
+- Ingredientes.
+- Diámetro.
+- Presentación.
+- Precio.
+- Características particulares de la masa, cuando corresponda.
+
+La fermentación con prefermento Biga podrá utilizarse como argumento de diferenciación siempre que corresponda al proceso real de producción.
+
+No se deben inventar ingredientes, tiempos de fermentación, pesos ni características de las variedades.
+
+Las denominaciones comerciales y las fórmulas deberán proceder de la información validada por el propietario.
+
+### 6.2. PASTICHOS
+
+Categoría de preparaciones de pasta al horno.
+
+Cada ficha deberá permitir identificar:
+
+- Nombre de la preparación.
+- Fotografía.
+- Descripción gastronómica.
+- Presentación.
+- Peso o tamaño, si está establecido.
+- Acompañamientos, cuando correspondan.
+- Precio.
+- Modalidad de pedido.
+
+La presentación visual debe destacar las capas, la textura, el gratinado y el aspecto final del producto.
+
+### 6.3. PAELLAS Y ESPECIALIDADES DE CELEBRACIÓN
+
+Categoría orientada a preparaciones especiales y pedidos programados.
+
+Cada ficha deberá identificar:
+
+- Tipo de paella.
+- Fotografía.
+- Ingredientes principales.
+- Tamaño de la preparación.
+- Número estimado de comensales.
+- Precio.
+- Anticipación requerida.
+- Disponibilidad por encargo.
+
+La presentación debe destacar el carácter gastronómico y de celebración del producto.
+
+### 6.4. ESPECIAL NAVIDEÑO
+
+Sección temporal independiente.
+
+Productos:
+
+- Pan de Jamón.
+- Ponche Crema.
+- Asado Negro.
+- Pollo Enrollado Navideño.
+
+Cada producto tendrá una ficha individual con presentación, descripción, fotografía, precio y condiciones de pedido, según la información comercial confirmada.
+
+Esta sección debe contar con un tratamiento visual especial durante la temporada decembrina, sin perder coherencia con la identidad de ¡Qué Brutal!
+
+---
+
+## 7. SISTEMA DE CONTACTO COMERCIAL POR WHATSAPP
+
+El catálogo no incorporará pasarela de pago, carrito de compras ni proceso de checkout en esta primera versión.
+
+La conversión comercial se realizará mediante contacto directo.
+
+Cada ficha tendrá un botón contextual:
+
+- Consultar producto.
+- Pedir por WhatsApp.
+- Consultar disponibilidad.
+- Solicitar cotización.
+
+El mensaje deberá generarse automáticamente según el producto seleccionado.
+
+Ejemplo:
+
+Hola, ¡Qué Brutal! Estoy interesado en el producto [NOMBRE DEL PRODUCTO]. Me gustaría conocer su disponibilidad y condiciones de pedido.
+
+Cuando existan presentaciones o cantidades seleccionables, el mensaje podrá incorporar esa información.
+
+Los números comerciales se gestionarán desde una configuración centralizada, sin repetirlos en cada ficha.
+
+Contactos de referencia proporcionados:
+
+- 0424-3409622.
+- 0422-3409622.
+
+La implementación deberá validar los números y sus correspondientes formatos internacionales antes de publicar.
+
+---
+
+## 8. ARQUITECTURA DE INFORMACIÓN Y ADMINISTRACIÓN
+
+El catálogo deberá separar los datos comerciales de la presentación visual.
+
+Cada producto deberá contar con una estructura de información organizada que permita actualizar sus características sin reconstruir los componentes de la interfaz.
+
+Campos recomendados:
+
+- Identificador único.
+- Nombre comercial.
+- Categoría.
+- Descripción.
+- Ingredientes.
+- Imagen principal.
+- Galería de imágenes.
+- Precio.
+- Moneda.
+- Presentación.
+- Peso o dimensión.
+- Rendimiento.
+- Disponibilidad.
+- Modalidad de pedido.
+- Distintivo comercial.
+- Estado de publicación.
+- Orden de presentación.
+
+Los campos serán opcionales cuando no correspondan a un producto específico.
+
+La estructura deberá permitir incorporar nuevas variedades y modificar precios, fotografías y descripciones de forma independiente.
+
+No incorporar información interna de costos, márgenes, formulaciones confidenciales ni datos de producción que no estén destinados al público.
+
+---
+
+## 9. GESTIÓN DE TEMPORADAS
+
+Esta es una condición arquitectónica fundamental.
+
+El Especial Navideño es una sección temporal, no una categoría permanente obligatoria.
+
+El sistema debe permitir:
+
+- Activar la sección navideña.
+- Desactivarla cuando termine la temporada.
+- Cambiar su imagen de portada.
+- Modificar sus productos.
+- Actualizar su descripción.
+- Mantener la información histórica sin mostrar productos inactivos al público.
+
+La portada deberá funcionar de acuerdo con la configuración vigente.
+
+**Durante Navidad:**
+
+Se mostrarán los dos accesos principales:
+
+1. Especial Navideño.
+2. Catálogo ¡Qué Brutal!
+
+**Después de Navidad:**
+
+El catálogo permanente será la experiencia principal de entrada.
+
+La sección navideña podrá quedar archivada o desactivada, conservando sus datos para futuras temporadas.
+
+El sistema no debe depender de modificaciones manuales de código para realizar este cambio.
+
+La activación y desactivación se resolverá mediante configuración de datos.
+
+---
+
+## 10. EXPERIENCIA DE USUARIO Y DISEÑO RESPONSIVO
+
+El catálogo deberá desarrollarse bajo una metodología de diseño adaptable.
+
+### Escritorio
+
+- Portada con composición editorial.
+- Dos accesos principales durante Navidad.
+- Grillas de productos bien proporcionadas.
+- Fotografías de calidad.
+- Espacios negativos suficientes.
+- Navegación clara.
+
+### Tabletas
+
+- Distribución adaptable.
+- Navegación táctil.
+- Fichas proporcionadas.
+- Buena lectura y visualización de fotografías.
+
+### Teléfonos móviles
+
+Esta será una prioridad de desarrollo.
+
+- Diseño mobile-first.
+- Fotografías correctamente adaptadas.
+- Tarjetas fáciles de recorrer.
+- Botones de contacto accesibles.
+- Menús compactos.
+- Fichas fáciles de cerrar.
+- Textos legibles.
+- Navegación fluida.
+- Carga optimizada.
+
+La experiencia móvil debe sentirse como una vitrina gastronómica profesional, no como una versión reducida de una página de escritorio.
+
+---
+
+## 11. SECCIÓN INSTITUCIONAL: QUIÉNES SOMOS
+
+Se podrá incorporar una sección breve dedicada a la identidad de la marca.
+
+Debe incluir:
+
+- Logotipo oficial.
+- Historia de ¡Qué Brutal!
+- Concepto gastronómico.
+- Filosofía de elaboración.
+- Valores de marca.
+- Identidad de sus responsables, si se aprueba.
+- Canales de contacto.
+
+La historia deberá construirse con información real proporcionada por el propietario.
+
+No inventar antecedentes, fechas, logros ni declaraciones institucionales.
+
+La sección debe ser breve, editorial y coherente con la experiencia del catálogo.
+
+---
+
+## 12. REQUISITOS TÉCNICOS PARA ARGON
+
+Antes de modificar el proyecto, Argon deberá:
+
+1. Inspeccionar los archivos y componentes existentes.
+2. Identificar el framework, las dependencias y la estructura actual.
+3. Revisar cómo se implementó el menú digital anterior.
+4. Identificar los componentes reutilizables.
+5. Revisar las imágenes y recursos disponibles.
+6. Identificar posibles conflictos con la estructura actual.
+7. Proponer la arquitectura de implementación.
+
+La solución debe ser compatible con el entorno existente.
+
+No imponer tecnologías nuevas sin justificación.
+
+No reconstruir desde cero si es posible reutilizar componentes funcionales.
+
+El catálogo deberá mantener una separación lógica entre:
+
+- Datos.
+- Componentes visuales.
+- Navegación.
+- Configuración comercial.
+- Recursos gráficos.
+- Funciones de contacto.
+
+Se priorizará un código modular, legible, mantenible y preparado para futuras ampliaciones.
+
+### 12.1. Rendimiento
+
+- Optimización de imágenes.
+- Carga diferida de recursos cuando corresponda.
+- Evitar dependencias innecesarias.
+- Evitar animaciones excesivas.
+- Mantener una navegación rápida.
+- Optimizar la experiencia móvil.
+
+### 12.2. SEO y presencia digital
+
+Preparar:
+
+- Títulos y descripciones de página.
+- Metadatos para compartir en redes sociales.
+- Identificación correcta de la marca.
+- URLs claras.
+- Textos alternativos de imágenes.
+- Estructura semántica.
+- Configuración de indexación apropiada.
+
+---
+
+## 13. ALCANCE FUNCIONAL DE LA PRIMERA VERSIÓN
+
+### Funcionalidades incluidas
+
+- Portada principal.
+- Dos accesos comerciales durante Navidad.
+- Navegación por categorías.
+- Tarjetas de productos.
+- Fichas ampliadas.
+- Galería de fotografías.
+- Visualización de precios.
+- Contacto por WhatsApp.
+- Sección institucional opcional.
+- Diseño responsivo.
+- Gestión de productos mediante datos estructurados.
+- Activación y desactivación de temporada.
+
+### Funcionalidades excluidas
+
+- Pasarela de pagos.
+- Checkout.
+- Carrito de compras.
+- Procesamiento de transacciones.
+- Inventario automatizado.
+- Facturación electrónica.
+- Gestión de pedidos compleja.
+- Integraciones comerciales que no hayan sido aprobadas.
+
+El objetivo es entregar una primera versión visual y funcional, no desarrollar anticipadamente un sistema de comercio electrónico.
+
+---
+
+## 14. CRITERIOS DE VALIDACIÓN Y APROBACIÓN
+
+El catálogo se considerará correctamente desarrollado cuando cumpla los siguientes criterios:
+
+**Identidad**
+
+- Utiliza el logotipo oficial.
+- Respeta la identidad comercial de ¡Qué Brutal!
+- No incorpora marcas o líneas ajenas.
+
+**Arquitectura**
+
+- Presenta correctamente las dos experiencias de navegación durante Navidad.
+- Mantiene separada la oferta permanente de la temporal.
+- Permite gestionar el cambio de temporada.
+
+**Contenido gastronómico**
+
+- Los nombres de productos son correctos.
+- Las fotografías corresponden a los productos.
+- Las descripciones son verídicas.
+- Los precios están validados.
+- Las presentaciones no contienen datos inventados.
+
+**Diseño**
+
+- Presentación profesional.
+- Jerarquía visual coherente.
+- Fotografía protagonista.
+- Tipografía legible.
+- Navegación intuitiva.
+- Adaptación correcta a dispositivos móviles.
+
+**Funcionamiento**
+
+- Las categorías funcionan.
+- Las fichas abren y cierran correctamente.
+- Los botones de WhatsApp generan mensajes adecuados.
+- Los contactos funcionan.
+- No existen enlaces rotos.
+- No hay errores visibles de navegación.
+
+**Rendimiento**
+
+- Fotografías optimizadas.
+- Carga fluida.
+- Componentes reutilizables.
+- Código mantenible.
+
+---
+
+## 15. METODOLOGÍA DE DESARROLLO
+
+El desarrollo deberá realizarse en cuatro fases.
+
+### FASE 1 — EVALUACIÓN Y PREPARACIÓN
+
+Inspeccionar el proyecto anterior, revisar imágenes, identificar recursos y validar los datos comerciales.
+
+No modificar componentes funcionales sin justificación.
+
+### FASE 2 — DISEÑO Y MAQUETACIÓN
+
+Construir la portada, las dos experiencias de navegación, las categorías y las fichas de producto.
+
+Presentar una versión ejecutable para revisión visual.
+
+### FASE 3 — IMPLEMENTACIÓN FUNCIONAL
+
+Incorporar navegación, datos estructurados, fichas ampliadas, configuración estacional y enlaces comerciales.
+
+Realizar pruebas en escritorio y móviles.
+
+### FASE 4 — VALIDACIÓN Y ENTREGA
+
+Corregir detalles visuales y funcionales.
+
+Entregar una versión estable, con código organizado, documentación básica y recursos preparados para la posterior integración y publicación.
+
+---
+
+## 16. DIRECTRIZ FINAL PARA EL DESARROLLO
+
+El resultado debe sentirse como el catálogo digital de una marca gastronómica con personalidad, no como un menú genérico de delivery.
+
+La pizza napolitana debe ser el producto estrella de ¡Qué Brutal! durante todo el año.
+
+El Especial Navideño debe tener protagonismo temporal durante la temporada decembrina.
+
+Las paellas y los pastichos deben contar con su propio espacio y presentación comercial.
+
+La fotografía, la identidad, la composición y la experiencia de navegación deben trabajar conjuntamente para despertar el interés del cliente y facilitar el contacto comercial.
+
+La solución debe ser visualmente atractiva, técnicamente organizada, adaptable, escalable y preparada para integrarse posteriormente con la página web principal.
+
+**¡QUÉ BRUTAL!**
+
+*Masa viva, fuego real, sabor brutal.*
+
+**Documento fundacional V1.0 — Arquitectura del Catálogo Digital Gastronómico.**

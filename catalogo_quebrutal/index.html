@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>¡Qué Brutal! — Catálogo Digital Gastronómico | Masa viva, fuego real, sabor brutal</title>
+  <meta name="description" content="Catálogo digital oficial de ¡Qué Brutal! Pizzas napolitanas artesanales con fermentación Biga, pastichos, paellas por encargo y Especial Navideño en Maracay." />
+  <meta property="og:title" content="¡Qué Brutal! — Catálogo Digital Gastronómico" />
+  <meta property="og:description" content="El sabor que te deja sin palabras. Explora nuestras Pizzas Napolitanas Artesanales, Pastichos, Paellas y el Especial Navideño." />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- React & ReactDOM 18 CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+  <!-- Babel Standalone para JSX en Argon -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Sistema Tipográfico de Dos Niveles (Identidad + Funcional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            qb: {
+              carbon: '#0d0f12',
+              graphite: '#16191e',
+              surface: '#1e232a',
+              border: '#2c323b',
+              warmWhite: '#fbf6ee',
+              cream: '#f3ead8',
+              red: '#c0190a',
+              orange: '#f37324',
+              amber: '#f59e0b',
+              gold: '#d4a359'
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #0d0f12;
+      color: #fbf6ee;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .editorial-glow {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(192, 25, 10, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(243, 115, 36, 0.12) 0%, transparent 50%);
+    }
+    .christmas-glow {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(192, 25, 10, 0.22) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212, 163, 89, 0.15) 0%, transparent 50%);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Modern dialog & scroll containment according to modern web guidance */
+    .modal-sheet {
+      overscroll-behavior: contain;
+    }
+    html {
+      -webkit-tap-highlight-color: transparent;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.92; transform: scale(1.03); }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2.5s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-qb-carbon text-qb-warmWhite antialiased selection:bg-qb-orange selection:text-white">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useMemo, useEffect } = React;
+
+    /* ==========================================================================
+       1. CONFIGURACIÓN CENTRALIZADA DE MARCA Y CANALES COMERCIALES
+       ========================================================================== */
+    const BRAND_CONFIG = {
+      name: '¡QUÉ BRUTAL!',
+      slogan: 'El sabor que te deja sin palabras',
+      concept: 'Masa viva, fuego real, sabor brutal.',
+      location: 'Los Olivos Nuevos — Las Delicias, Maracay',
+      instagram: '@quebrutalmaracay',
+      webOficialUrl: 'https://pagina-yorman.vercel.app/',
+      webOficialLabel: 'Web Chef Yorman',
+      contacts: {
+        primary: {
+          label: 'Atención Comercial ¡Qué Brutal!',
+          display: '0424-3409622',
+          waNumber: '584243409622'
+        },
+        secondary: {
+          label: 'Contacto Profesional / Eventos',
+          display: '0422-3409622',
+          waNumber: '584223409622'
+        }
+      },
+      assets: {
+        // Rutas locales de los logos oficiales
+        logoFull: 'Logo qué brutal 4 png.png',
+        logoFlame: 'Logo qué brutal 3 png.png',
+        quienesSomosPoster: 'Quiénes somos copia.jpg'
+      },
+      paymentMethods: {
+        usdCash: 'Efectivo USD (Billetes en buen estado)',
+        zelle: 'Zelle disponible',
+        pagoMovil: 'Pago Móvil / Punto de Venta (Tasa Oficial BCV)'
+      }
+    };
+
+    /* ==========================================================================
+       2. CONFIGURACIÓN DE TEMPORADA (ACTIVACIÓN / DESACTIVACIÓN SIN TOCAR CÓDIGO)
+       ========================================================================== */
+    const SEASONAL_CONFIG = {
+      isChristmasActive: true, // Cambiar a false cuando finalice la zafra navideña
+      seasonId: 'navidad-2026',
+      title: 'Especial Navideño',
+      subtitle: 'Zafra Decembrina · Tradición Venezolana con Sello de Autor',
+      coverDescription: 'Una selección de preparaciones para celebrar la Navidad con sabor venezolano.',
+      ctaLabel: 'EXPLORAR ESPECIAL NAVIDEÑO',
+      coverImage: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=85',
+      notice: 'Preparaciones artesanales de temporada bajo pedido anticipado para cenas familiares y eventos.'
+    };
+
+    /* ==========================================================================
+       3. BASE DE DATOS ESTRUCTURADA DE PRODUCTOS (SEPARADA DE LA INTERFAZ)
+       ========================================================================== */
+    const CATALOG_DATA = [
+      // ------------------------------------------------------------------------
+      // SECCIÓN TEMPORAL: ESPECIAL NAVIDEÑO (4 PRODUCTOS INICIALES)
+      // ------------------------------------------------------------------------
+      {
+        id: 'nav-pan-de-jamon',
+        name: 'Pan de Jamón Artesanal',
+        subtitle: 'Masa suave enriquecida & relleno tradicional generoso',
+        section: 'navidad',
+        category: 'navidad',
+        priceUSD: null, // Precio ajustable o consulta directa según fecha de zafra
+        priceLabel: 'Consultar zafra',
+        currency: 'USD',
+        badge: 'ESTRELLA NAVIDEÑA 🎄',
+        availability: 'Disponible por encargo programado',
+        orderModality: 'Reserva anticipada para entregas decembrinas',
+        presentation: 'Pieza familiar tradicional',
+        dimensions: 'Formato tradicional (~40 cm)',
+        yieldText: 'Ideal para compartir en familia (8 a 10 porciones)',
+        localImage: 'assets/navidad/pan-de-jamon.jpg',
+        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'El clásico indiscutible de la mesa navideña venezolana, elaborado con masa suave de fermentación cuidada, abundante jamón ahumado, tocineta, pasas y aceitunas.',
+        fullDescription: 'Elaborado bajo técnica de panadería artesanal con amasado controlado para lograr una miga suave, ligera y aromática. Relleno equilibrado en cada vuelta y horneado hasta obtener un dorado uniforme y brillante.',
+        ingredients: [
+          'Masa artesanal enriquecida',
+          'Jamón ahumado seleccionado',
+          'Tocineta horneada',
+          'Aceitunas verdes rellenas',
+          'Pasas dulces hidratadas',
+          'Melado suave de papelón'
+        ],
+        craftNotes: 'Control riguroso de tiempos de fermentación y temperatura de horneado para garantizar humedad interna y corteza suave.',
+        whatsappActionLabel: 'Consultar disponibilidad',
+        published: true,
+        order: 1
+      },
+      {
+        id: 'nav-ponche-crema',
+        name: 'Ponche Crema Artesanal',
+        subtitle: 'Textura aterciopelada & receta tradicional de la casa',
+        section: 'navidad',
+        category: 'navidad',
+        priceUSD: null,
+        priceLabel: 'Consultar zafra',
+        currency: 'USD',
+        badge: 'EDICIÓN ESPECIAL 🥂',
+        availability: 'Disponible por encargo',
+        orderModality: 'Pedido directo para brindis y obsequios',
+        presentation: 'Botella de vidrio sellada',
+        dimensions: 'Presentación clásica',
+        yieldText: 'Ideal para brindis familiar',
+        localImage: 'assets/navidad/ponche-crema.jpg',
+        image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Cremoso, aromático y equilibrado. Preparado artesanalmente con base láctea reducida, especias dulces cálidas y ron venezolano.',
+        fullDescription: 'Licor cremoso tradicional venezolano ejecutado con técnica de pastelería y coctelería de autor. Sin conservantes artificiales, logrando una emulsión sedosa en paladar con notas sutiles de vainilla, canela y nuez moscada.',
+        ingredients: [
+          'Base láctea condensada y cremosa',
+          'Yemas pasteurizadas a fuego lento',
+          'Ron añejo seleccionado',
+          'Vainilla y especias dulces',
+          'Toque aromático cítrico'
+        ],
+        craftNotes: 'Cocción controlada a baño de María para lograr densidad perfecta. Servir bien frío o con hielo.',
+        whatsappActionLabel: 'Pedir por WhatsApp',
+        published: true,
+        order: 2
+      },
+      {
+        id: 'nav-asado-negro',
+        name: 'Asado Negro Tradicional',
+        subtitle: 'Cocción lenta en reducción oscura de papelón y especias',
+        section: 'navidad',
+        category: 'navidad',
+        priceUSD: null,
+        priceLabel: 'Cotizar porción / pieza',
+        currency: 'USD',
+        badge: 'TRADICIÓN CARAQUEÑA 🥩',
+        availability: 'Preparación exclusiva por encargo',
+        orderModality: 'Requiere reserva previa (mínimo 48h)',
+        presentation: 'Bandeja en medallones con su salsa',
+        dimensions: 'Formato familiar por encargo',
+        yieldText: 'Ideal para cenas de Navidad y Fin de Año',
+        localImage: 'assets/navidad/asado-negro.jpg',
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Corte de res sellado en caramelo oscuro de papelón y estofado lentamente hasta alcanzar una terneza excepcional y una salsa brillante.',
+        fullDescription: 'Uno de los grandes emblemas de la gastronomía decembrina venezolana. Sellado con paciencia en melado de papelón y cocinado a fuego bajo con vegetales aromáticos y vino, logrando medallones tiernos bañados en salsa espesa.',
+        ingredients: [
+          'Muchacho redondo seleccionado',
+          'Reducción de papelón tostado',
+          'Sofrito criollo de vegetales y ajo',
+          'Vino tinto de cocción',
+          'Especias aromáticas tradicionales'
+        ],
+        craftNotes: 'Cocción prolongada de varias horas para garantizar fibras suaves y equilibrio entre el dulzor del papelón y la profundidad del fondo de res.',
+        whatsappActionLabel: 'Solicitar cotización',
+        published: true,
+        order: 3
+      },
+      {
+        id: 'nav-pollo-enrollado',
+        name: 'Pollo Enrollado Navideño',
+        subtitle: 'Relleno festivo horneado en su punto exacto de jugosidad',
+        section: 'navidad',
+        category: 'navidad',
+        priceUSD: null,
+        priceLabel: 'Cotizar porción / pieza',
+        currency: 'USD',
+        badge: 'CENA DE GALA 🌟',
+        availability: 'Preparación exclusiva por encargo',
+        orderModality: 'Requiere reserva previa (mínimo 48h)',
+        presentation: 'Pieza entera o rebanada en bandeja',
+        dimensions: 'Formato familiar',
+        yieldText: 'Ideal para compartir en mesa navideña',
+        localImage: 'assets/navidad/pollo-enrollado.jpg',
+        image: 'https://images.unsplash.com/photo-1606728035253-49e8a23146de?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Suprema de pollo deshuesada y rellena con ingredientes clásicos de la temporada, bridada a mano y horneada con glaseado dorado.',
+        fullDescription: 'Preparación festiva de alta presentación en mesa. Relleno balanceado de jamón, tocineta, vegetales asados y frutos de temporada, horneado cuidando la temperatura interna para conservar toda su jugosidad.',
+        ingredients: [
+          'Pechuga / Pollo deshuesado en manta',
+          'Jamón ahumado y tocineta',
+          'Pimentón asado',
+          'Aceitunas y pasas seleccionadas',
+          'Glaseado aromático de horneado'
+        ],
+        craftNotes: 'Técnica de bridado profesional para asegurar cortes limpios y vistosos al momento de servir en la cena.',
+        whatsappActionLabel: 'Solicitar cotización',
+        published: true,
+        order: 4
+      },
+
+      // ------------------------------------------------------------------------
+      // SECCIÓN PERMANENTE: 1. PIZZAS NAPOLITANAS ARTESANALES (PROTAGONISTA)
+      // ------------------------------------------------------------------------
+      {
+        id: 'pizza-brutal-bacon',
+        name: 'Brutal Bacon',
+        subtitle: 'Tocineta, Maíz Dulce & Pesto de Autor sobre Masa Biga',
+        section: 'catalogo',
+        category: 'pizzas',
+        isFlagship: true,
+        priceUSD: 9.50,
+        currency: 'USD',
+        badge: 'MÁS PEDIDA 🔥',
+        availability: 'Disponible para delivery y retiro',
+        orderModality: 'Preparada al momento al fuego',
+        presentation: 'Tamaño Mediano · 8 Porciones',
+        dimensions: '33 CM de diámetro',
+        yieldText: 'Ideal para compartir aprox. entre 2 personas',
+        localImage: 'ChatGPT Image 10 ago 2026, 04_59_06 p.m..png',
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Equilibrio entre el ahumado de la tocineta, jamón, el dulzor del maíz tierno y nuestro pesto artesanal sobre masa madurada 24h.',
+        fullDescription: 'Elaborada sobre nuestra masa artesanal con prefermento Biga de fermentación lenta, base de salsa de tomate artesanal, queso mozzarella gratinado, jamón, tocineta crocante, maíz dulce y coronada con hilos de salsa pesto de la casa.',
+        ingredients: [
+          'Salsa',
+          'Queso',
+          'Jamón',
+          'Tocineta',
+          'Maíz',
+          'Pesto'
+        ],
+        craftNotes: 'Masa viva fermentada con prefermento Biga (24h) para lograr un borde alveolado, ligero y de alta digestibilidad.',
+        whatsappActionLabel: 'Pedir por WhatsApp',
+        published: true,
+        order: 1
+      },
+      {
+        id: 'pizza-brutal-pepperoni',
+        name: 'Brutal Pepperoni',
+        subtitle: 'Pepperoni, Jamón, Maíz, Pimentón & Salsa Pesto',
+        section: 'catalogo',
+        category: 'pizzas',
+        isFlagship: true,
+        priceUSD: 9.00,
+        currency: 'USD',
+        badge: 'FAVORITA DE AUTOR 🌟',
+        availability: 'Disponible para delivery y retiro',
+        orderModality: 'Preparada al momento al fuego',
+        presentation: 'Tamaño Mediano · 8 Porciones',
+        dimensions: '33 CM de diámetro',
+        yieldText: 'Ideal para compartir aprox. entre 2 personas',
+        localImage: 'ChatGPT Image 10 ago 2026, 05_34_23 p.m..png',
+        image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Pepperoni horneado hasta lograr bordes crujientes, combinado con jamón, maíz, pimentón y el toque herbal de nuestra salsa pesto.',
+        fullDescription: 'Nuestra versión de autor del clásico pepperoni: base de masa Biga madurada, salsa artesanal, queso fundido, jamón, rodajas de pepperoni, granos de maíz dulce, julianas de pimentón y salsa pesto.',
+        ingredients: [
+          'Salsa',
+          'Queso',
+          'Jamón',
+          'Pepperoni',
+          'Maíz',
+          'Pimentón',
+          'Salsa Pesto'
+        ],
+        craftNotes: 'Horneado de alta temperatura que realza los aceites aromáticos del pepperoni y funde el queso uniformemente.',
+        whatsappActionLabel: 'Pedir por WhatsApp',
+        published: true,
+        order: 2
+      },
+      {
+        id: 'pizza-brutal-napolitana',
+        name: 'Brutal Napolitana',
+        subtitle: 'Tradición Italiana con Sello Venezolano',
+        section: 'catalogo',
+        category: 'pizzas',
+        isFlagship: true,
+        priceUSD: 6.00,
+        currency: 'USD',
+        badge: 'CLÁSICA INSIGNIA 🏆',
+        availability: 'Disponible para delivery y retiro',
+        orderModality: 'Preparada al momento al fuego',
+        presentation: 'Tamaño Mediano · 8 Porciones',
+        dimensions: '33 CM de diámetro',
+        yieldText: 'Ideal para compartir aprox. entre 2 personas',
+        localImage: 'ChatGPT Image 10 ago 2026, 04_28_58 p.m..png',
+        image: 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'La nobleza de lo clásico ejecutada con técnica de panadería artesanal: salsa pomodoro fragante, queso gratinado, jamón y pimentón.',
+        fullDescription: 'El punto de partida de ¡Qué Brutal! Masa de fermentación lenta Biga (24h), salsa artesanal de tomates seleccionados, abundante queso fundido, jamón y tiras de pimentón horneado.',
+        ingredients: [
+          'Salsa',
+          'Queso',
+          'Jamón',
+          'Pimentón'
+        ],
+        craftNotes: 'Fórmula fundacional de la casa: equilibrio exacto entre hidratación de masa, acidez de salsa y gratinado lácteo.',
+        whatsappActionLabel: 'Pedir por WhatsApp',
+        published: true,
+        order: 3
+      },
+      {
+        id: 'pizza-brutal-vegetariana',
+        name: 'Brutal Vegetariana',
+        subtitle: 'Huerta Fresca Rostizada al Fuego',
+        section: 'catalogo',
+        category: 'pizzas',
+        isFlagship: false,
+        priceUSD: 8.00,
+        currency: 'USD',
+        badge: '100% ARTESANAL 🌱',
+        availability: 'Disponible para delivery y retiro',
+        orderModality: 'Preparada al momento al fuego',
+        presentation: 'Tamaño Mediano · 8 Porciones',
+        dimensions: '33 CM de diámetro',
+        yieldText: 'Ideal para compartir aprox. entre 2 personas',
+        localImage: 'assets/pizzas/brutal-vegetariana.jpg',
+        image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Selección de vegetales frescos cortados al momento y asados a alta temperatura sobre nuestra base alveolada y crujiente.',
+        fullDescription: 'Masa Biga 24h con borde aireado, salsa de tomates frescos, queso mozzarella fundido, hojas de espinaca fresca, láminas finas de calabacín tierno, pimentón rostizado y maíz dulce.',
+        ingredients: [
+          'Salsa',
+          'Queso Mozzarella',
+          'Espinaca Fresca',
+          'Calabacín Tierno',
+          'Pimentón Rostizado',
+          'Maíz Dulce'
+        ],
+        craftNotes: 'Corte preciso de vegetales para lograr cocción simultánea sin humedecer la base de masa.',
+        whatsappActionLabel: 'Pedir por WhatsApp',
+        published: true,
+        order: 4
+      },
+      {
+        id: 'pizza-brutal-lizllana',
+        name: 'Brutal Lizllana',
+        subtitle: 'Homenaje al Queso Fundido & Biga 24h',
+        section: 'catalogo',
+        category: 'pizzas',
+        isFlagship: false,
+        priceUSD: 6.00,
+        currency: 'USD',
+        badge: 'QUESO EXTREMO 🧀',
+        availability: 'Disponible para delivery y retiro',
+        orderModality: 'Preparada al momento al fuego',
+        presentation: 'Tamaño Mediano · 8 Porciones',
+        dimensions: '33 CM de diámetro',
+        yieldText: 'Ideal para compartir aprox. entre 2 personas',
+        localImage: 'assets/pizzas/brutal-lizllana.jpg',
+        image: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Para los puristas del queso y la buena masa: doble cobertura de queso gratinado al punto exacto de dorado sobre pomodoro artesanal.',
+        fullDescription: 'Base de prefermento Biga madurada 24 horas, salsa pomodoro de autor, doble porción de queso gratinado a fuego vivo y lluvia aromática de orégano entero.',
+        ingredients: [
+          'Masa Fermentada Biga',
+          'Salsa Pomodoro',
+          'Doble Queso Gratinado',
+          'Orégano Silvestre'
+        ],
+        craftNotes: 'Protagonismo absoluto de la fermentación de la masa y la fundición láctea.',
+        whatsappActionLabel: 'Pedir por WhatsApp',
+        published: true,
+        order: 5
+      },
+      {
+        id: 'pizza-mini-pasapalos',
+        name: 'Mini Pizzas Artesanales (Pasapalos)',
+        subtitle: 'Formato de bocado con la misma masa Biga de autor',
+        section: 'catalogo',
+        category: 'pizzas',
+        isFlagship: false,
+        priceUSD: null,
+        priceLabel: 'Cotizar por bandeja',
+        currency: 'USD',
+        badge: 'PASAPALOS & EVENTOS 🎉',
+        availability: 'Disponible bajo pedido anticipado',
+        orderModality: 'Por encargo para reuniones, fiestas y eventos',
+        presentation: 'Bandejas por encargo',
+        dimensions: 'Formato pasapalo individual',
+        yieldText: 'Adaptable al número de invitados',
+        localImage: 'assets/pizzas/mini-pizzas.jpg',
+        image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Toda la calidad de nuestra masa artesanal fermentada y salsa de autor llevada al formato de pasapalos para tus celebraciones.',
+        fullDescription: 'Mini pizzas elaboradas artesanalmente una a una, horneadas con salsa pomodoro de la casa, queso gratinado y los toppings clásicos de ¡Qué Brutal!. Ideales para compartir en cumpleaños, reuniones familiares o eventos corporativos.',
+        ingredients: [
+          'Masa artesanal fermentada',
+          'Salsa de autor',
+          'Queso gratinado',
+          'Opciones con Jamón, Maíz o Pepperoni'
+        ],
+        craftNotes: 'Se entregan listas para servir o calentar ligeramente manteniendo su textura suave y esponjosa.',
+        whatsappActionLabel: 'Solicitar cotización',
+        published: true,
+        order: 6
+      },
+
+      // ------------------------------------------------------------------------
+      // SECCIÓN PERMANENTE: 2. PASTICHOS
+      // ------------------------------------------------------------------------
+      {
+        id: 'pasticho-lasana-italiana',
+        name: 'Lasaña Italiana',
+        subtitle: 'Capas cargadas de carne, salsa y queso gratinado',
+        section: 'catalogo',
+        category: 'pastichos',
+        priceUSD: 8.00,
+        currency: 'USD',
+        badge: 'COMBO COMPLETO 🍝',
+        availability: 'Disponible para delivery y retiro',
+        orderModality: 'Pedido directo · Horneada al momento',
+        presentation: 'Bandeja individual abundante + Acompañantes',
+        dimensions: 'Aprox. 600 G de lasaña',
+        yieldText: 'Porción individual generosa',
+        includes: 'Incluye Pan al Ajo + Refresco 400 ml',
+        localImage: 'ChatGPT Image 10 ago 2026, 11_51_08 p.m..png',
+        image: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Aprox. 600 g de lasaña artesanal con capas cargadas de carne, salsa bechamel y boloñesa de cocción lenta y corteza de queso gratinado.',
+        fullDescription: 'Elaboración artesanal de ¡Qué Brutal! Capas bien definidas de pasta intercaladas con ragú de carne cocinado lentamente, salsa cremosa y una cubierta dorada de queso gratinado al horno. Viene acompañada de pan al ajo tostado y refresco de 400 ml.',
+        ingredients: [
+          'Carne en ragú de cocción lenta',
+          'Salsa artesanal y bechamel',
+          'Queso Gratinado',
+          'Pan al Ajo incluido',
+          'Refresco 400 ml incluido'
+        ],
+        craftNotes: 'Ensamblaje por capas equilibradas para mantener estructura firme al corte y gratinado uniforme en la superficie.',
+        whatsappActionLabel: 'Pedir por WhatsApp',
+        published: true,
+        order: 1
+      },
+
+      // ------------------------------------------------------------------------
+      // SECCIÓN PERMANENTE: 3. PAELLAS Y ESPECIALIDADES DE CELEBRACIÓN
+      // ------------------------------------------------------------------------
+      {
+        id: 'paella-de-mariscos',
+        name: 'Paella de Mariscos',
+        subtitle: 'Hecha al momento · Sabor y frescura garantizados',
+        section: 'catalogo',
+        category: 'paellas',
+        priceUSD: 17.00,
+        currency: 'USD',
+        badge: 'POR ENCARGO 🥘',
+        availability: 'Exclusivo por encargo previo',
+        orderModality: 'Por encargo — Preparada especialmente para ti',
+        presentation: 'Formato familiar con Pan al Ajo',
+        dimensions: '32–34 CM de diámetro',
+        yieldText: 'Para compartir entre 3 y 4 personas',
+        includes: 'Incluye Pan al Ajo artesanal',
+        localImage: 'ChatGPT Image 12 ago 2026, 06_52_32 p.m..png',
+        image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=900&q=80',
+        shortDescription: 'Preparación de celebración de 32–34 cm para compartir entre 3 y 4 personas, cargada de mariscos frescos y acompañada de pan al ajo.',
+        fullDescription: 'Arroz en su punto exacto cocinado en caldo concentrado de mariscos y sofrito artesanal, coronado con abundantes frutos del mar (camarones, calamares, mejillones y cangrejo). Preparada al momento bajo encargo para garantizar frescura total en tu mesa.',
+        ingredients: [
+          'Arroz en punto de cocción',
+          'Selección abundante de Mariscos',
+          'Fumet concentrado y sofrito',
+          'Pan al Ajo incluido'
+        ],
+        craftNotes: 'Al ser una especialidad elaborada desde cero con mariscos seleccionados, se coordina bajo pedido anticipado.',
+        whatsappActionLabel: 'Reservar por WhatsApp',
+        published: true,
+        order: 1
+      }
+    ];
+
+    /* ==========================================================================
+       4. CONTENIDO INSTITUCIONAL VALIDADO (QUIÉNES SOMOS)
+       ========================================================================== */
+    const ABOUT_DATA = {
+      title: '¿QUIÉNES SOMOS?',
+      subtitle: 'UNA HISTORIA QUE COMENZÓ EN CASA.',
+      closingTagline: 'DE UNA IDEA A UNA EXPERIENCIA GASTRONÓMICA.',
+      authorSignature: {
+        name: 'Yorman Trabasilo',
+        role: 'Chef Profesional',
+        coFounder: 'Chef Yorman y Dayana'
+      },
+      blocks: [
+        {
+          id: 'origen',
+          icon: '🏠',
+          text: '¡Qué Brutal! nació de una idea, una cocina y muchas ganas de construir algo propio. Un proyecto creado por Chef Yorman y Dayana, que comenzó desde casa con recursos limitados, pero con un propósito muy grande.'
+        },
+        {
+          id: 'evolucion',
+          icon: '🍕',
+          text: 'Iniciamos con pizzas napolitanas artesanales para delivery, perfeccionando cada detalle con técnica, pruebas y pasión. Lo que comenzó como una pizza, hoy es una propuesta gastronómica más amplia, llena de sabor e identidad.'
+        },
+        {
+          id: 'equipo',
+          icon: '👥',
+          text: 'Somos una construcción conjunta. Unimos experiencia, creatividad y trabajo en equipo para ofrecer productos de calidad y experiencias inolvidables.'
+        },
+        {
+          id: 'proposito',
+          icon: '❤️',
+          text: 'Creemos en hacer las cosas con propósito, respetando cada proceso y cuidando cada detalle. Porque para nosotros, cocinar es crear y compartir.'
+        }
+      ],
+      pillars: [
+        {
+          title: 'SABOR',
+          description: 'Ingredientes de calidad y recetas con alma.'
+        },
+        {
+          title: 'TÉCNICA',
+          description: 'Conocimiento, proceso y dedicación.'
+        },
+        {
+          title: 'IDENTIDAD',
+          description: 'Nuestra esencia en cada preparación.'
+        }
+      ]
+    };
+
+    /* ==========================================================================
+       5. UTILIDADES DE CONTACTO Y FORMATO
+       ========================================================================== */
+    const buildWhatsAppUrl = (product, customMessage = null, useSecondary = false) => {
+      const targetPhone = useSecondary
+        ? BRAND_CONFIG.contacts.secondary.waNumber
+        : BRAND_CONFIG.contacts.primary.waNumber;
+
+      if (customMessage) {
+        return `https://wa.me/${targetPhone}?text=${encodeURIComponent(customMessage)}`;
+      }
+
+      const priceInfo = product.priceUSD
+        ? ` ($${product.priceUSD.toFixed(2)})`
+        : '';
+      const presentationInfo = product.dimensions
+        ? ` [${product.dimensions} — ${product.yieldText}]`
+        : '';
+
+      const message = `Hola, ¡Qué Brutal! Estoy interesado en el producto *${product.name}*${priceInfo}${presentationInfo}. Me gustaría conocer su disponibilidad y condiciones de pedido.`;
+      return `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
+    };
+
+    const formatUSD = (price, fallbackLabel = 'Consultar') => {
+      if (typeof price === 'number' && !isNaN(price)) {
+        return `$${price.toFixed(2).replace('.', ',')}`;
+      }
+      return fallbackLabel;
+    };
+
+    /* ==========================================================================
+       6. COMPONENTE DE IMAGEN CON SOPORTE LOCAL Y RESPALDO AUTOMÁTICO
+       ========================================================================== */
+    function SmartImage({ localSrc, fallbackSrc, alt, className }) {
+      const [imgSrc, setImgSrc] = useState(localSrc || fallbackSrc);
+      const [triedFallback, setTriedFallback] = useState(false);
+
+      useEffect(() => {
+        setImgSrc(localSrc || fallbackSrc);
+        setTriedFallback(false);
+      }, [localSrc, fallbackSrc]);
+
+      const handleError = () => {
+        if (!triedFallback && fallbackSrc) {
+          setImgSrc(fallbackSrc);
+          setTriedFallback(true);
+        }
+      };
+
+      return (
+        <img
+          src={imgSrc}
+          alt={alt}
+          onError={handleError}
+          loading="lazy"
+          className={className}
+        />
+      );
+    }
+
+    /* ==========================================================================
+       7. COMPONENTE DE LOGOTIPO OFICIAL (IMAGEN REAL + FALLBACK EDITORIAL)
+       ========================================================================== */
+    function BrandLogo({ size = 'md', onClick }) {
+      const [imgError, setImgError] = useState(false);
+
+      const sizeClasses = {
+        sm: 'h-10 w-10',
+        md: 'h-12 w-12',
+        lg: 'h-24 w-24 sm:h-28 sm:w-28'
+      }[size] || 'h-12 w-12';
+
+      return (
+        <div
+          onClick={onClick}
+          className={`inline-flex items-center gap-3 ${onClick ? 'cursor-pointer group' : ''}`}
+        >
+          {!imgError ? (
+            <img
+              src={BRAND_CONFIG.assets.logoFlame}
+              alt={BRAND_CONFIG.name}
+              onError={() => setImgError(true)}
+              className={`${sizeClasses} rounded-full object-contain bg-black border border-qb-orange/40 shadow-[0_0_20px_rgba(243,115,36,0.3)]`}
+            />
+          ) : (
+            <div className={`${sizeClasses} rounded-full bg-gradient-to-br from-qb-red via-qb-orange to-qb-amber flex items-center justify-center shadow-[0_0_22px_rgba(243,115,36,0.45)] border border-qb-amber/40`}>
+              <span className={size === 'lg' ? 'text-4xl' : 'text-xl'}>🔥</span>
+            </div>
+          )}
+          <div className="text-left">
+            <span className={`font-display font-black tracking-tight text-white block leading-none group-hover:text-qb-amber transition-colors ${size === 'lg' ? 'text-2xl sm:text-4xl' : 'text-lg sm:text-xl'}`}>
+              {BRAND_CONFIG.name}
+            </span>
+            <span className="text-[11px] text-qb-amber font-semibold tracking-wider uppercase block mt-0.5">
+              {BRAND_CONFIG.slogan}
+            </span>
+          </div>
+        </div>
+      );
+    }
+
+    /* ==========================================================================
+       8. TARJETA VISUAL DE PRODUCTO (SECCIÓN 5.1 DEL DOCUMENTO MAESTRO)
+       ========================================================================== */
+    function ProductCard({ product, onSelect, featuredLayout = false }) {
+      const isChristmas = product.section === 'navidad';
+
+      return (
+        <article
+          onClick={() => onSelect(product)}
+          className={`group rounded-2xl bg-qb-graphite border transition-all duration-300 overflow-hidden flex flex-col justify-between cursor-pointer ${
+            isChristmas
+              ? 'border-qb-gold/30 hover:border-qb-gold shadow-[0_10px_30px_rgba(0,0,0,0.45)]'
+              : product.isFlagship
+              ? 'border-qb-orange/40 hover:border-qb-orange shadow-[0_10px_30px_rgba(192,25,10,0.15)]'
+              : 'border-qb-border hover:border-qb-orange/60 shadow-lg'
+          } ${featuredLayout ? 'md:col-span-2 lg:col-span-1' : ''}`}
+        >
+          <div>
+            {/* Fotografía Principal */}
+            <div className="relative aspect-[4/3] w-full bg-qb-surface overflow-hidden">
+              <SmartImage
+                localSrc={product.localImage}
+                fallbackSrc={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-qb-graphite via-black/25 to-transparent" />
+
+              {/* Distintivo comercial */}
+              {product.badge && (
+                <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wide uppercase shadow-md ${
+                  isChristmas
+                    ? 'bg-gradient-to-r from-qb-red to-amber-700 text-qb-warmWhite border border-qb-gold/40'
+                    : 'bg-gradient-to-r from-qb-red to-qb-orange text-white'
+                }`}>
+                  {product.badge}
+                </div>
+              )}
+
+              {/* Sello Artesanal */}
+              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm border border-qb-amber/40 text-qb-amber text-[10px] font-bold uppercase tracking-wider">
+                De Autor · QB
+              </div>
+
+              {/* Pastillas de Presentación y Rendimiento */}
+              <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-1.5">
+                {product.dimensions && (
+                  <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-qb-warmWhite text-[11px] font-semibold border border-white/10">
+                    📏 {product.dimensions}
+                  </span>
+                )}
+                {product.yieldText && (
+                  <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-qb-amber text-[11px] font-semibold border border-qb-amber/20">
+                    👥 {product.yieldText}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Cuerpo de la Tarjeta */}
+            <div className="p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-2xl font-extrabold text-white leading-tight group-hover:text-qb-amber transition-colors">
+                    {product.name}
+                  </h3>
+                  <p className="text-xs font-semibold text-qb-orange mt-1">
+                    {product.subtitle}
+                  </p>
+                </div>
+
+                {/* Precio Validado o Etiqueta de Cotización */}
+                <div className="text-right shrink-0">
+                  {product.priceUSD !== null ? (
+                    <div className="px-3 py-1.5 rounded-xl bg-qb-red/20 border border-qb-orange/40">
+                      <span className="font-mono text-xl font-extrabold text-white block leading-none">
+                        {formatUSD(product.priceUSD)}
+                      </span>
+                      <span className="text-[10px] text-qb-amber font-semibold uppercase tracking-wider">
+                        Ref. USD
+                      </span>
+                    </div>
+                  ) : (
+                    <span className="inline-block px-2.5 py-1 rounded-lg bg-qb-surface border border-qb-gold/40 text-qb-gold text-[11px] font-bold">
+                      {product.priceLabel || 'Consultar'}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Descripción breve */}
+              <p className="text-xs sm:text-sm text-gray-300 mt-3 leading-relaxed line-clamp-3">
+                {product.shortDescription}
+              </p>
+
+              {/* Incluye / Acompañantes si aplica */}
+              {product.includes && (
+                <div className="mt-3 px-3 py-1.5 rounded-lg bg-qb-orange/10 border border-qb-orange/30 text-qb-amber text-xs font-semibold">
+                  🎁 {product.includes}
+                </div>
+              )}
+
+              {/* Ingredientes principales resumidos */}
+              {product.ingredients && product.ingredients.length > 0 && (
+                <div className="mt-3.5 flex flex-wrap gap-1.5">
+                  {product.ingredients.slice(0, 5).map((ing, i) => (
+                    <span
+                      key={i}
+                      className="px-2.5 py-0.5 rounded-md bg-qb-carbon border border-qb-border text-[11px] text-gray-200 font-medium"
+                    >
+                      {ing}
+                    </span>
+                  ))}
+                  {product.ingredients.length > 5 && (
+                    <span className="px-2 py-0.5 rounded-md bg-qb-carbon text-[11px] text-qb-amber font-semibold">
+                      +{product.ingredients.length - 5} más
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Acciones de la Tarjeta (Mobile-First: botones táctiles generosos) */}
+          <div className="px-5 pb-5 pt-3 border-t border-qb-border/70 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelect(product);
+              }}
+              className="min-h-[44px] py-2.5 px-3 rounded-xl bg-qb-surface hover:bg-qb-border active:scale-[0.98] text-qb-warmWhite border border-qb-border text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+            >
+              <span>🔍</span>
+              <span>Ver Ficha & Ingredientes</span>
+            </button>
+            <a
+              href={buildWhatsAppUrl(product)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="min-h-[44px] py-2.5 px-4 rounded-xl bg-gradient-to-r from-qb-red to-qb-orange hover:from-qb-orange hover:to-qb-amber active:scale-[0.98] text-white text-xs font-extrabold transition-all shadow-md flex items-center justify-center gap-1.5"
+            >
+              <span>💬</span>
+              <span>{product.whatsappActionLabel || 'Pedir por WhatsApp'}</span>
+            </a>
+          </div>
+        </article>
+      );
+    }
+
+    /* ==========================================================================
+       9. FICHA AMPLIADA DE PRODUCTO — MODAL ADAPTATIVO (SECCIÓN 5.2)
+       ========================================================================== */
+    function ProductDetailModal({ product, onClose }) {
+      if (!product) return null;
+
+      // Cerrar con Escape y bloquear scroll del fondo conforme a Modern Web Guidance
+      useEffect(() => {
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        const handleKeyDown = (e) => {
+          if (e.key === 'Escape') onClose();
+        };
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+          document.body.style.overflow = originalOverflow;
+          window.removeEventListener('keydown', handleKeyDown);
+        };
+      }, [onClose]);
+
+      return (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto modal-sheet"
+          onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={product.name}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl bg-qb-graphite text-qb-warmWhite border-t-2 sm:border-2 border-qb-orange/40 shadow-2xl relative flex flex-col no-scrollbar"
+          >
+            {/* Tirador táctil visual para teléfonos móviles */}
+            <div className="sm:hidden w-12 h-1.5 bg-gray-500/60 rounded-full mx-auto mt-3 mb-1 shrink-0" />
+            {/* A. Fotografía Protagonista */}
+            <div className="relative h-64 sm:h-80 w-full bg-qb-carbon">
+              <SmartImage
+                localSrc={product.localImage}
+                fallbackSrc={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-qb-graphite via-black/40 to-black/20" />
+
+              <button
+                onClick={onClose}
+                aria-label="Cerrar ficha"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/75 hover:bg-qb-red text-white font-bold flex items-center justify-center border border-white/20 transition-colors"
+              >
+                ✕
+              </button>
+
+              {/* Sello Artesanal inspirado en las láminas de Canva */}
+              <div className="absolute -bottom-6 left-5 z-10 w-24 h-24 rounded-full bg-qb-carbon text-qb-warmWhite border-2 border-qb-orange p-1 shadow-xl -rotate-6 flex items-center justify-center text-center">
+                <div className="w-full h-full rounded-full border border-dashed border-qb-amber flex flex-col items-center justify-center px-1">
+                  <span className="text-[7px] font-extrabold uppercase text-qb-amber tracking-wider">ARTESANAL DE VERDAD</span>
+                  <span className="font-display font-black text-xs text-white my-0.5">¡BRUTAL!</span>
+                  <span className="text-[7px] font-extrabold uppercase text-qb-orange tracking-wider">DE AUTOR</span>
+                </div>
+              </div>
+
+              {/* B. Identificación del Producto */}
+              <div className="absolute bottom-3 left-32 right-5">
+                {product.badge && (
+                  <span className="inline-block px-2.5 py-0.5 rounded bg-qb-red text-white text-[10px] font-extrabold uppercase mb-1">
+                    {product.badge}
+                  </span>
+                )}
+                <h2 className="font-display text-2xl sm:text-3xl font-black text-white leading-tight">
+                  {product.name}
+                </h2>
+                <p className="text-xs text-qb-amber font-semibold">
+                  {product.subtitle}
+                </p>
+              </div>
+            </div>
+
+            <div className="p-5 sm:p-7 pt-9 space-y-5">
+              {/* D & G. Barra de Presentación, Rendimiento y Precio */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-qb-carbon rounded-2xl p-4 border border-qb-border">
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold block">
+                    Presentación / Formato
+                  </span>
+                  <span className="text-sm font-extrabold text-white mt-0.5 block">
+                    {product.dimensions || product.presentation}
+                  </span>
+                  <span className="text-[11px] text-qb-orange font-semibold">
+                    {product.presentation}
+                  </span>
+                </div>
+
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold block">
+                    Rendimiento Estimado
+                  </span>
+                  <span className="text-sm font-extrabold text-white mt-0.5 block">
+                    {product.yieldText}
+                  </span>
+                  <span className="text-[11px] text-emerald-400 font-semibold">
+                    {product.availability}
+                  </span>
+                </div>
+
+                <div className="sm:text-right flex flex-col justify-center">
+                  <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold block">
+                    Precio de Referencia
+                  </span>
+                  <span className="font-mono text-2xl font-extrabold text-qb-amber">
+                    {product.priceUSD !== null ? formatUSD(product.priceUSD) : product.priceLabel}
+                  </span>
+                </div>
+              </div>
+
+              {/* Incluye (si corresponde a Lasaña o Paella) */}
+              {product.includes && (
+                <div className="p-3.5 rounded-xl bg-qb-orange/15 border border-qb-orange/40 flex items-center gap-2.5">
+                  <span className="text-lg">🎁</span>
+                  <div>
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-qb-amber block">
+                      Presentación Completa
+                    </span>
+                    <span className="text-xs sm:text-sm text-white font-semibold">
+                      {product.includes}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* C. Descripción Gastronómica */}
+              <div>
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-qb-orange mb-1.5">
+                  Descripción Gastronómica
+                </h3>
+                <p className="text-sm text-gray-200 leading-relaxed">
+                  {product.fullDescription}
+                </p>
+              </div>
+
+              {/* E. ¿Qué lleva? — Ingredientes Principales */}
+              {product.ingredients && product.ingredients.length > 0 && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2.5">
+                    <span className="px-3 py-1 rounded-md bg-qb-surface border border-qb-border font-display font-bold text-sm text-white">
+                      ¿QUÉ LLEVA?
+                    </span>
+                    <span className="text-xs text-gray-400">
+                      Componentes principales de la preparación
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {product.ingredients.map((ing, idx) => (
+                      <div
+                        key={idx}
+                        className="p-2.5 rounded-xl bg-qb-carbon border border-qb-border flex items-center gap-2"
+                      >
+                        <span className="w-2 h-2 rounded-full bg-qb-orange shrink-0" />
+                        <span className="text-xs font-bold text-qb-warmWhite">{ing}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* F & H. Características de Elaboración y Modalidad de Pedido */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {product.craftNotes && (
+                  <div className="p-3.5 rounded-xl bg-qb-carbon border border-qb-border">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-qb-amber block mb-1">
+                      🔥 Técnica y Elaboración
+                    </span>
+                    <p className="text-xs text-gray-300 leading-relaxed">
+                      {product.craftNotes}
+                    </p>
+                  </div>
+                )}
+                <div className="p-3.5 rounded-xl bg-qb-carbon border border-qb-border">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-qb-amber block mb-1">
+                    📌 Condiciones y Disponibilidad
+                  </span>
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    {product.orderModality}. Atención personalizada vía WhatsApp en Maracay.
+                  </p>
+                </div>
+              </div>
+
+              {/* I. Botón Directo de Contacto Comercial por WhatsApp (Desktop) */}
+              <div className="pt-2 hidden sm:flex items-center gap-3">
+                <a
+                  href={buildWhatsAppUrl(product)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-4 px-6 rounded-2xl bg-gradient-to-r from-qb-red via-qb-orange to-qb-amber text-white font-extrabold text-sm shadow-xl flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all"
+                >
+                  <span>💬</span>
+                  <span>{product.whatsappActionLabel || 'Pedir por WhatsApp'} ({BRAND_CONFIG.contacts.primary.display})</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="py-4 px-5 rounded-2xl bg-qb-surface hover:bg-qb-border text-gray-300 text-xs font-bold border border-qb-border transition-colors"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+
+            {/* Barra de Pedido Fija al Pie para Pantallas de Teléfono Móvil */}
+            <div className="sm:hidden sticky bottom-0 inset-x-0 bg-qb-carbon/95 backdrop-blur-md p-4 border-t border-qb-border flex items-center justify-between gap-3 z-20 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-10px_20px_rgba(0,0,0,0.4)]">
+              <div>
+                <span className="text-[10px] uppercase font-bold text-gray-400 block">Total Estimado</span>
+                <span className="font-mono text-xl font-extrabold text-qb-amber block leading-tight">
+                  {product.priceUSD !== null ? formatUSD(product.priceUSD) : product.priceLabel}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 flex-1">
+                <a
+                  href={buildWhatsAppUrl(product)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 min-h-[46px] py-2.5 px-3 rounded-xl bg-gradient-to-r from-qb-red via-qb-orange to-qb-amber text-white font-extrabold text-xs shadow-lg flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                >
+                  <span className="text-sm">💬</span>
+                  <span>Pedir WhatsApp</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="min-h-[46px] px-3.5 rounded-xl bg-qb-surface border border-qb-border text-gray-300 text-xs font-bold active:scale-[0.95]"
+                  aria-label="Cerrar modal"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    /* ==========================================================================
+       10. SECCIÓN INSTITUCIONAL: ¿QUIÉNES SOMOS? (SECCIÓN 11)
+       ========================================================================== */
+    function AboutSection({ onBackToCover, onExploreCatalog }) {
+      return (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-10">
+          {/* Encabezado Editorial */}
+          <div className="rounded-3xl bg-gradient-to-br from-qb-graphite via-qb-carbon to-qb-surface border border-qb-orange/30 p-6 sm:p-10 editorial-glow">
+            <div className="max-w-3xl">
+              <span className="inline-block px-3 py-1 rounded-full bg-qb-orange/15 border border-qb-orange/40 text-qb-amber text-xs font-extrabold uppercase tracking-widest">
+                Identidad & Propósito · {BRAND_CONFIG.name}
+              </span>
+              <h1 className="font-display text-3xl sm:text-5xl font-black text-white mt-3">
+                {ABOUT_DATA.title}
+              </h1>
+              <p className="text-sm sm:text-base font-extrabold text-qb-orange tracking-wider uppercase mt-2">
+                {ABOUT_DATA.subtitle}
+              </p>
+            </div>
+
+            {/* Bloques de Historia Reales */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+              {ABOUT_DATA.blocks.map((block) => (
+                <div
+                  key={block.id}
+                  className="p-5 rounded-2xl bg-qb-carbon/90 border border-qb-border flex items-start gap-4"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-qb-orange/15 border border-qb-orange/40 flex items-center justify-center text-xl shrink-0">
+                    {block.icon}
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-200 leading-relaxed">
+                    {block.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Los 3 Pilares: Sabor · Técnica · Identidad */}
+            <div className="mt-8 pt-8 border-t border-qb-border grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {ABOUT_DATA.pillars.map((pillar, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-qb-surface/70 border border-qb-border text-center"
+                >
+                  <h3 className="font-display text-xl font-black text-qb-amber tracking-wide">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs text-gray-300 mt-1">
+                    {pillar.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Cierre Institucional y Contactos */}
+            <div className="mt-8 pt-6 border-t border-qb-border flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <p className="font-display text-lg sm:text-xl font-bold text-white">
+                  {ABOUT_DATA.closingTagline}
+                </p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  Dirección Gastronómica: <strong className="text-qb-amber">{ABOUT_DATA.authorSignature.name}</strong> ({ABOUT_DATA.authorSignature.role}) · Fundadores: {ABOUT_DATA.authorSignature.coFounder}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
+                <button
+                  onClick={onBackToCover}
+                  className="px-4 py-2.5 rounded-xl bg-qb-surface hover:bg-qb-border border border-qb-border text-xs font-bold text-white"
+                >
+                  ← Volver a Portada
+                </button>
+                <button
+                  onClick={onExploreCatalog}
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-qb-red to-qb-orange text-xs font-extrabold text-white"
+                >
+                  Ir al Catálogo 🍕
+                </button>
+                <a
+                  href={BRAND_CONFIG.webOficialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-qb-gold/20 hover:bg-qb-gold/30 border border-qb-gold/60 text-xs font-extrabold text-qb-gold flex items-center gap-1.5 transition-colors"
+                >
+                  <span>👨‍🍳</span>
+                  <span>Visitar Web Chef Yorman ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ==========================================================================
+       11. APLICACIÓN PRINCIPAL DEL CATÁLOGO DIGITAL ¡QUÉ BRUTAL!
+       ========================================================================== */
+    function App() {
+      // Estado de temporada inicializado desde SEASONAL_CONFIG
+      const [isChristmasSeason, setIsChristmasSeason] = useState(SEASONAL_CONFIG.isChristmasActive);
+
+      // Vistas principales: 'portada' | 'navidad' | 'catalogo' | 'quienes-somos'
+      const [activeView, setActiveView] = useState(
+        SEASONAL_CONFIG.isChristmasActive ? 'portada' : 'catalogo'
+      );
+
+      // Subcategoría activa dentro del Catálogo Permanente: 'all' | 'pizzas' | 'pastichos' | 'paellas'
+      const [selectedCategory, setSelectedCategory] = useState('all');
+
+      // Búsqueda instantánea en tiempo real (Mobile-First)
+      const [searchQuery, setSearchQuery] = useState('');
+
+      // Producto seleccionado para la Ficha Ampliada (Modal)
+      const [activeProduct, setActiveProduct] = useState(null);
+
+      // Si se desactiva la temporada navideña en caliente, redirigir fuera de 'navidad'
+      useEffect(() => {
+        if (!isChristmasSeason && activeView === 'navidad') {
+          setActiveView('catalogo');
+        }
+      }, [isChristmasSeason, activeView]);
+
+      // Productos de Navidad ordenados
+      const christmasProducts = useMemo(
+        () => CATALOG_DATA.filter((p) => p.published && p.section === 'navidad').sort((a, b) => a.order - b.order),
+        []
+      );
+
+      // Catálogo permanente base
+      const permanentPizzas = useMemo(
+        () => CATALOG_DATA.filter((p) => p.published && p.section === 'catalogo' && p.category === 'pizzas').sort((a, b) => a.order - b.order),
+        []
+      );
+
+      const permanentPastichos = useMemo(
+        () => CATALOG_DATA.filter((p) => p.published && p.section === 'catalogo' && p.category === 'pastichos').sort((a, b) => a.order - b.order),
+        []
+      );
+
+      const permanentPaellas = useMemo(
+        () => CATALOG_DATA.filter((p) => p.published && p.section === 'catalogo' && p.category === 'paellas').sort((a, b) => a.order - b.order),
+        []
+      );
+
+      // Función de filtrado dinámico por búsqueda
+      const matchSearch = (item) => {
+        if (!searchQuery.trim()) return true;
+        const q = searchQuery.toLowerCase().trim();
+        const inName = item.name.toLowerCase().includes(q);
+        const inSubtitle = item.subtitle ? item.subtitle.toLowerCase().includes(q) : false;
+        const inDesc = item.shortDescription ? item.shortDescription.toLowerCase().includes(q) : false;
+        const inIngredients = item.ingredients ? item.ingredients.some(ing => ing.toLowerCase().includes(q)) : false;
+        return inName || inSubtitle || inDesc || inIngredients;
+      };
+
+      const displayedPizzas = useMemo(() => permanentPizzas.filter(matchSearch), [permanentPizzas, searchQuery]);
+      const displayedPastichos = useMemo(() => permanentPastichos.filter(matchSearch), [permanentPastichos, searchQuery]);
+      const displayedPaellas = useMemo(() => permanentPaellas.filter(matchSearch), [permanentPaellas, searchQuery]);
+      const totalDisplayedCount = displayedPizzas.length + displayedPastichos.length + displayedPaellas.length;
+
+      const navigateTo = (view, category = 'all') => {
+        setActiveView(view);
+        setSelectedCategory(category);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col bg-qb-carbon text-qb-warmWhite pb-24 md:pb-0">
+          {/* ====================================================================
+              NAVEGACIÓN GLOBAL (SECCIÓN 3.3 DEL DOCUMENTO MAESTRO)
+              ==================================================================== */}
+          <header className="sticky top-0 z-40 bg-qb-carbon/95 backdrop-blur-md border-b border-qb-border">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+              <BrandLogo size="sm" onClick={() => navigateTo('portada')} />
+
+              {/* Enlaces de Navegación Principal (Escritorio) */}
+              <nav className="hidden md:flex items-center gap-1.5">
+                <button
+                  onClick={() => navigateTo('portada')}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                    activeView === 'portada'
+                      ? 'bg-qb-surface text-qb-amber border border-qb-orange/40'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  Portada
+                </button>
+
+                {isChristmasSeason && (
+                  <button
+                    onClick={() => navigateTo('navidad')}
+                    className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 ${
+                      activeView === 'navidad'
+                        ? 'bg-gradient-to-r from-qb-red to-amber-700 text-white shadow-md'
+                        : 'text-qb-gold hover:text-white border border-qb-gold/30'
+                    }`}
+                  >
+                    <span>🎄</span>
+                    <span>Especial Navideño</span>
+                  </button>
+                )}
+
+                <button
+                  onClick={() => navigateTo('catalogo', 'all')}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 ${
+                    activeView === 'catalogo'
+                      ? 'bg-gradient-to-r from-qb-red to-qb-orange text-white shadow-md'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  <span>🍕</span>
+                  <span>Catálogo ¡Qué Brutal!</span>
+                </button>
+
+                <button
+                  onClick={() => navigateTo('quienes-somos')}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                    activeView === 'quienes-somos'
+                      ? 'bg-qb-surface text-qb-amber border border-qb-orange/40'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  ¿Quiénes Somos?
+                </button>
+
+                <a
+                  href={BRAND_CONFIG.webOficialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all text-qb-gold hover:text-white border border-qb-gold/40 hover:border-qb-gold flex items-center gap-1.5 shadow-sm bg-qb-carbon/60 hover:bg-qb-surface"
+                  title="Visitar la Plataforma Web Oficial de Lic. Yorman Trabasilo"
+                >
+                  <span>👨‍🍳</span>
+                  <span>Web Chef Yorman</span>
+                  <span className="text-[10px]">↗</span>
+                </a>
+              </nav>
+
+              {/* Acciones Derecha: Conmutador de Temporada (Preview) + WhatsApp */}
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsChristmasSeason(!isChristmasSeason)}
+                  title="Simulador de Gestión de Temporadas (Sección 9 del Documento Maestro)"
+                  className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-qb-graphite border border-qb-border text-[11px] font-semibold text-gray-300 hover:border-qb-amber"
+                >
+                  <span className={`w-2 h-2 rounded-full ${isChristmasSeason ? 'bg-emerald-400' : 'bg-gray-500'}`} />
+                  <span>Zafra Navideña: {isChristmasSeason ? 'ACTIVA' : 'INACTIVA'}</span>
+                </button>
+
+                <a
+                  href={`https://wa.me/${BRAND_CONFIG.contacts.primary.waNumber}?text=${encodeURIComponent('Hola, ¡Qué Brutal! Me gustaría realizar una consulta sobre el catálogo.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-qb-red to-qb-orange hover:brightness-110 text-white text-xs font-extrabold flex items-center gap-1.5 shadow-md"
+                >
+                  <span>💬</span>
+                  <span className="hidden sm:inline">WhatsApp Directo</span>
+                  <span className="sm:hidden">Contacto</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Barra de Navegación Compacta para Móviles */}
+            <div className="md:hidden border-t border-qb-border/70 px-3 py-2 flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-qb-graphite/90">
+              <button
+                onClick={() => navigateTo('portada')}
+                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold ${
+                  activeView === 'portada' ? 'bg-qb-orange text-white' : 'text-gray-300 bg-qb-carbon'
+                }`}
+              >
+                Portada
+              </button>
+              {isChristmasSeason && (
+                <button
+                  onClick={() => navigateTo('navidad')}
+                  className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 ${
+                    activeView === 'navidad' ? 'bg-qb-red text-white border border-qb-gold/50' : 'text-qb-gold bg-qb-carbon border border-qb-gold/30'
+                  }`}
+                >
+                  <span>🎄</span>
+                  <span>Especial Navideño</span>
+                </button>
+              )}
+              <button
+                onClick={() => navigateTo('catalogo', 'all')}
+                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 ${
+                  activeView === 'catalogo' ? 'bg-qb-orange text-white' : 'text-gray-300 bg-qb-carbon'
+                }`}
+              >
+                <span>🍕</span>
+                <span>Catálogo ¡Qué Brutal!</span>
+              </button>
+              <button
+                onClick={() => navigateTo('quienes-somos')}
+                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold ${
+                  activeView === 'quienes-somos' ? 'bg-qb-orange text-white' : 'text-gray-300 bg-qb-carbon'
+                }`}
+              >
+                ¿Quiénes Somos?
+              </button>
+              <a
+                href={BRAND_CONFIG.webOficialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 px-3 py-1.5 rounded-lg text-xs font-extrabold text-qb-gold bg-qb-carbon border border-qb-gold/50 flex items-center gap-1 shadow-sm"
+              >
+                <span>👨‍🍳</span>
+                <span>Web Chef Yorman ↗</span>
+              </a>
+            </div>
+          </header>
+
+          {/* ====================================================================
+              VISTA 1: PORTADA PRINCIPAL ("DOS EXPERIENCIAS, UNA SOLA MARCA")
+              ==================================================================== */}
+          {activeView === 'portada' && (
+            <main className="flex-1 editorial-glow">
+              <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+                {/* Cabecera de Portada */}
+                <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                  <div className="flex justify-center mb-4">
+                    <BrandLogo size="lg" />
+                  </div>
+                  <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-qb-orange font-extrabold">
+                    {BRAND_CONFIG.concept}
+                  </p>
+                  <h1 className="font-display text-3xl sm:text-5xl font-black text-white mt-2 leading-tight">
+                    Vitrina Gastronómica de Autor
+                  </h1>
+                  <p className="text-sm sm:text-base text-gray-300 mt-3 leading-relaxed">
+                    Pizzas napolitanas artesanales con fermentación Biga, pastichos horneados al momento, paellas de celebración y nuestras especialidades de temporada en Maracay.
+                  </p>
+
+                  {/* Acceso Directo Destacado a la Web Oficial del Chef Yorman */}
+                  <div className="mt-5 flex justify-center">
+                    <a
+                      href={BRAND_CONFIG.webOficialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-qb-graphite/90 hover:bg-qb-surface border border-qb-gold/50 hover:border-qb-gold text-xs font-bold text-qb-warmWhite transition-all shadow-lg hover:scale-[1.02]"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Ecosistema Gastronómico:</span>
+                      <strong className="text-qb-gold font-extrabold flex items-center gap-1">
+                        Ir a Página Web Chef Yorman <span>↗</span>
+                      </strong>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Dos Accesos Principales (Cuando la Temporada Navideña está Activa) */}
+                {isChristmasSeason ? (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                    {/* ACCESO 01 — ESPECIAL NAVIDEÑO */}
+                    <div
+                      onClick={() => navigateTo('navidad')}
+                      className="group relative rounded-3xl overflow-hidden border-2 border-qb-gold/50 hover:border-qb-gold bg-qb-graphite shadow-2xl cursor-pointer transition-all flex flex-col justify-between min-h-[420px]"
+                    >
+                      <div className="absolute inset-0">
+                        <img
+                          src={SEASONAL_CONFIG.coverImage}
+                          alt="Especial Navideño ¡Qué Brutal!"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-qb-carbon via-qb-carbon/80 to-black/30" />
+                      </div>
+
+                      <div className="relative z-10 p-6 sm:p-8 flex items-center justify-between">
+                        <span className="px-3.5 py-1 rounded-full bg-qb-red/90 border border-qb-gold text-qb-warmWhite text-xs font-extrabold uppercase tracking-wider">
+                          🎄 Temporada Decembrina
+                        </span>
+                        <span className="text-xs font-bold text-qb-gold bg-black/70 px-3 py-1 rounded-full border border-qb-gold/40">
+                          Edición Especial
+                        </span>
+                      </div>
+
+                      <div className="relative z-10 p-6 sm:p-8 mt-auto">
+                        <span className="text-xs uppercase tracking-widest text-qb-gold font-extrabold block">
+                          Acceso 01 · Zafra Navideña
+                        </span>
+                        <h2 className="font-display text-3xl sm:text-4xl font-black text-white mt-1">
+                          ESPECIAL NAVIDEÑO
+                        </h2>
+                        <p className="text-sm sm:text-base text-gray-200 mt-2 max-w-xl">
+                          {SEASONAL_CONFIG.coverDescription}
+                        </p>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {['Pan de Jamón', 'Ponche Crema', 'Asado Negro', 'Pollo Enrollado Navideño'].map((item, i) => (
+                            <span
+                              key={i}
+                              className="px-2.5 py-1 rounded-lg bg-black/70 border border-qb-gold/30 text-xs font-semibold text-qb-warmWhite"
+                            >
+                              • {item}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="mt-6">
+                          <span className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-qb-red to-amber-600 text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-lg group-hover:translate-x-1 transition-transform">
+                            <span>{SEASONAL_CONFIG.ctaLabel}</span>
+                            <span>→</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* ACCESO 02 — CATÁLOGO ¡QUÉ BRUTAL! */}
+                    <div
+                      onClick={() => navigateTo('catalogo', 'all')}
+                      className="group relative rounded-3xl overflow-hidden border-2 border-qb-orange/50 hover:border-qb-orange bg-qb-graphite shadow-2xl cursor-pointer transition-all flex flex-col justify-between min-h-[420px]"
+                    >
+                      <div className="absolute inset-0">
+                        <SmartImage
+                          localSrc="ChatGPT Image 10 ago 2026, 04_59_06 p.m..png"
+                          fallbackSrc="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85"
+                          alt="Catálogo ¡Qué Brutal!"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-qb-carbon via-qb-carbon/80 to-black/30" />
+                      </div>
+
+                      <div className="relative z-10 p-6 sm:p-8 flex items-center justify-between">
+                        <span className="px-3.5 py-1 rounded-full bg-gradient-to-r from-qb-red to-qb-orange text-white text-xs font-extrabold uppercase tracking-wider">
+                          🔥 Oferta Permanente
+                        </span>
+                        <span className="text-xs font-bold text-qb-amber bg-black/70 px-3 py-1 rounded-full border border-qb-orange/40">
+                          Masa Biga 24h
+                        </span>
+                      </div>
+
+                      <div className="relative z-10 p-6 sm:p-8 mt-auto">
+                        <span className="text-xs uppercase tracking-widest text-qb-orange font-extrabold block">
+                          Acceso 02 · Menú Todo el Año
+                        </span>
+                        <h2 className="font-display text-3xl sm:text-4xl font-black text-white mt-1">
+                          CATÁLOGO ¡QUÉ BRUTAL!
+                        </h2>
+                        <p className="text-sm sm:text-base text-gray-200 mt-2 max-w-xl">
+                          Pizza artesanal, pastichos y paellas para disfrutar durante todo el año.
+                        </p>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {[
+                            'Pizzas Napolitanas (33 cm)',
+                            'Mini Pizzas (Pasapalos)',
+                            'Lasaña Italiana (600 g)',
+                            'Paella de Mariscos'
+                          ].map((item, i) => (
+                            <span
+                              key={i}
+                              className="px-2.5 py-1 rounded-lg bg-black/70 border border-qb-orange/30 text-xs font-semibold text-qb-warmWhite"
+                            >
+                              • {item}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="mt-6">
+                          <span className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-qb-red to-qb-orange text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-lg group-hover:translate-x-1 transition-transform">
+                            <span>EXPLORAR CATÁLOGO</span>
+                            <span>→</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Vista de Portada Fuera de Temporada Navideña */
+                  <div className="rounded-3xl bg-qb-graphite border border-qb-orange/40 p-8 text-center max-w-3xl mx-auto">
+                    <h2 className="font-display text-2xl sm:text-3xl font-black text-white">
+                      Explora Nuestra Carta Permanente
+                    </h2>
+                    <p className="text-sm text-gray-300 mt-2">
+                      Pizzas napolitanas artesanales, lasañas gratinadas y paellas por encargo.
+                    </p>
+                    <button
+                      onClick={() => navigateTo('catalogo', 'all')}
+                      className="mt-6 px-8 py-4 rounded-2xl bg-gradient-to-r from-qb-red to-qb-orange text-white font-extrabold text-sm uppercase tracking-wider"
+                    >
+                      Entrar al Catálogo ¡Qué Brutal! →
+                    </button>
+                  </div>
+                )}
+
+                {/* Cintillo de Pilares de Marca (Inspirado en la portada de Canva) */}
+                <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 bg-qb-graphite/90 border border-qb-border rounded-2xl p-4 sm:p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🔥</span>
+                    <div>
+                      <span className="text-xs font-extrabold text-white uppercase block">Hecho con Alma</span>
+                      <span className="text-[11px] text-gray-400">Fuego y pasión culinaria</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🌾</span>
+                    <div>
+                      <span className="text-xs font-extrabold text-white uppercase block">Técnica Biga 24h</span>
+                      <span className="text-[11px] text-gray-400">Masa viva de autor</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🧀</span>
+                    <div>
+                      <span className="text-xs font-extrabold text-white uppercase block">Calidad Real</span>
+                      <span className="text-[11px] text-gray-400">Ingredientes seleccionados</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🛵</span>
+                    <div>
+                      <span className="text-xs font-extrabold text-white uppercase block">Atención Directa</span>
+                      <span className="text-[11px] text-gray-400">Delivery y retiro en Maracay</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main>
+          )}
+
+          {/* ====================================================================
+              VISTA 2: ESPECIAL NAVIDEÑO (SECCIÓN 6.4 DEL DOCUMENTO MAESTRO)
+              ==================================================================== */}
+          {activeView === 'navidad' && isChristmasSeason && (
+            <main className="flex-1 christmas-glow">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+                {/* Barra de Retorno y Cambio Rápido de Experiencia */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                  <button
+                    onClick={() => navigateTo('portada')}
+                    className="px-3.5 py-2 rounded-xl bg-qb-graphite hover:bg-qb-surface border border-qb-border text-xs font-bold text-gray-200 flex items-center gap-1.5"
+                  >
+                    <span>←</span>
+                    <span>Volver a Portada</span>
+                  </button>
+                  <button
+                    onClick={() => navigateTo('catalogo', 'all')}
+                    className="px-4 py-2 rounded-xl bg-qb-surface hover:bg-qb-orange/20 border border-qb-orange/40 text-xs font-extrabold text-qb-amber flex items-center gap-1.5"
+                  >
+                    <span>🍕</span>
+                    <span>Ir al Catálogo Permanente ¡Qué Brutal! →</span>
+                  </button>
+                </div>
+
+                {/* Cabecera del Especial Navideño */}
+                <div className="rounded-3xl bg-gradient-to-r from-qb-graphite via-[#1f1614] to-qb-graphite border border-qb-gold/40 p-6 sm:p-8 mb-8">
+                  <span className="inline-block px-3 py-1 rounded-full bg-qb-red/30 border border-qb-gold/40 text-qb-gold text-xs font-extrabold uppercase tracking-wider">
+                    🎄 {SEASONAL_CONFIG.subtitle}
+                  </span>
+                  <h1 className="font-display text-3xl sm:text-5xl font-black text-white mt-2">
+                    {SEASONAL_CONFIG.title}
+                  </h1>
+                  <p className="text-sm sm:text-base text-gray-300 mt-2 max-w-2xl">
+                    {SEASONAL_CONFIG.coverDescription} {SEASONAL_CONFIG.notice}
+                  </p>
+                </div>
+
+                {/* Grilla de los 4 Productos Navideños (Sin subcategorías adicionales) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {christmasProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      onSelect={setActiveProduct}
+                    />
+                  ))}
+                </div>
+              </div>
+            </main>
+          )}
+
+          {/* ====================================================================
+              VISTA 3: CATÁLOGO PERMANENTE ¡QUÉ BRUTAL! (SECCIÓN 6.1, 6.2, 6.3)
+              ==================================================================== */}
+          {activeView === 'catalogo' && (
+            <main className="flex-1 editorial-glow">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+                {/* Barra Superior de Navegación Interna y Cambio de Sección */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                  <button
+                    onClick={() => navigateTo('portada')}
+                    className="px-3.5 py-2 rounded-xl bg-qb-graphite hover:bg-qb-surface border border-qb-border text-xs font-bold text-gray-200 flex items-center gap-1.5"
+                  >
+                    <span>←</span>
+                    <span>Volver a Portada</span>
+                  </button>
+
+                  {isChristmasSeason && (
+                    <button
+                      onClick={() => navigateTo('navidad')}
+                      className="px-4 py-2 rounded-xl bg-qb-red/20 hover:bg-qb-red/30 border border-qb-gold/40 text-xs font-extrabold text-qb-gold flex items-center gap-1.5"
+                    >
+                      <span>🎄</span>
+                      <span>Ver Especial Navideño →</span>
+                    </button>
+                  )}
+                </div>
+
+                {/* Barra de Búsqueda Instantánea & Filtros Rápidos (Optimizada para Celulares y PC) */}
+                <div className="sticky top-[60px] md:top-[68px] z-30 bg-qb-carbon/95 backdrop-blur-md py-3 border-y border-qb-border mb-6 space-y-3">
+                  {/* Buscador en Vivo */}
+                  <div className="relative max-w-xl mx-auto sm:mx-0">
+                    <span className="absolute inset-y-0 left-3 flex items-center text-gray-400 text-sm pointer-events-none">
+                      🔍
+                    </span>
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Buscar pizza, pasticho, ingrediente (bacon, queso, maíz, mariscos)..."
+                      className="w-full pl-9 pr-9 py-2.5 rounded-xl bg-qb-graphite border border-qb-border focus:border-qb-orange focus:outline-none text-xs sm:text-sm text-qb-warmWhite placeholder-gray-400"
+                    />
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setSearchQuery('')}
+                        className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white text-xs font-bold"
+                        aria-label="Limpiar búsqueda"
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Pills de Categorías con Conteo en Tiempo Real */}
+                  <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-1">
+                    {[
+                      { id: 'all', label: 'Toda la Carta', icon: '🔥', count: totalDisplayedCount },
+                      { id: 'pizzas', label: 'Pizzas & Minis', icon: '🍕', count: displayedPizzas.length },
+                      { id: 'pastichos', label: 'Pastichos / Lasaña', icon: '🍝', count: displayedPastichos.length },
+                      { id: 'paellas', label: 'Paellas Especiales', icon: '🥘', count: displayedPaellas.length }
+                    ].map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => setSelectedCategory(cat.id)}
+                        className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all flex items-center gap-1.5 ${
+                          selectedCategory === cat.id
+                            ? 'bg-gradient-to-r from-qb-red to-qb-orange text-white shadow-md'
+                            : 'bg-qb-graphite text-gray-300 border border-qb-border hover:border-qb-orange/50'
+                        }`}
+                      >
+                        <span>{cat.icon}</span>
+                        <span>{cat.label}</span>
+                        <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${selectedCategory === cat.id ? 'bg-black/40 text-white' : 'bg-qb-surface text-gray-400'}`}>
+                          {cat.count}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Aviso amigable si la búsqueda no arroja resultados */}
+                {totalDisplayedCount === 0 && (
+                  <div className="text-center py-16 bg-qb-graphite rounded-3xl border border-qb-border p-6 max-w-md mx-auto my-6">
+                    <span className="text-4xl block mb-2">🔍</span>
+                    <h3 className="font-display text-xl font-bold text-white">No encontramos coincidencias</h3>
+                    <p className="text-xs text-gray-400 mt-1">No hay productos que coincidan con "{searchQuery}". Intenta con otro ingrediente.</p>
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="mt-4 px-4 py-2 rounded-xl bg-qb-orange text-white text-xs font-bold"
+                    >
+                      Ver todo el menú
+                    </button>
+                  </div>
+                )}
+
+                {/* 1. PIZZAS NAPOLITANAS ARTESANALES (PRODUCTO ESTRELLA PROTAGONISTA) */}
+                {(selectedCategory === 'all' || selectedCategory === 'pizzas') && displayedPizzas.length > 0 && (
+                  <section className="mb-14">
+                    <div className="rounded-3xl bg-gradient-to-r from-qb-graphite via-qb-surface to-qb-graphite border border-qb-orange/40 p-6 sm:p-8 mb-6">
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                        <div>
+                          <span className="inline-block px-3 py-1 rounded-full bg-qb-orange/20 border border-qb-orange/40 text-qb-amber text-xs font-extrabold uppercase tracking-wider">
+                            🍕 Producto Estrella de la Casa · Masa Biga 24h
+                          </span>
+                          <h2 className="font-display text-3xl sm:text-4xl font-black text-white mt-2">
+                            Pizzas Napolitanas Artesanales
+                          </h2>
+                          <p className="text-xs sm:text-sm text-gray-300 mt-1.5 max-w-2xl">
+                            Elaboradas con prefermento Biga madurado durante 24 horas, borde alveolado, salsa de autor e ingredientes seleccionados en formato de 33 cm (8 porciones) y versión Mini Pizzas para eventos.
+                          </p>
+                        </div>
+                        <div className="shrink-0 flex gap-2 text-xs font-mono font-bold text-qb-amber bg-qb-carbon px-4 py-2.5 rounded-xl border border-qb-border">
+                          <span>📏 33 CM</span>
+                          <span>•</span>
+                          <span>8 Porciones</span>
+                          <span>•</span>
+                          <span>2 Personas</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {displayedPizzas.map((pizza) => (
+                        <ProductCard
+                          key={pizza.id}
+                          product={pizza}
+                          onSelect={setActiveProduct}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                {/* 2. PASTICHOS */}
+                {(selectedCategory === 'all' || selectedCategory === 'pastichos') && displayedPastichos.length > 0 && (
+                  <section className="mb-14">
+                    <div className="border-l-4 border-qb-orange pl-4 mb-6">
+                      <span className="text-xs font-extrabold uppercase tracking-widest text-qb-orange">
+                        Pastas al Horno & Gratinados
+                      </span>
+                      <h2 className="font-display text-2xl sm:text-3xl font-black text-white">
+                        Pastichos & Lasañas Artesanales
+                      </h2>
+                      <p className="text-xs sm:text-sm text-gray-400 mt-1">
+                        Capas generosas de pasta, ragú de cocción lenta, bechamel sedosa y queso fundido al horno.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {displayedPastichos.map((item) => (
+                        <ProductCard
+                          key={item.id}
+                          product={item}
+                          onSelect={setActiveProduct}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                {/* 3. PAELLAS Y ESPECIALIDADES DE CELEBRACIÓN */}
+                {(selectedCategory === 'all' || selectedCategory === 'paellas') && displayedPaellas.length > 0 && (
+                  <section className="mb-10">
+                    <div className="border-l-4 border-qb-amber pl-4 mb-6">
+                      <span className="text-xs font-extrabold uppercase tracking-widest text-qb-amber">
+                        Especialidades por Encargo
+                      </span>
+                      <h2 className="font-display text-2xl sm:text-3xl font-black text-white">
+                        Paellas y Platos de Celebración
+                      </h2>
+                      <p className="text-xs sm:text-sm text-gray-400 mt-1">
+                        Preparaciones familiares hechas al momento bajo reserva previa para compartir en la mesa.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {displayedPaellas.map((item) => (
+                        <ProductCard
+                          key={item.id}
+                          product={item}
+                          onSelect={setActiveProduct}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </div>
+            </main>
+          )}
+
+          {/* ====================================================================
+              VISTA 4: SECCIÓN INSTITUCIONAL ¿QUIÉNES SOMOS?
+              ==================================================================== */}
+          {activeView === 'quienes-somos' && (
+            <main className="flex-1">
+              <AboutSection
+                onBackToCover={() => navigateTo('portada')}
+                onExploreCatalog={() => navigateTo('catalogo', 'all')}
+              />
+            </main>
+          )}
+
+          {/* ====================================================================
+              MODAL DE FICHA AMPLIADA DE PRODUCTO
+              ==================================================================== */}
+          <ProductDetailModal
+            product={activeProduct}
+            onClose={() => setActiveProduct(null)}
+          />
+
+          {/* ====================================================================
+              PIE DE PÁGINA OFICIAL Y CANALES COMERCIALES CENTRALIZADOS
+              ==================================================================== */}
+          <footer className="bg-black border-t border-qb-border py-10 mt-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <div>
+                  <BrandLogo size="sm" onClick={() => navigateTo('portada')} />
+                  <p className="text-xs text-gray-400 mt-3 leading-relaxed max-w-xs">
+                    {BRAND_CONFIG.concept} Vitrina gastronómica digital de pizzas napolitanas artesanales, pastichos, paellas y especialidades de temporada.
+                  </p>
+
+
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-qb-amber mb-3">
+                    Navegación Rápida
+                  </h4>
+                  <ul className="space-y-2 text-xs text-gray-300">
+                    <li>
+                      <button onClick={() => navigateTo('portada')} className="hover:text-qb-amber">
+                        • Portada Principal
+                      </button>
+                    </li>
+                    {isChristmasSeason && (
+                      <li>
+                        <button onClick={() => navigateTo('navidad')} className="hover:text-qb-amber text-qb-gold font-semibold">
+                          • Especial Navideño
+                        </button>
+                      </li>
+                    )}
+                    <li>
+                      <button onClick={() => navigateTo('catalogo', 'pizzas')} className="hover:text-qb-amber">
+                        • Pizzas Napolitanas Artesanales
+                      </button>
+                    </li>
+                    <li>
+                      <button onClick={() => navigateTo('catalogo', 'pastichos')} className="hover:text-qb-amber">
+                        • Pastichos / Lasaña Italiana
+                      </button>
+                    </li>
+                    <li>
+                      <button onClick={() => navigateTo('catalogo', 'paellas')} className="hover:text-qb-amber">
+                        • Paellas de Celebración
+                      </button>
+                    </li>
+                    <li>
+                      <button onClick={() => navigateTo('quienes-somos')} className="hover:text-qb-amber">
+                        • ¿Quiénes Somos?
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-qb-amber mb-3">
+                    Contacto Directo & Pedidos
+                  </h4>
+                  <div className="space-y-2 text-xs text-gray-300">
+                    <p>📍 {BRAND_CONFIG.location}</p>
+                    <p>
+                      📞 Pedidos WhatsApp:{' '}
+                      <a
+                        href={`https://wa.me/${BRAND_CONFIG.contacts.primary.waNumber}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white font-mono font-bold hover:text-qb-amber underline"
+                      >
+                        {BRAND_CONFIG.contacts.primary.display}
+                      </a>
+                    </p>
+                    <p>
+                      📞 Línea Profesional / Eventos:{' '}
+                      <a
+                        href={`https://wa.me/${BRAND_CONFIG.contacts.secondary.waNumber}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white font-mono font-bold hover:text-qb-amber underline"
+                      >
+                        {BRAND_CONFIG.contacts.secondary.display}
+                      </a>
+                    </p>
+                    <p>📸 Instagram: <strong className="text-white">{BRAND_CONFIG.instagram}</strong></p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-qb-border/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 gap-2">
+                <span>© {new Date().getFullYear()} {BRAND_CONFIG.name} — Todos los derechos reservados.</span>
+                <span>Dirección Culinaria: Lic. Yorman Trabasilo · Maracay, Venezuela.</span>
+              </div>
+            </div>
+          </footer>
+
+          {/* ====================================================================
+              BARRA INFERIOR DE ACCESO RÁPIDO PARA TELÉFONOS (BOTTOM APP BAR)
+              Diseñada específicamente para navegación con el pulgar en móviles
+              ==================================================================== */}
+          <nav
+            aria-label="Navegación móvil"
+            className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-qb-carbon/95 backdrop-blur-xl border-t border-qb-border/90 pb-[max(0.5rem,env(safe-area-inset-bottom))] px-2 py-2 flex items-center justify-around shadow-[0_-8px_25px_rgba(0,0,0,0.7)]"
+          >
+            <button
+              onClick={() => navigateTo('portada')}
+              className={`flex-1 py-1 flex flex-col items-center gap-0.5 text-[10px] font-bold transition-colors ${
+                activeView === 'portada' ? 'text-qb-orange' : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <span className="text-lg">🏠</span>
+              <span>Inicio</span>
+            </button>
+
+            {isChristmasSeason && (
+              <button
+                onClick={() => navigateTo('navidad')}
+                className={`flex-1 py-1 flex flex-col items-center gap-0.5 text-[10px] font-bold transition-colors ${
+                  activeView === 'navidad' ? 'text-qb-gold' : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                <span className="text-lg">🎄</span>
+                <span>Navidad</span>
+              </button>
+            )}
+
+            <button
+              onClick={() => navigateTo('catalogo', 'all')}
+              className={`flex-1 py-1 flex flex-col items-center gap-0.5 text-[10px] font-bold transition-colors ${
+                activeView === 'catalogo' ? 'text-qb-orange' : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <span className="text-lg">🍕</span>
+              <span>Carta</span>
+            </button>
+
+            <button
+              onClick={() => {
+                navigateTo('catalogo', 'all');
+                setTimeout(() => {
+                  const input = document.querySelector('input[type="text"]');
+                  if (input) input.focus();
+                }, 200);
+              }}
+              className="flex-1 py-1 flex flex-col items-center gap-0.5 text-[10px] font-bold text-gray-400 hover:text-white"
+            >
+              <span className="text-lg">🔍</span>
+              <span>Buscar</span>
+            </button>
+
+            <a
+              href={`https://wa.me/${BRAND_CONFIG.contacts.primary.waNumber}?text=${encodeURIComponent('Hola ¡Qué Brutal! Me gustaría consultar el catálogo y hacer un pedido.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-1 flex flex-col items-center gap-0.5 text-[10px] font-extrabold text-emerald-400 hover:text-emerald-300"
+            >
+              <span className="text-lg animate-pulse-subtle">💬</span>
+              <span>Pedir</span>
+            </a>
+          </nav>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
