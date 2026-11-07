@@ -118,7 +118,7 @@
       assets: {
         // Rutas locales de los logos oficiales
         logoFull: 'Logo qué brutal 4 png.png',
-        logoFlame: 'Logo qué brutal 3 png.png',
+        logoFlame: 'logo_llama_pura.png',
         quienesSomosPoster: 'Quiénes somos copia.jpg'
       },
       paymentMethods: {
@@ -666,10 +666,10 @@
         >
           {!imgError ? (
             <img
-              src={BRAND_CONFIG.assets.logoFlame}
+              src="logo_llama_pura.png"
               alt={BRAND_CONFIG.name}
               onError={() => setImgError(true)}
-              className={`${sizeClasses} rounded-full object-contain bg-black border border-qb-orange/40 shadow-[0_0_20px_rgba(243,115,36,0.3)]`}
+              className={`${sizeClasses} object-contain transition-transform group-hover:scale-105 filter drop-shadow-[0_0_12px_rgba(243,115,36,0.35)]`}
             />
           ) : (
             <div className={`${sizeClasses} rounded-full bg-gradient-to-br from-qb-red via-qb-orange to-qb-amber flex items-center justify-center shadow-[0_0_22px_rgba(243,115,36,0.45)] border border-qb-amber/40`}>
