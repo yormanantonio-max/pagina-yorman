@@ -138,7 +138,8 @@
       subtitle: 'Zafra Decembrina · Tradición Venezolana con Sello de Autor',
       coverDescription: 'Una selección de preparaciones para celebrar la Navidad con sabor venezolano.',
       ctaLabel: 'EXPLORAR ESPECIAL NAVIDEÑO',
-      coverImage: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=85',
+      coverImage: 'Pan de Jamón.jpg',
+      fallbackCoverImage: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=85',
       notice: 'Preparaciones artesanales de temporada bajo pedido anticipado para cenas familiares y eventos.'
     };
 
@@ -164,7 +165,7 @@
         presentation: 'Pieza familiar tradicional',
         dimensions: 'Formato tradicional (~40 cm)',
         yieldText: 'Ideal para compartir en familia (8 a 10 porciones)',
-        localImage: 'assets/navidad/pan-de-jamon.jpg',
+        localImage: 'Pan de Jamón.jpg',
         image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80',
         shortDescription: 'El clásico indiscutible de la mesa navideña venezolana, elaborado con masa suave de fermentación cuidada, abundante jamón ahumado, tocineta, pasas y aceitunas.',
         fullDescription: 'Elaborado bajo técnica de panadería artesanal con amasado controlado para lograr una miga suave, ligera y aromática. Relleno equilibrado en cada vuelta y horneado hasta obtener un dorado uniforme y brillante.',
@@ -196,7 +197,7 @@
         presentation: 'Botella de vidrio sellada',
         dimensions: 'Presentación clásica',
         yieldText: 'Ideal para brindis familiar',
-        localImage: 'assets/navidad/ponche-crema.jpg',
+        localImage: 'Ponche Crema.jpg',
         image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80',
         shortDescription: 'Cremoso, aromático y equilibrado. Preparado artesanalmente con base láctea reducida, especias dulces cálidas y ron venezolano.',
         fullDescription: 'Licor cremoso tradicional venezolano ejecutado con técnica de pastelería y coctelería de autor. Sin conservantes artificiales, logrando una emulsión sedosa en paladar con notas sutiles de vainilla, canela y nuez moscada.',
@@ -1440,9 +1441,10 @@
                       className="group relative rounded-3xl overflow-hidden border-2 border-qb-gold/50 hover:border-qb-gold bg-qb-graphite shadow-2xl cursor-pointer transition-all flex flex-col justify-between min-h-[420px]"
                     >
                       <div className="absolute inset-0">
-                        <img
-                          src={SEASONAL_CONFIG.coverImage}
-                          alt="Especial Navideño ¡Qué Brutal!"
+                        <SmartImage
+                          localSrc="Pan de Jamón.jpg"
+                          fallbackSrc="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=85"
+                          alt="Especial Navideño ¡Qué Brutal! — Pan de Jamón"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-qb-carbon via-qb-carbon/80 to-black/30" />
