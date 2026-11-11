@@ -1211,170 +1211,50 @@
     }
 
     /* ==========================================================================
-       10. SECCIÓN INSTITUCIONAL: ¿QUIÉNES SOMOS? (SECCIÓN 11)
+       10. SECCIÓN INSTITUCIONAL: ¿QUIÉNES SOMOS?
        ========================================================================== */
     function AboutSection({ onBackToCover, onExploreCatalog }) {
-      const [imgError, setImgError] = React.useState(false);
-      const [logoYorError, setLogoYorError] = React.useState(false);
-      const [logoChefError, setLogoChefError] = React.useState(false);
       return (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-6">
+        <section className="max-w-6xl mx-auto px-2 sm:px-6 py-6 sm:py-10 space-y-6">
+          {/* Póster Oficial Completo */}
+          <div className="rounded-3xl overflow-hidden border border-qb-orange/30 shadow-2xl editorial-glow bg-[#080b0f]">
+            <img
+              src="QUIÉNES SOMOS.jpg"
+              alt="¿Quiénes Somos? — ¡Qué Brutal! Masa Viva, Fuego Real, Sabor Brutal"
+              className="w-full h-auto block object-contain"
+            />
+          </div>
 
-          {/* ── IMAGEN HERO "QUIÉNES SOMOS" ── */}
-          {!imgError && (
-            <div className="relative w-full rounded-3xl overflow-hidden border border-qb-orange/30" style={{height:'340px'}}>
-              <img
-                src="QUIÉNES SOMOS.jpg"
-                alt="¿Quiénes Somos? ¡Qué Brutal! — Cocina de autor en Maracay"
-                onError={() => setImgError(true)}
-                className="w-full h-full object-cover object-center"
-                style={{filter:'brightness(0.82) saturate(1.1)'}}
-              />
-              {/* Degradado inferior para texto encima */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080b0f] via-[#080b0f]/50 to-transparent" />
-              {/* Badge flotante */}
-              <div className="absolute top-5 left-5">
-                <span className="inline-block px-3 py-1 rounded-full bg-qb-orange/90 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-lg">
-                  Identidad & Propósito · ¡Qué Brutal!
-                </span>
-              </div>
-              {/* Título sobre la imagen */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h1 className="font-display text-3xl sm:text-5xl font-black text-white drop-shadow-lg leading-tight">
-                  {ABOUT_DATA.title}
-                </h1>
-                <p className="text-sm sm:text-base font-extrabold text-qb-orange tracking-wider uppercase mt-1 drop-shadow">
-                  {ABOUT_DATA.subtitle}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Encabezado de texto (sólo si la imagen falló) */}
-          {imgError && (
-            <div className="rounded-3xl bg-gradient-to-br from-qb-graphite via-qb-carbon to-qb-surface border border-qb-orange/30 p-6 sm:p-8">
-              <span className="inline-block px-3 py-1 rounded-full bg-qb-orange/15 border border-qb-orange/40 text-qb-amber text-xs font-extrabold uppercase tracking-widest">
-                Identidad & Propósito · {BRAND_CONFIG.name}
-              </span>
-              <h1 className="font-display text-3xl sm:text-5xl font-black text-white mt-3">
-                {ABOUT_DATA.title}
-              </h1>
-              <p className="text-sm sm:text-base font-extrabold text-qb-orange tracking-wider uppercase mt-2">
-                {ABOUT_DATA.subtitle}
-              </p>
-            </div>
-          )}
-
-          {/* ── BLOQUES DE HISTORIA + PILARES + LOGOS ── */}
-          <div className="rounded-3xl bg-gradient-to-br from-qb-graphite via-qb-carbon to-qb-surface border border-qb-orange/30 p-6 sm:p-10 editorial-glow">
-
-            {/* Bloques de Historia */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {ABOUT_DATA.blocks.map((block) => (
-                <div
-                  key={block.id}
-                  className="p-5 rounded-2xl bg-qb-carbon/90 border border-qb-border flex items-start gap-4"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-qb-orange/15 border border-qb-orange/40 flex items-center justify-center text-xl shrink-0">
-                    {block.icon}
-                  </div>
-                  <p className="text-xs sm:text-sm text-gray-200 leading-relaxed">
-                    {block.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Los 3 Pilares */}
-            <div className="mt-8 pt-8 border-t border-qb-border grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {ABOUT_DATA.pillars.map((pillar, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 rounded-2xl bg-qb-surface/70 border border-qb-border text-center"
-                >
-                  <h3 className="font-display text-xl font-black text-qb-amber tracking-wide">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-xs text-gray-300 mt-1">
-                    {pillar.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* ── LOGOS INSTITUCIONALES: Chef Yorman + ¡Qué Brutal! ── */}
-            <div className="mt-8 pt-8 border-t border-qb-border">
-              <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.2em] text-gray-500 mb-5">
-                Detrás de la marca
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
-                {/* Logo Chef Yorman Trabasilo */}
-                {!logoYorError ? (
-                  <img
-                    src="Logo Yor PNG.png"
-                    alt="Logo Chef Yorman Trabasilo González"
-                    onError={() => setLogoYorError(true)}
-                    className="h-16 sm:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity"
-                    style={{filter:'drop-shadow(0 0 10px rgba(243,115,36,0.25))'}}
-                  />
-                ) : (
-                  <span className="text-xs text-gray-500 italic">Chef Yorman Trabasilo</span>
-                )}
-                {/* Divisor */}
-                <div className="hidden sm:block w-px h-14 bg-qb-border" />
-                {/* Logo Chef Profesional */}
-                {!logoChefError ? (
-                  <img
-                    src="Logo chef profecional.png"
-                    alt="Logo Chef Profesional — ¡Qué Brutal!"
-                    onError={() => setLogoChefError(true)}
-                    className="h-16 sm:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity"
-                    style={{filter:'drop-shadow(0 0 10px rgba(243,115,36,0.25))'}}
-                  />
-                ) : (
-                  <span className="text-xs text-gray-500 italic">Chef Profesional</span>
-                )}
-              </div>
-            </div>
-
-            {/* Cierre Institucional */}
-            <div className="mt-8 pt-6 border-t border-qb-border flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
-                <p className="font-display text-lg sm:text-xl font-bold text-white">
-                  {ABOUT_DATA.closingTagline}
-                </p>
-                <p className="text-xs text-gray-400 mt-0.5">
-                  Dirección Gastronómica: <strong className="text-qb-amber">{ABOUT_DATA.authorSignature.name}</strong> ({ABOUT_DATA.authorSignature.role}) · Fundadores: {ABOUT_DATA.authorSignature.coFounder}
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-2.5">
-                <button
-                  onClick={onBackToCover}
-                  className="px-4 py-2.5 rounded-xl bg-qb-surface hover:bg-qb-border border border-qb-border text-xs font-bold text-white"
-                >
-                  ← Volver a Portada
-                </button>
-                <button
-                  onClick={onExploreCatalog}
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-qb-red to-qb-orange text-xs font-extrabold text-white"
-                >
-                  Ir al Catálogo 🍕
-                </button>
-                <a
-                  href={BRAND_CONFIG.webOficialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-qb-gold/20 hover:bg-qb-gold/30 border border-qb-gold/60 text-xs font-extrabold text-qb-gold flex items-center gap-1.5 transition-colors"
-                >
-                  <span>👨‍🍳</span>
-                  <span>Visitar Web Chef Yorman ↗</span>
-                </a>
-              </div>
-            </div>
+          {/* Botones de Navegación Interactiva */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <button
+              onClick={onBackToCover}
+              className="px-6 py-3 rounded-full font-extrabold text-sm text-white flex items-center justify-center gap-2 shadow-lg transition-transform hover:scale-105 active:scale-95"
+              style={{ background: 'linear-gradient(90deg, #c0190a, #f37324)' }}
+            >
+              ← VOLVER A PORTADA
+            </button>
+            <button
+              onClick={onExploreCatalog}
+              className="px-6 py-3 rounded-full bg-qb-surface hover:bg-qb-border border border-qb-border font-bold text-sm text-white flex items-center justify-center gap-2 transition-transform hover:scale-105 active:scale-95"
+            >
+              Ver Catálogo 🍕
+            </button>
+            <a
+              href={BRAND_CONFIG.webOficialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-full text-xs sm:text-sm font-bold text-gray-200 flex items-center justify-center gap-2 transition-colors hover:border-emerald-400"
+              style={{ background: 'rgba(16, 22, 32, 0.9)', border: '1px solid rgba(52, 211, 153, 0.4)' }}
+            >
+              <span className="text-emerald-400">●</span>
+              Ecosistema Gastronómico: Ir a Página Web Chef Yorman ↗
+            </a>
           </div>
         </section>
       );
     }
+
 
     /* ==========================================================================
        11. APLICACIÓN PRINCIPAL DEL CATÁLOGO DIGITAL ¡QUÉ BRUTAL!
