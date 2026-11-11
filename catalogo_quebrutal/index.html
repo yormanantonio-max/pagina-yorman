@@ -1378,20 +1378,18 @@
       return (
         <div className="min-h-screen flex flex-col bg-qb-carbon text-qb-warmWhite pb-24 md:pb-0">
           {/* ====================================================================
-              NAVEGACIÓN GLOBAL (SECCIÓN 3.3 DEL DOCUMENTO MAESTRO)
+              NAVEGACIÓN GLOBAL: CÁPSULA FLOTANTE EDITORIAL CENTRADA
+              (Alineada exactamente a la referencia de diseño)
               ==================================================================== */}
-          <header className="sticky top-0 z-40 bg-qb-carbon/95 backdrop-blur-md border-b border-qb-border">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
-              <BrandLogo size="sm" onClick={() => navigateTo('portada')} />
-
-              {/* Enlaces de Navegación Principal (Escritorio - Formato Cápsulas / Pills) */}
-              <nav className="hidden md:flex items-center gap-2">
+          <header className="sticky top-3 sm:top-5 z-40 w-full px-3 sm:px-4 flex justify-center pointer-events-none">
+            <div className="pointer-events-auto max-w-full overflow-x-auto no-scrollbar py-1">
+              <nav className="inline-flex items-center gap-1 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full bg-[#12161c]/90 border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.65)] backdrop-blur-md shrink-0">
                 <button
                   onClick={() => navigateTo('portada')}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
                     activeView === 'portada'
-                      ? 'bg-qb-surface text-qb-amber border border-qb-orange/50 shadow-[0_0_12px_rgba(243,115,36,0.2)]'
-                      : 'text-gray-300 hover:text-white hover:bg-qb-graphite/60'
+                      ? 'bg-[#2b2216] text-[#f59e0b] border border-[#f59e0b]/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   Portada
@@ -1400,10 +1398,10 @@
                 {isChristmasSeason && (
                   <button
                     onClick={() => navigateTo('navidad')}
-                    className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 ${
                       activeView === 'navidad'
-                        ? 'bg-gradient-to-r from-qb-red to-amber-700 text-white shadow-md border border-qb-gold/50'
-                        : 'text-qb-gold hover:text-white border border-qb-gold/30 hover:bg-qb-graphite/60'
+                        ? 'bg-white/15 text-white border border-white/25 shadow-sm'
+                        : 'text-gray-300 hover:text-white hover:bg-white/5'
                     }`}
                   >
                     <span>Especial Navideño</span>
@@ -1413,21 +1411,21 @@
 
                 <button
                   onClick={() => navigateTo('catalogo', 'all')}
-                  className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     activeView === 'catalogo'
-                      ? 'bg-gradient-to-r from-qb-red to-qb-orange text-white shadow-md'
-                      : 'text-gray-300 hover:text-white hover:bg-qb-graphite/60'
+                      ? 'bg-white/15 text-white border border-white/25 shadow-sm'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  <span>Catálogo ¡Qué Brutal!</span>
+                  Catálogo ¡Qué Brutal!
                 </button>
 
                 <button
                   onClick={() => navigateTo('quienes-somos')}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     activeView === 'quienes-somos'
-                      ? 'bg-qb-surface text-qb-amber border border-qb-orange/40'
-                      : 'text-gray-300 hover:text-white hover:bg-qb-graphite/60'
+                      ? 'bg-white/15 text-white border border-white/25 shadow-sm'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   ¿Quiénes Somos?
@@ -1437,86 +1435,32 @@
                   href={BRAND_CONFIG.webOficialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full text-xs font-extrabold transition-all text-qb-gold hover:text-white border border-qb-gold/40 hover:border-qb-gold flex items-center gap-1.5 shadow-sm bg-qb-carbon/70 hover:bg-qb-surface"
-                  title="Visitar la Plataforma Web Oficial de Lic. Yorman Trabasilo"
+                  className="px-3 py-1.5 rounded-full text-xs font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
                 >
-                  <span>Web Chef Yorman</span>
-                  <span className="text-[10px]">↗</span>
+                  Web Chef Yorman
                 </a>
-              </nav>
-
-              {/* Acciones Derecha: Conmutador de Temporada + Botón WhatsApp Rojo */}
-              <div className="flex items-center gap-2.5">
-                <button
-                  type="button"
-                  onClick={() => setIsChristmasSeason(!isChristmasSeason)}
-                  title="Simulador de Gestión de Temporadas (Sección 9 del Documento Maestro)"
-                  className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-qb-graphite border border-qb-border text-[11px] font-semibold text-gray-300 hover:border-qb-amber"
-                >
-                  <span className={`w-2 h-2 rounded-full ${isChristmasSeason ? 'bg-emerald-400' : 'bg-gray-500'}`} />
-                  <span>Zafra: {isChristmasSeason ? 'ACTIVA' : 'INACTIVA'}</span>
-                </button>
 
                 <a
                   href={`https://wa.me/${BRAND_CONFIG.contacts.primary.waNumber}?text=${encodeURIComponent('Hola, ¡Qué Brutal! Me gustaría realizar una consulta sobre el catálogo.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-[#c0190a] hover:bg-[#a01508] text-white text-xs font-extrabold flex items-center gap-1.5 shadow-lg transition-transform hover:scale-[1.02]"
+                  className="ml-1 sm:ml-2 px-4 py-1.5 rounded-full bg-[#c0190a] hover:bg-[#a01508] text-white text-xs font-bold transition-all shadow-md hover:scale-105"
                 >
-                  <span className="hidden sm:inline">WhatsApp Directo</span>
-                  <span className="sm:hidden">WhatsApp</span>
+                  WhatsApp Directo
                 </a>
-              </div>
+              </nav>
             </div>
 
-            {/* Barra de Navegación Compacta para Móviles */}
-            <div className="md:hidden border-t border-qb-border/70 px-3 py-2 flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-qb-graphite/90">
-              <button
-                onClick={() => navigateTo('portada')}
-                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold ${
-                  activeView === 'portada' ? 'bg-qb-orange text-white' : 'text-gray-300 bg-qb-carbon'
-                }`}
-              >
-                Portada
-              </button>
-              {isChristmasSeason && (
-                <button
-                  onClick={() => navigateTo('navidad')}
-                  className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 ${
-                    activeView === 'navidad' ? 'bg-qb-red text-white border border-qb-gold/50' : 'text-qb-gold bg-qb-carbon border border-qb-gold/30'
-                  }`}
-                >
-                  <span>🎄</span>
-                  <span>Especial Navideño</span>
-                </button>
-              )}
-              <button
-                onClick={() => navigateTo('catalogo', 'all')}
-                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 ${
-                  activeView === 'catalogo' ? 'bg-qb-orange text-white' : 'text-gray-300 bg-qb-carbon'
-                }`}
-              >
-                <span>🍕</span>
-                <span>Catálogo ¡Qué Brutal!</span>
-              </button>
-              <button
-                onClick={() => navigateTo('quienes-somos')}
-                className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold ${
-                  activeView === 'quienes-somos' ? 'bg-qb-orange text-white' : 'text-gray-300 bg-qb-carbon'
-                }`}
-              >
-                ¿Quiénes Somos?
-              </button>
-              <a
-                href={BRAND_CONFIG.webOficialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 px-3 py-1.5 rounded-lg text-xs font-extrabold text-qb-gold bg-qb-carbon border border-qb-gold/50 flex items-center gap-1 shadow-sm"
-              >
-                <span>👨‍🍳</span>
-                <span>Web Chef Yorman ↗</span>
-              </a>
-            </div>
+            {/* Simulador discreto de zafra navideña para desarrollo (esquina inferior derecha) */}
+            <button
+              type="button"
+              onClick={() => setIsChristmasSeason(!isChristmasSeason)}
+              title="Conmutar Zafra Navideña (Pruebas)"
+              className="pointer-events-auto fixed bottom-20 right-4 z-30 hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-qb-graphite/90 border border-qb-border text-[11px] font-semibold text-gray-300 hover:border-qb-amber shadow-lg backdrop-blur-md opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <span className={`w-2 h-2 rounded-full ${isChristmasSeason ? 'bg-emerald-400' : 'bg-gray-500'}`} />
+              <span>Zafra: {isChristmasSeason ? 'ACTIVA' : 'INACTIVA'}</span>
+            </button>
           </header>
 
           {/* ====================================================================
