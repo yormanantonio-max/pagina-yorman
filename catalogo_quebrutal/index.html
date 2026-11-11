@@ -1214,11 +1214,45 @@
        10. SECCIÓN INSTITUCIONAL: ¿QUIÉNES SOMOS? (SECCIÓN 11)
        ========================================================================== */
     function AboutSection({ onBackToCover, onExploreCatalog }) {
+      const [imgError, setImgError] = React.useState(false);
+      const [logoYorError, setLogoYorError] = React.useState(false);
+      const [logoChefError, setLogoChefError] = React.useState(false);
       return (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-10">
-          {/* Encabezado Editorial */}
-          <div className="rounded-3xl bg-gradient-to-br from-qb-graphite via-qb-carbon to-qb-surface border border-qb-orange/30 p-6 sm:p-10 editorial-glow">
-            <div className="max-w-3xl">
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-6">
+
+          {/* ── IMAGEN HERO "QUIÉNES SOMOS" ── */}
+          {!imgError && (
+            <div className="relative w-full rounded-3xl overflow-hidden border border-qb-orange/30" style={{height:'340px'}}>
+              <img
+                src="QUIÉNES SOMOS.jpg"
+                alt="¿Quiénes Somos? ¡Qué Brutal! — Cocina de autor en Maracay"
+                onError={() => setImgError(true)}
+                className="w-full h-full object-cover object-center"
+                style={{filter:'brightness(0.82) saturate(1.1)'}}
+              />
+              {/* Degradado inferior para texto encima */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080b0f] via-[#080b0f]/50 to-transparent" />
+              {/* Badge flotante */}
+              <div className="absolute top-5 left-5">
+                <span className="inline-block px-3 py-1 rounded-full bg-qb-orange/90 text-white text-[10px] font-extrabold uppercase tracking-widest shadow-lg">
+                  Identidad & Propósito · ¡Qué Brutal!
+                </span>
+              </div>
+              {/* Título sobre la imagen */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h1 className="font-display text-3xl sm:text-5xl font-black text-white drop-shadow-lg leading-tight">
+                  {ABOUT_DATA.title}
+                </h1>
+                <p className="text-sm sm:text-base font-extrabold text-qb-orange tracking-wider uppercase mt-1 drop-shadow">
+                  {ABOUT_DATA.subtitle}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Encabezado de texto (sólo si la imagen falló) */}
+          {imgError && (
+            <div className="rounded-3xl bg-gradient-to-br from-qb-graphite via-qb-carbon to-qb-surface border border-qb-orange/30 p-6 sm:p-8">
               <span className="inline-block px-3 py-1 rounded-full bg-qb-orange/15 border border-qb-orange/40 text-qb-amber text-xs font-extrabold uppercase tracking-widest">
                 Identidad & Propósito · {BRAND_CONFIG.name}
               </span>
@@ -1229,9 +1263,13 @@
                 {ABOUT_DATA.subtitle}
               </p>
             </div>
+          )}
 
-            {/* Bloques de Historia Reales */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+          {/* ── BLOQUES DE HISTORIA + PILARES + LOGOS ── */}
+          <div className="rounded-3xl bg-gradient-to-br from-qb-graphite via-qb-carbon to-qb-surface border border-qb-orange/30 p-6 sm:p-10 editorial-glow">
+
+            {/* Bloques de Historia */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {ABOUT_DATA.blocks.map((block) => (
                 <div
                   key={block.id}
@@ -1247,7 +1285,7 @@
               ))}
             </div>
 
-            {/* Los 3 Pilares: Sabor · Técnica · Identidad */}
+            {/* Los 3 Pilares */}
             <div className="mt-8 pt-8 border-t border-qb-border grid grid-cols-1 sm:grid-cols-3 gap-4">
               {ABOUT_DATA.pillars.map((pillar, idx) => (
                 <div
@@ -1264,7 +1302,42 @@
               ))}
             </div>
 
-            {/* Cierre Institucional y Contactos */}
+            {/* ── LOGOS INSTITUCIONALES: Chef Yorman + ¡Qué Brutal! ── */}
+            <div className="mt-8 pt-8 border-t border-qb-border">
+              <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.2em] text-gray-500 mb-5">
+                Detrás de la marca
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+                {/* Logo Chef Yorman Trabasilo */}
+                {!logoYorError ? (
+                  <img
+                    src="Logo Yor PNG.png"
+                    alt="Logo Chef Yorman Trabasilo González"
+                    onError={() => setLogoYorError(true)}
+                    className="h-16 sm:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity"
+                    style={{filter:'drop-shadow(0 0 10px rgba(243,115,36,0.25))'}}
+                  />
+                ) : (
+                  <span className="text-xs text-gray-500 italic">Chef Yorman Trabasilo</span>
+                )}
+                {/* Divisor */}
+                <div className="hidden sm:block w-px h-14 bg-qb-border" />
+                {/* Logo Chef Profesional */}
+                {!logoChefError ? (
+                  <img
+                    src="Logo chef profecional.png"
+                    alt="Logo Chef Profesional — ¡Qué Brutal!"
+                    onError={() => setLogoChefError(true)}
+                    className="h-16 sm:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity"
+                    style={{filter:'drop-shadow(0 0 10px rgba(243,115,36,0.25))'}}
+                  />
+                ) : (
+                  <span className="text-xs text-gray-500 italic">Chef Profesional</span>
+                )}
+              </div>
+            </div>
+
+            {/* Cierre Institucional */}
             <div className="mt-8 pt-6 border-t border-qb-border flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="font-display text-lg sm:text-xl font-bold text-white">
