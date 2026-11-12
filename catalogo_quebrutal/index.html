@@ -1331,12 +1331,13 @@
       return (
         <div className="min-h-screen flex flex-col bg-qb-carbon text-qb-warmWhite pb-24 md:pb-0">
           {/* ====================================================================
-              NAVEGACIÓN GLOBAL: CÁPSULA FLOTANTE EDITORIAL CENTRADA
-              (Alineada exactamente a la referencia de diseño)
+              NAVEGACIÓN GLOBAL: BARRA SUPERIOR BLINDADA Y RESPONSIVA
+              (En móvil: barra fija a top-0 con backdrop-blur para no traslucir texto;
+               En desktop: cápsula flotante elegante centrada)
               ==================================================================== */}
-          <header className="sticky top-3 sm:top-5 z-40 w-full px-3 sm:px-4 flex justify-center pointer-events-none">
-            <div className="pointer-events-auto max-w-full overflow-x-auto no-scrollbar py-1">
-              <nav className="inline-flex items-center gap-1 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full bg-[#12161c]/90 border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.65)] backdrop-blur-md shrink-0">
+          <header className="sticky top-0 sm:top-4 z-40 w-full bg-[#080b0f]/95 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border-b border-white/10 sm:border-0 px-2 sm:px-4 py-2 sm:py-0 flex justify-center pointer-events-none">
+            <div className="pointer-events-auto w-full sm:w-auto max-w-full overflow-x-auto no-scrollbar flex justify-start sm:justify-center py-0.5">
+              <nav className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full bg-[#12161c]/95 border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.7)] backdrop-blur-md shrink-0 mx-auto">
                 <button
                   onClick={() => navigateTo('portada')}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
@@ -1438,12 +1439,12 @@
                     MASA VIVA <span className="text-xs">🔥</span> FUEGO REAL <span className="text-xs">🔥</span> SABOR BRUTAL
                   </p>
 
-                  {/* Título Protagonista (H1 Editorial de Autor con degradado de texto) */}
-                  <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mt-3 leading-[1.1]">
-                    <span className="block bg-gradient-to-r from-white via-[#fbf6ee] to-[#e6dccf] bg-clip-text text-transparent">
+                  {/* Título Protagonista (H1 Editorial de Autor de Alta Visibilidad y Contraste en Móvil) */}
+                  <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mt-3 leading-[1.1]">
+                    <span className="block text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]">
                       Vitrina Gastronómica
                     </span>
-                    <span className="block bg-gradient-to-r from-[#fbe3b5] via-[#f3ead8] to-[#d4a359] bg-clip-text text-transparent italic font-semibold">
+                    <span className="block text-[#f59e0b] drop-shadow-[0_2px_16px_rgba(245,158,11,0.35)] italic font-semibold mt-0.5">
                       de Autor
                     </span>
                   </h1>
@@ -1453,16 +1454,18 @@
                     Pizzas napolitanas artesanales con fermentación <span className="text-[#f59e0b] font-semibold">Biga</span>, pastichos horneados al momento, <span className="text-[#f59e0b] font-semibold">paellas de celebración</span> y nuestras especialidades de temporada en Maracay.
                   </p>
 
-                  {/* Cápsula de Enlace al Ecosistema */}
-                  <div className="mt-5 flex justify-center">
+                  {/* Cápsula de Enlace al Ecosistema (Optimizada para pantalla móvil) */}
+                  <div className="mt-5 flex justify-center px-2">
                     <a
                       href={BRAND_CONFIG.webOficialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2.5 bg-[#161b22]/90 border border-emerald-500/40 hover:border-emerald-500 text-xs text-gray-200 px-4 py-2 rounded-full backdrop-blur-md transition-all shadow-lg hover:scale-[1.02]"
+                      className="group inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-1.5 sm:gap-2.5 bg-[#161b22]/90 border border-emerald-500/40 hover:border-emerald-500 text-xs text-gray-200 px-3.5 py-2 rounded-2xl sm:rounded-full backdrop-blur-md transition-all shadow-lg hover:scale-[1.02] text-center"
                     >
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Ecosistema Gastronómico:</span>
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                        <span className="text-gray-300">Ecosistema Gastronómico:</span>
+                      </div>
                       <strong className="text-qb-gold font-extrabold flex items-center gap-1 group-hover:text-emerald-300 transition-colors">
                         Ir a Página Web Chef Yorman <span>↗</span>
                       </strong>
@@ -1520,7 +1523,7 @@
                         </div>
 
                         <div className="mt-6">
-                          <span className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-qb-red to-amber-600 text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-lg group-hover:translate-x-1 transition-transform">
+                          <span className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-qb-red to-amber-600 text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-lg group-hover:translate-x-1 transition-transform">
                             <span>{SEASONAL_CONFIG.ctaLabel}</span>
                             <span>→</span>
                           </span>
@@ -1580,7 +1583,7 @@
                         </div>
 
                         <div className="mt-6">
-                          <span className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-qb-orange to-amber-500 text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-lg group-hover:translate-x-1 transition-transform">
+                          <span className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-qb-orange to-amber-500 text-white font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-lg group-hover:translate-x-1 transition-transform">
                             <span>Explorar Carta Completa</span>
                             <span>→</span>
                           </span>
@@ -1606,34 +1609,45 @@
                   </div>
                 )}
 
-                {/* Cintillo de Pilares de Marca (Inspirado en la portada de Canva) */}
-                <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 bg-qb-graphite/90 border border-qb-border rounded-2xl p-4 sm:p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">🔥</span>
+                {/* Pilares de Excelencia Gastronómica (Micro-tarjetas responsivas de alta legibilidad) */}
+                <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+                  <div className="bg-[#12161c]/90 border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-3 transition-all hover:border-[#f37324]/40 shadow-sm">
+                    <div className="w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-xl shrink-0">
+                      🔥
+                    </div>
                     <div>
-                      <span className="text-xs font-extrabold text-white uppercase block">Hecho con Alma</span>
-                      <span className="text-[11px] text-gray-400">Fuego y pasión culinaria</span>
+                      <span className="text-xs font-black text-white uppercase tracking-wider block">Hecho con Alma</span>
+                      <span className="text-[11px] text-gray-300 leading-tight block mt-0.5">Fuego y pasión culinaria</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">🌾</span>
+
+                  <div className="bg-[#12161c]/90 border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-3 transition-all hover:border-amber-500/40 shadow-sm">
+                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-xl shrink-0">
+                      🌾
+                    </div>
                     <div>
-                      <span className="text-xs font-extrabold text-white uppercase block">Técnica Biga 24h</span>
-                      <span className="text-[11px] text-gray-400">Masa viva de autor</span>
+                      <span className="text-xs font-black text-white uppercase tracking-wider block">Técnica Biga 24h</span>
+                      <span className="text-[11px] text-gray-300 leading-tight block mt-0.5">Masa viva de autor</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">🧀</span>
+
+                  <div className="bg-[#12161c]/90 border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-3 transition-all hover:border-yellow-500/40 shadow-sm">
+                    <div className="w-9 h-9 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-xl shrink-0">
+                      🧀
+                    </div>
                     <div>
-                      <span className="text-xs font-extrabold text-white uppercase block">Calidad Real</span>
-                      <span className="text-[11px] text-gray-400">Ingredientes seleccionados</span>
+                      <span className="text-xs font-black text-white uppercase tracking-wider block">Calidad Real</span>
+                      <span className="text-[11px] text-gray-300 leading-tight block mt-0.5">Ingredientes selectos</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">🛵</span>
+
+                  <div className="bg-[#12161c]/90 border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-3 transition-all hover:border-emerald-500/40 shadow-sm">
+                    <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">
+                      🛵
+                    </div>
                     <div>
-                      <span className="text-xs font-extrabold text-white uppercase block">Atención Directa</span>
-                      <span className="text-[11px] text-gray-400">Delivery y retiro en Maracay</span>
+                      <span className="text-xs font-black text-white uppercase tracking-wider block">Atención Directa</span>
+                      <span className="text-[11px] text-gray-300 leading-tight block mt-0.5">Delivery en Maracay</span>
                     </div>
                   </div>
                 </div>
@@ -2003,7 +2017,7 @@
               ==================================================================== */}
           <nav
             aria-label="Navegación móvil"
-            className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-qb-carbon/95 backdrop-blur-xl border-t border-qb-border/90 pb-[max(0.5rem,env(safe-area-inset-bottom))] px-2 py-2 flex items-center justify-around shadow-[0_-8px_25px_rgba(0,0,0,0.7)]"
+            className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#080b0f]/95 backdrop-blur-xl border-t border-white/10 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 px-3 flex items-center justify-around shadow-[0_-8px_30px_rgba(0,0,0,0.85)]"
           >
             <button
               onClick={() => navigateTo('portada')}
